@@ -1,0 +1,470 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="">
+          <div class="mt-2">
+            <ngb-tabset class="tabset1">
+              <ngb-tab title="Project">
+                <ng-template ngbTabContent>
+                  <div>
+                    <!-- <button
+                      class="btn btn-primary float-right mt-2"
+                      (click)="AddProject(contentLC, 0)"
+                    >
+                      Add Project
+                    </button> -->
+                  </div>
+
+                  <div class="table-responsive mt-3">
+                    <table class="table table-bordered mt-2">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Description</th>
+                          <th>Address</th>
+                          <th>Total OP Subscribed</th>
+                          <th>Max Permissible Total FlowRate</th>
+                          <th>TotalNetwork</th>
+                          <th>Max No Of Node Per Network</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.projectLst">
+                          <td>{{ pos.name }}</td>
+                          <td>{{ pos.description }}</td>
+                          <td>{{ pos.address }}</td>
+                          <td>{{ pos.noOfTotalOpsubscribed }}</td>
+                          <td>{{ pos.maxPermissibleTotalFlowRate }}</td>
+                          <td>{{ pos.noOfTotalNetwork }}</td>
+                          <td>{{ pos.maxNoOfRtuperNetwork }}</td>
+
+                          <!-- max No Of Node PerNetwork -->
+                          <td>
+                            <button
+                              type="button"
+                              id="addcable"
+                              class="btn btn-info btn-sm"
+                              (click)="AddProject(contentLC, pos.id)"
+                            >
+                              Edit
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Network">
+                <ng-template ngbTabContent>
+                  <!-- <div>
+                    <button
+                      class="btn btn-primary float-right mt-2"
+                      (click)="AddNetwork(content, 0)"
+                    >
+                      Add Network
+                    </button>
+                  </div> -->
+
+                  <div class="table-responsive mt-3">
+                    <table class="table-responsive table table-bordered mt-2">
+                      <thead>
+                        <tr>
+                          <th>Network No</th>
+                          <th>Name</th>
+                          <th>Description</th>
+                          <th>Tag Name</th>
+                          <th>No of Nodes</th>
+                          <th>Use Template for Node</th>
+                          <th>Network Lock</th>
+                          <th>Nodes</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.networkLst">
+                          <td>{{ pos.networkNo }}</td>
+                          <td>{{ pos.name }}</td>
+                          <td>{{ pos.description }}</td>
+                          <td>{{ pos.tagName }}</td>
+                          <td>{{ pos.noOfRtu }}</td>
+                          <td>
+                            <label>{{
+                              pos.useTemplateForRTU ? "Yes" : "No"
+                            }}</label>
+                          </td>
+                          <td>
+                            <label>{{
+                              pos.networkLock ? "Locked" : "Unlocked"
+                            }}</label>
+                          </td>
+                          <td>
+                            <button
+                              type="button"
+                              id="addcable"
+                              class="btn btn-warning btn-sm"
+                              (click)="AddProject(content, pos.id)"
+                            >
+                              Nodes
+                            </button>
+                          </td>
+                          <td>
+                            <button
+                              type="button"
+                              id="addcable"
+                              class="btn btn-primary btn-sm"
+                              (click)="AddProject(content, pos.id)"
+                            >
+                              Edit
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr style="background-color: aliceblue">
+                          <td>{{ networkInfo.networkNo }}</td>
+                          <td>
+                            <div class="form-group">
+                              <select
+                                class="form-control"
+                                id="networkNo"
+                                required
+                                [(ngModel)]="networkInfo.networkNo"
+                                name="networkNo"
+                                #position="ngModel"
+                              >
+                                <!-- <option value="">Select Network</option> -->
+                                <option
+                                  [value]="li.value"
+                                  [innerHtml]="li.displayText"
+                                  *ngFor="let li of availableNetworks"
+                                ></option>
+                              </select>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group">
+                              <div class="input-group">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="laborc"
+                                  required
+                                  [(ngModel)]="networkInfo.description"
+                                  name="laborc"
+                                  #laborc="ngModel"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group">
+                              <div class="input-group">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="laborc"
+                                  required
+                                  [(ngModel)]="networkInfo.tagName"
+                                  name="laborc"
+                                  #laborc="ngModel"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group">
+                              <div class="input-group">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  id="laborc"
+                                  required
+                                  [(ngModel)]="networkInfo.noOfRTU"
+                                  name="laborc"
+                                  #laborc="ngModel"
+                                />
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <!-- <label>{{
+                              networkInfo.useTemplateForRTU ? "Yes" : "No"
+                            }}</label>
+                            <br /> -->
+                            <!-- Rounded switch -->
+                            <label class="switch">
+                              <input
+                                type="checkbox"
+                                [(ngModel)]="networkInfo.useTemplateForRTU"
+                                name="useTemplateForRTU"
+                              />
+                              <span class="slider"></span>
+                            </label>
+                          </td>
+                          <td>
+                            <!-- <label>{{
+                              networkInfo.networkLock ? "Locked" : "Unlocked"
+                            }}</label> -->
+
+                            <!-- Rounded switch -->
+                            <label class="switch">
+                              <input
+                                type="checkbox"
+                                [(ngModel)]="networkInfo.networkLock"
+                                name="networkLock"
+                              />
+                              <span class="slider"></span>
+                            </label>
+                          </td>
+                          <td></td>
+                          <td>
+                            <button
+                              type="button"
+                              id="addcable"
+                              class="btn btn-info btn-sm"
+                              (click)="AddProject(content, pos.id)"
+                            >
+                              Add
+                            </button>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Node">
+                <ng-template ngbTabContent>
+                  <div class="row mt-3">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <ng-select
+                          id="selectedNetwork"
+                          #select
+                          [items]="networkLst"
+                          bindLabel="name"
+                          placeholder="Select Network"
+                          bindValue="networkId"
+                          [(ngModel)]="selectedNetwork"
+                          (change)="GetList(selectedNetwork)"
+                          appearance="outline"
+                        >
+                        </ng-select>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <button
+                      class="btn btn-primary float-right mt-2"
+                      (click)="AddNode(content, 0)"
+                    >
+                      Add Node
+                    </button>
+                    </div>
+                  </div>
+ 
+                  <div class="row table-responsive mt-3">
+                    <table class="table table-bordered mt-2">
+                      <thead>
+                        <tr>
+                          <th>Node Name</th>
+                          <th>Network No</th>
+                          <th>Node No</th>
+                          <th>RTU Id</th>
+                          <th>Description</th>
+                          <th>Product Type</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.nodeLst">
+                          <td  routerLink="/configuration/node"
+                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.nodeName }}</td>
+                          <td  routerLink="/configuration/node"
+                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.networkNo }}</td>
+                          <td  routerLink="/configuration/node"
+                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.nodeNo }}</td>
+                          <td  routerLink="/configuration/node"
+                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.rtuId }}</td>
+                          <td  routerLink="/configuration/node"
+                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.description }}</td>
+                          <td  routerLink="/configuration/node"
+                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.productName }}</td>
+                          <!-- max No Of Node PerNetwork -->
+                          <td>
+                            <button
+                              type="button"
+                              id="addcable"
+                              class="btn btn-info btn-sm"
+                              (click)="AddNode(content, pos.id)"
+                            >
+                              Edit
+                            </button>
+
+                            <button
+                            type="button"
+                            id="clone"
+                            class="btn btn-warning btn-sm ml-3"
+                            (click)="CloneNode(content, pos.id)"
+                          >
+                            Clone
+                          </button>
+
+                          <button
+                          type="button"
+                          id="clone"
+                          class="btn btn-danger btn-sm ml-3"
+                          (click)="deleteNode(contentLC, pos.id)"
+                        >
+                          Delete
+                        </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Node</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="amos">Node No</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="nodeNo"
+              ngxNumberFormat="#######"
+              required
+              [(ngModel)]="nodeInfo.nodeNo"
+              name="nodeNo"
+              #nodeNo="ngModel"
+              (keyup)="calculateRtuId()"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="nodeName">Node Name</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="nodeName"
+              required
+              [(ngModel)]="nodeInfo.nodeName"
+              name="nodeName"
+              #nodeName="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="amos">Network No</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="networkId"
+              required
+              [(ngModel)]="nodeInfo.networkNo"
+              name="networkId"
+              #networkId="ngModel"
+              [readonly]="true"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="rtuId">RtuId</label>
+          <div class="input-group">
+            <input
+              type="text"
+              ngxNumberFormat="#######"
+              class="form-control"
+              id="rtuId"
+              required
+              [(ngModel)]="nodeInfo.rtuId"
+              name="rtuId"
+              #rtuId="ngModel"
+              [readonly]="true"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="difficult">Product</label>
+            <select
+              class="form-control"
+              id="productTypeId"
+              required
+              [(ngModel)]="nodeInfo.productTypeId"
+              name="productTypeId"
+              #productTypeId="ngModel"
+            >
+              <!-- <option value="">Select Network</option> -->
+              <option
+                [value]="li.id"
+                [innerHtml]="li.type"
+                *ngFor="let li of producyTypeLst"
+              ></option>
+            </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-center" text-center>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="SaveNode(content)"
+      *ngIf="!isEditNode"
+    >
+      Save
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="UpdateNode(content)"
+      *ngIf="isEditNode"
+    >
+      Edit
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="modal.close('Close click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>

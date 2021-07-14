@@ -1,0 +1,36 @@
+export interface NonRechableNode {
+    Id: number;
+    ThresholdforOcsc: number | null;
+    MinConnInterval: number | null;
+    MinAdvInterval: number | null;
+    MaxAdvInterval: number | null;
+    MtusizeValue: number | null;
+    HandshkInterval: number | null;
+    Pulsedelayvalue: number | null;
+    OperAttempt: number | null;
+    AttemptForWaterFlow: number | null;
+    LongSleepHndshkIntervalMf: number | null;
+    Bttxpower: number | null;
+    FixLoraSf: number | null;
+    FixLoraPower: number | null;
+    FixLoraFreq: number | null;
+    FixLoraCr: number | null;
+    PreferredGw1id: number | null;
+    PreferredGw2id: number | null;
+    PreferredGw3id: number | null;
+    PreferredGw4id: number | null;
+    AwfdetectEndis: number | null;
+    FixLoraSetting: number | null;
+    AutoSendStatusEnableBit: number | null;
+    PowerLoopLatchEnable: number | null;
+    GlobalAlarmEnDs: number | null;
+    MaxLoRaCommAtt: number | null;
+    SensorAlarmEndis: number | null;
+    LoRaRxWindowMasking: number | null;
+    DummyByte3Lsb: number | null;
+    DummyByte3Msb: number | null;
+    SaftetyTimeoutMin: number | null;
+    SlowDownCommDurMin: number | null;
+    ForceDeepSleepDurMin: number | null;
+    NodeId: number | null;
+}
