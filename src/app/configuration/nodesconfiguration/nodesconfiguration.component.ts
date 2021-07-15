@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { NodeModel, ProductTypes } from '../project/project.model';
 import { ProjectService } from '../project/project.service';
+import { GatewayNode, NonRechableNode, RechableNode } from './nodeconfiguration.model';
 
 @Component({
   selector: 'app-nodesconfiguration',
@@ -15,6 +16,9 @@ export class NodesconfigurationComponent implements OnInit {
   nodeInfo: NodeModel = new NodeModel();
   nodeLst: NodeModel[] = [];
   producyTypeLst: ProductTypes[] = [];
+  nonRechableNodeInfo:NonRechableNode= new NonRechableNode();
+  rechableNodeInfo:RechableNode= new RechableNode();
+  gatewayNodeInfo:GatewayNode=new GatewayNode();
   constructor(private projectService: ProjectService, public toastr: ToastrService, private modalService: NgbModal, public router: Router, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {

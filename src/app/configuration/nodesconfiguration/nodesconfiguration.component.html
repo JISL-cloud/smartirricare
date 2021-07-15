@@ -3,18 +3,1517 @@
     <div class="card">
       <div class="card-body">
         <div class="row">
-          <button type="button" class="btn btn-sm btn-primary" routerLink="/configuration/project">< Back</button>
+          <button
+            type="button"
+            class="btn btn-sm btn-primary"
+            routerLink="/configuration/project"
+          >
+            < Back
+          </button>
         </div>
         <div class="row mt-2">
-          <div class="col-md-2"><b>Network: {{ this.nodeInfo.networkNo }}</b></div>
-          <div class="col-md-2"><b>Node: {{ this.nodeInfo.nodeNo }}</b></div>
-          <div class="col-md-5"><b>Product: {{ this.nodeInfo.productName }}</b></div>
-          <div class="col-md-2"><b>RTUID: {{ this.nodeInfo.rtuId }}</b></div>
+          <div class="col-md-2">
+            <b>Network: {{ this.nodeInfo.networkNo }}</b>
+          </div>
+          <div class="col-md-2">
+            <b>Node: {{ this.nodeInfo.nodeNo }}</b>
+          </div>
+          <div class="col-md-5">
+            <b>Product: {{ this.nodeInfo.productName }}</b>
+          </div>
+          <div class="col-md-2">
+            <b>RTUID: {{ this.nodeInfo.rtuId }}</b>
+          </div>
         </div>
         <div class="mt-3">
           <ngb-tabset class="tabset1">
             <ngb-tab title="Product Configuration">
               <ng-template ngbTabContent>
+                <h3>Non Rechargeable Node</h3>
+                <ng-container>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Threshold for OCSC</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="thresholdforOcsc"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.thresholdforOcsc"
+                          name="thresholdforOcsc"
+                          #thresholdforOcsc="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Min Conn Interval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="minConnInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.minConnInterval"
+                          name="minConnInterval"
+                          #minConnInterval="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>minAdvInterval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="minAdvInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.minAdvInterval"
+                          name="minAdvInterval"
+                          #minAdvInterval="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>maxAdvInterval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="maxAdvInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.maxAdvInterval"
+                          name="maxAdvInterval"
+                          #maxAdvInterval="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>mtusizeValue</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="mtusizeValue"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.mtusizeValue"
+                          name="mtusizeValue"
+                          #mtusizeValue="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>handshkInterval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="handshkInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.handshkInterval"
+                          name="handshkInterval"
+                          #handshkInterval="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>pulsedelayvalue</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pulsedelayvalue"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.pulsedelayvalue"
+                          name="pulsedelayvalue"
+                          #pulsedelayvalue="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>operAttempt</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="operAttempt"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.operAttempt"
+                          name="operAttempt"
+                          #operAttempt="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>attemptForWaterFlow</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="attemptForWaterFlow"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.attemptForWaterFlow"
+                          name="attemptForWaterFlow"
+                          #attemptForWaterFlow="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>longSleepHndshkIntervalMf</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="longSleepHndshkIntervalMf"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="
+                            nonRechableNodeInfo.longSleepHndshkIntervalMf
+                          "
+                          name="longSleepHndshkIntervalMf"
+                          #longSleepHndshkIntervalMf="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>bttxpower</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bttxpower"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.bttxpower"
+                          name="bttxpower"
+                          #bttxpower="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>fixLoraSf</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fixLoraSf"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.fixLoraSf"
+                          name="fixLoraSf"
+                          #fixLoraSf="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>fixLoraPower</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fixLoraPower"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.fixLoraPower"
+                          name="fixLoraPower"
+                          #fixLoraPower="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>fixLoraFreq</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fixLoraFreq"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.fixLoraFreq"
+                          name="fixLoraFreq"
+                          #fixLoraFreq="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>fixLoraCr</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fixLoraCr"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.fixLoraCr"
+                          name="fixLoraCr"
+                          #fixLoraCr="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>preferredGw1id</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="preferredGw1id"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.preferredGw1id"
+                          name="preferredGw1id"
+                          #preferredGw1id="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>preferredGw2id</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="preferredGw2id"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.preferredGw2id"
+                          name="preferredGw2id"
+                          #preferredGw2id="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>preferredGw3id</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="preferredGw3id"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.preferredGw3id"
+                          name="preferredGw3id"
+                          #preferredGw3id="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>preferredGw4id</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="preferredGw4id"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.preferredGw4id"
+                          name="preferredGw4id"
+                          #preferredGw4id="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>awfdetectEndis</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="awfdetectEndis"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.awfdetectEndis"
+                          name="awfdetectEndis"
+                          #awfdetectEndis="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>fixLoraSetting</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fixLoraSetting"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.fixLoraSetting"
+                          name="fixLoraSetting"
+                          #fixLoraSetting="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>autoSendStatusEnableBit</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="autoSendStatusEnableBit"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="
+                            nonRechableNodeInfo.autoSendStatusEnableBit
+                          "
+                          name="autoSendStatusEnableBit"
+                          #autoSendStatusEnableBit="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>powerLoopLatchEnable</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="powerLoopLatchEnable"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.powerLoopLatchEnable"
+                          name="powerLoopLatchEnable"
+                          #powerLoopLatchEnable="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>globalAlarmEnDs</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="globalAlarmEnDs"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.globalAlarmEnDs"
+                          name="globalAlarmEnDs"
+                          #globalAlarmEnDs="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>maxLoRaCommAtt</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="maxLoRaCommAtt"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.maxLoRaCommAtt"
+                          name="maxLoRaCommAtt"
+                          #maxLoRaCommAtt="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>sensorAlarmEndis</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="sensorAlarmEndis"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.sensorAlarmEndis"
+                          name="sensorAlarmEndis"
+                          #sensorAlarmEndis="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>loRaRxWindowMasking</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="loRaRxWindowMasking"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.loRaRxWindowMasking"
+                          name="loRaRxWindowMasking"
+                          #loRaRxWindowMasking="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>dummyByte3Lsb</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="dummyByte3Lsb"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.dummyByte3Lsb"
+                          name="dummyByte3Lsb"
+                          #dummyByte3Lsb="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>saftetyTimeoutMin</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="saftetyTimeoutMin"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.saftetyTimeoutMin"
+                          name="saftetyTimeoutMin"
+                          #saftetyTimeoutMin="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>slowDownCommDurMin</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="slowDownCommDurMin"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.slowDownCommDurMin"
+                          name="slowDownCommDurMin"
+                          #slowDownCommDurMin="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>forceDeepSleepDurMin</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="forceDeepSleepDurMin"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="nonRechableNodeInfo.forceDeepSleepDurMin"
+                          name="forceDeepSleepDurMin"
+                          #forceDeepSleepDurMin="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+
+                <!-- Reachable node -->
+                <h3>Rechargeable Node</h3>
+                <ng-container>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Threshold for OCSC</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="thresholdforOcsc"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.thresholdforOcsc"
+                          name="thresholdforOcsc"
+                          #thresholdforOcsc="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Min Conn Interval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="minConnInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.minConnInterval"
+                          name="minConnInterval"
+                          #minConnInterval="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>minAdvInterval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="minAdvInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.minAdvInterval"
+                          name="minAdvInterval"
+                          #minAdvInterval="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>maxAdvInterval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="maxAdvInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.maxAdvInterval"
+                          name="maxAdvInterval"
+                          #maxAdvInterval="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>mtusizeValue</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="mtusizeValue"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.mtusizeValue"
+                          name="mtusizeValue"
+                          #mtusizeValue="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>handshkInterval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="handshkInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.handshkInterval"
+                          name="handshkInterval"
+                          #handshkInterval="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>pulsedelayvalue</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pulsedelayvalue"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.pulsedelayvalue"
+                          name="pulsedelayvalue"
+                          #pulsedelayvalue="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>operAttempt</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="operAttempt"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.operAttempt"
+                          name="operAttempt"
+                          #operAttempt="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>attemptForWaterFlow</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="attemptForWaterFlow"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.attemptForWaterFlow"
+                          name="attemptForWaterFlow"
+                          #attemptForWaterFlow="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>longSleepHndshkIntervalMf</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="longSleepHndshkIntervalMf"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="
+                            rechableNodeInfo.longSleepHndshkIntervalMf
+                          "
+                          name="longSleepHndshkIntervalMf"
+                          #longSleepHndshkIntervalMf="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>bttxpower</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bttxpower"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.bttxpower"
+                          name="bttxpower"
+                          #bttxpower="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>fixLoraSf</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fixLoraSf"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.fixLoraSf"
+                          name="fixLoraSf"
+                          #fixLoraSf="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>fixLoraPower</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fixLoraPower"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.fixLoraPower"
+                          name="fixLoraPower"
+                          #fixLoraPower="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>fixLoraFreq</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fixLoraFreq"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.fixLoraFreq"
+                          name="fixLoraFreq"
+                          #fixLoraFreq="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>fixLoraCr</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fixLoraCr"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.fixLoraCr"
+                          name="fixLoraCr"
+                          #fixLoraCr="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>preferredGw1id</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="preferredGw1id"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.preferredGw1id"
+                          name="preferredGw1id"
+                          #preferredGw1id="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>preferredGw2id</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="preferredGw2id"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.preferredGw2id"
+                          name="preferredGw2id"
+                          #preferredGw2id="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>preferredGw3id</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="preferredGw3id"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.preferredGw3id"
+                          name="preferredGw3id"
+                          #preferredGw3id="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>preferredGw4id</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="preferredGw4id"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.preferredGw4id"
+                          name="preferredGw4id"
+                          #preferredGw4id="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>awfdetectEndis</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="awfdetectEndis"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.awfdetectEndis"
+                          name="awfdetectEndis"
+                          #awfdetectEndis="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>fixLoraSetting</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fixLoraSetting"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.fixLoraSetting"
+                          name="fixLoraSetting"
+                          #fixLoraSetting="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>autoSendStatusEnableBit</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="autoSendStatusEnableBit"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="
+                            rechableNodeInfo.autoSendStatusEnableBit
+                          "
+                          name="autoSendStatusEnableBit"
+                          #autoSendStatusEnableBit="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>powerLoopLatchEnable</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="powerLoopLatchEnable"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.powerLoopLatchEnable"
+                          name="powerLoopLatchEnable"
+                          #powerLoopLatchEnable="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>globalAlarmEnDs</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="globalAlarmEnDs"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.globalAlarmEnDs"
+                          name="globalAlarmEnDs"
+                          #globalAlarmEnDs="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>maxLoRaCommAtt</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="maxLoRaCommAtt"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.maxLoRaCommAtt"
+                          name="maxLoRaCommAtt"
+                          #maxLoRaCommAtt="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>sensorAlarmEndis</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="sensorAlarmEndis"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.sensorAlarmEndis"
+                          name="sensorAlarmEndis"
+                          #sensorAlarmEndis="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>loRaRxWindowMasking</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="loRaRxWindowMasking"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.loRaRxWindowMasking"
+                          name="loRaRxWindowMasking"
+                          #loRaRxWindowMasking="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>dummyByte3Lsb</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="dummyByte3Lsb"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.dummyByte3Lsb"
+                          name="dummyByte3Lsb"
+                          #dummyByte3Lsb="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>saftetyTimeoutMin</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="saftetyTimeoutMin"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.saftetyTimeoutMin"
+                          name="saftetyTimeoutMin"
+                          #saftetyTimeoutMin="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>slowDownCommDurMin</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="slowDownCommDurMin"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.slowDownCommDurMin"
+                          name="slowDownCommDurMin"
+                          #slowDownCommDurMin="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>forceDeepSleepDurMin</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="forceDeepSleepDurMin"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.forceDeepSleepDurMin"
+                          name="forceDeepSleepDurMin"
+                          #forceDeepSleepDurMin="ngModel"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label>AutoSensorStatusSendInterval</label>
+                        <div class="input-group">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="AutoSensorStatusSendInterval"
+                            ngxNumberFormat="#######"
+                            required
+                            [(ngModel)]="
+                              rechableNodeInfo.AutoSensorStatusSendInterval
+                            "
+                            name="AutoSensorStatusSendInterval"
+                            #AutoSensorStatusSendInterval="ngModel"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>SamplingTimeInterval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="SamplingTimeInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.SamplingTimeInterval"
+                          name="SamplingTimeInterval"
+                          #SamplingTimeInterval="ngModel"
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label>ApplicationEnbits</label>
+                        <div class="input-group">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="ApplicationEnbits"
+                            ngxNumberFormat="#######"
+                            required
+                            [(ngModel)]="rechableNodeInfo.ApplicationEnbits"
+                            name="ApplicationEnbits"
+                            #ApplicationEnbits="ngModel"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>TimeForNocommWithGw</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="TimeForNocommWithGw"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="rechableNodeInfo.TimeForNocommWithGw"
+                          name="TimeForNocommWithGw"
+                          #TimeForNocommWithGw="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+
+                <!-- GatewayNode -->
+                <h3>Gateway Node</h3>
+                <ng-container>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Operator1MobNo</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="operator1MobNo"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.operator1MobNo"
+                          name="operator1MobNo"
+                          #operator1MobNo="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Operator2MobNo</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="operator2MobNo"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.operator2MobNo"
+                          name="operator2MobNo"
+                          #operator2MobNo="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Operator3MobNo</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="operator3MobNo"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.operator3MobNo"
+                          name="operator3MobNo"
+                          #operator3MobNo="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Operator4MobNo</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="operator4MobNo"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.operator4MobNo"
+                          name="operator4MobNo"
+                          #operator4MobNo="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Operator5MobNo</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="operator5MobNo"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.operator5MobNo"
+                          name="operator5MobNo"
+                          #operator5MobNo="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>TempSensorHighTh</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="tempSensorHighTh"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.tempSensorHighTh"
+                          name="tempSensorHighTh"
+                          #tempSensorHighTh="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>TempSensorLowTh</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="tempSensorLowTh"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.tempSensorLowTh"
+                          name="tempSensorLowTh"
+                          #tempSensorLowTh="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>vbatlowThvoltage</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="vbatlowThvoltage"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.vbatlowThvoltage"
+                          name="vbatlowThvoltage"
+                          #vbatlowThvoltage="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>AlarmInterval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="alarmInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.alarmInterval"
+                          name="alarmInterval"
+                          #alarmInterval="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>fuaskInterval</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="fuaskInterval"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="
+                            gatewayNodeInfo.fuaskInterval
+                          "
+                          name="fuaskInterval"
+                          #fuaskInterval="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>maxiocurrent</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="maxiocurrent"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.maxiocurrent"
+                          name="maxiocurrent"
+                          #maxiocurrent="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>logAutoTxEndis</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="logAutoTxEndis"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.logAutoTxEndis"
+                          name="logAutoTxEndis"
+                          #logAutoTxEndis="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>debug</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="debug"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.debug"
+                          name="debug"
+                          #debug="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>warning</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="warning"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.warning"
+                          name="warning"
+                          #warning="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>error</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="error"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.error"
+                          name="error"
+                          #error="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>info</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="info"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.info"
+                          name="info"
+                          #info="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>direction</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="direction"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.direction"
+                          name="direction"
+                          #direction="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>statusStoreDuration</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="statusStoreDuration"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.statusStoreDuration"
+                          name="statusStoreDuration"
+                          #statusStoreDuration="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>gsmportEn</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="gsmportEn"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.gsmportEn"
+                          name="gsmportEn"
+                          #gsmportEn="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>schtransferedEnableDis</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="schtransferedEnableDis"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.schtransferedEnableDis"
+                          name="schtransferedEnableDis"
+                          #schtransferedEnableDis="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>forceAlarmDisable</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="forceAlarmDisable"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.forceAlarmDisable"
+                          name="forceAlarmDisable"
+                          #forceAlarmDisable="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>comdelay</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="comdelay"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="
+                            gatewayNodeInfo.comdelay
+                          "
+                          name="comdelay"
+                          #comdelay="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>loRaConcentratorEn</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="loRaConcentratorEn"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.loRaConcentratorEn"
+                          name="loRaConcentratorEn"
+                          #loRaConcentratorEn="ngModel"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>settingRfport</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="settingRfport"
+                          ngxNumberFormat="#######"
+                          required
+                          [(ngModel)]="gatewayNodeInfo.settingRfport"
+                          name="settingRfport"
+                          #settingRfport="ngModel"
+                        />
+                      </div>
+                    </div>
+                  </div>       
+                </ng-container>
                 
               </ng-template>
             </ngb-tab>

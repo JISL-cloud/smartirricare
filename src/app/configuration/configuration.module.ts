@@ -6,6 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { RouterModule, Routes } from '@angular/router';
 import { NodesconfigurationComponent } from './nodesconfiguration/nodesconfiguration.component';
+import { NonrechablenodeComponent } from './nodesconfiguration/nonrechablenode/nonrechablenode.component';
+import { RechablenodeComponent } from './nodesconfiguration/rechablenode/rechablenode.component';
+import { GatewaynodeComponent } from './nodesconfiguration/gatewaynode/gatewaynode.component';
 
 
 const routes: Routes = [
@@ -55,7 +58,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ProjectComponent,
-    NodesconfigurationComponent
+    NodesconfigurationComponent,
+    NonrechablenodeComponent,
+    RechablenodeComponent,
+    GatewaynodeComponent
   ],
   imports: [
     CommonModule,
