@@ -105,4 +105,42 @@ export class GatewayNode {
     loRaConcentratorEn: boolean = false;
     settingRfport: number = 0
     nodeId: number = 0
+    cardSetting: CardSetting[] = [];
+}
+
+
+export class CardType {
+    id: number = 0;
+    cardType1: string = "";
+    cardNo: number = 0;
+    description: string = "";
+}
+
+
+export class CardSetting {
+    id: number = 0;
+    cardNo: number = 0;
+    cardType: number = 0;
+    UucDebug: number = 0;
+    ucWarning: number = 0;
+    ucError: number = 0;
+    ucInfo: number = 0;
+    sleepEnDis: number = 0;
+    autoSendStatusEnDis: number = 0;
+    prediocInvervalSec: number = 0;
+    logIntervalSec: number = 0;
+    cardFuVersionNo: number = 0;
+    safetyTimeoutValves: number = 0;
+    reserved: number = 0;
+    fnominalOperatioCurrent: number = 0;
+    pulseDurationMs: number = 0;
+    pulseVoltage: number = 0;
+    typeSeleniodLatch: number = 0;
+    smts1address: number = 0;
+    smts1level: number = 0;
+    smts2address: number = 0;
+    smts2level: number = 0;
+    productId: number = 0;
+    nodeId: number = 0;
+    cardTypeName:string = ""
 }

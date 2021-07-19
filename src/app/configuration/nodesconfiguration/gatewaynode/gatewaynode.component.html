@@ -1,1 +1,858 @@
-<p>gatewaynode works!</p>
+<div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Operator1MobNo</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="operator1MobNo"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.operator1MobNo"
+          name="operator1MobNo"
+          #operator1MobNo="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Operator2MobNo</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="operator2MobNo"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.operator2MobNo"
+          name="operator2MobNo"
+          #operator2MobNo="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Operator3MobNo</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="operator3MobNo"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.operator3MobNo"
+          name="operator3MobNo"
+          #operator3MobNo="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Operator4MobNo</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="operator4MobNo"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.operator4MobNo"
+          name="operator4MobNo"
+          #operator4MobNo="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Operator5MobNo</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="operator5MobNo"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.operator5MobNo"
+          name="operator5MobNo"
+          #operator5MobNo="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>TempSensorHighTh</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="tempSensorHighTh"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.tempSensorHighTh"
+          name="tempSensorHighTh"
+          #tempSensorHighTh="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>TempSensorLowTh</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="tempSensorLowTh"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.tempSensorLowTh"
+          name="tempSensorLowTh"
+          #tempSensorLowTh="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>vbatlowThvoltage</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="vbatlowThvoltage"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.vbatlowThvoltage"
+          name="vbatlowThvoltage"
+          #vbatlowThvoltage="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>AlarmInterval</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="alarmInterval"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.alarmInterval"
+          name="alarmInterval"
+          #alarmInterval="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>fuaskInterval</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="fuaskInterval"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.fuaskInterval"
+          name="fuaskInterval"
+          #fuaskInterval="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>maxiocurrent</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="maxiocurrent"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.maxiocurrent"
+          name="maxiocurrent"
+          #maxiocurrent="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>logAutoTxEndis</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="logAutoTxEndis"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.logAutoTxEndis"
+          name="logAutoTxEndis"
+          #logAutoTxEndis="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label>debug</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="debug"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.debug"
+          name="debug"
+          #debug="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>warning</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="warning"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.warning"
+          name="warning"
+          #warning="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label>error</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="error"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.error"
+          name="error"
+          #error="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>info</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="info"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.info"
+          name="info"
+          #info="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>direction</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="direction"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.direction"
+          name="direction"
+          #direction="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>statusStoreDuration</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="statusStoreDuration"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.statusStoreDuration"
+          name="statusStoreDuration"
+          #statusStoreDuration="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label>gsmportEn</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="gsmportEn"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.gsmportEn"
+          name="gsmportEn"
+          #gsmportEn="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>schtransferedEnableDis</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="schtransferedEnableDis"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.schtransferedEnableDis"
+          name="schtransferedEnableDis"
+          #schtransferedEnableDis="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label>forceAlarmDisable</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="forceAlarmDisable"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.forceAlarmDisable"
+          name="forceAlarmDisable"
+          #forceAlarmDisable="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>comdelay</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="comdelay"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.comdelay"
+          name="comdelay"
+          #comdelay="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label>loRaConcentratorEn</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="loRaConcentratorEn"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.loRaConcentratorEn"
+          name="loRaConcentratorEn"
+          #loRaConcentratorEn="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>settingRfport</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="settingRfport"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="gatewayNodeInfo.settingRfport"
+          name="settingRfport"
+          #settingRfport="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="nodeInfo.isAddonCard">
+    <div class="col-md-12">
+      <h4>Addon Card</h4>
+      <button
+        type="button"
+        (click)="addonCard(content)"
+        class="btn btn-warning btn-sm"
+      >
+        Add Card
+      </button>
+
+      <table class="table table-responsive table-stripped">
+        <thead>
+          <tr>
+            <th>Card No</th>
+            <th>Card Type</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pos of this.cardSettingLst">
+            <td>{{pos.cardNo}}</td>
+            <td>{{pos.cardTypeName}}</td>
+            <td>              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row justify-content-center text-center mt-3">
+    <button
+      class="btn btn-primary"
+      type="button"
+      (click)="add()"
+      *ngIf="!isEdit"
+    >
+      Save
+    </button>
+    <button
+      class="btn btn-primary"
+      type="button"
+      (click)="edit()"
+      *ngIf="isEdit"
+    >
+      Edit
+    </button>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add AddonCard</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="amos">Card No</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="cardNo"
+              ngxNumberFormat="#######"
+              required
+              [(ngModel)]="cardSettingInfo.cardNo"
+              name="cardNo"
+              #cardNo="ngModel"
+              [readonly]="true"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="difficult">Card Type</label>
+          <select
+            class="form-control"
+            id="cardType"
+            require
+            [(ngModel)]="cardSettingInfo.cardType"
+            name="cardType"
+            #cardType="ngModel"
+            (change)="setCardName()"
+          >
+            <option
+              [value]="li.cardNo"
+              [innerHtml]="li.cardType1"
+              *ngFor="let li of cardTypeLst"
+            ></option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="amos">UucDebug</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="UucDebug"
+              required
+              [(ngModel)]="cardSettingInfo.UucDebug"
+              name="UucDebug"
+              #UucDebug="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="ucWarning">ucWarning</label>
+          <div class="input-group">
+            <input
+              type="text"
+              ngxNumberFormat="#######"
+              class="form-control"
+              id="ucWarning"
+              required
+              [(ngModel)]="cardSettingInfo.ucWarning"
+              name="ucWarning"
+              #ucWarning="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="ucError">ucError</label>
+          <div class="input-group">
+            <input
+              type="text"
+              ngxNumberFormat="#######"
+              class="form-control"
+              id="ucError"
+              required
+              [(ngModel)]="cardSettingInfo.ucError"
+              name="ucError"
+              #ucError="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="ucInfo">ucInfo</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="ucInfo"
+              required
+              [(ngModel)]="cardSettingInfo.ucInfo"
+              name="ucInfo"
+              #ucInfo="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="sleepEnDis">sleepEnDis</label>
+          <div class="input-group">
+            <input
+              type="text"
+              ngxNumberFormat="#######"
+              class="form-control"
+              id="sleepEnDis"
+              required
+              [(ngModel)]="cardSettingInfo.sleepEnDis"
+              name="sleepEnDis"
+              #sleepEnDis="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="autoSendStatusEnDis">autoSendStatusEnDis</label>
+          <div class="input-group">
+            <input
+              type="text"
+              ngxNumberFormat="#######"
+              class="form-control"
+              id="autoSendStatusEnDis"
+              required
+              [(ngModel)]="cardSettingInfo.autoSendStatusEnDis"
+              name="autoSendStatusEnDis"
+              #autoSendStatusEnDis="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="prediocInvervalSec">prediocInvervalSec</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="prediocInvervalSec"
+              required
+              [(ngModel)]="cardSettingInfo.prediocInvervalSec"
+              name="prediocInvervalSec"
+              #prediocInvervalSec="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="logIntervalSec">logIntervalSec</label>
+          <div class="input-group">
+            <input
+              type="text"
+              ngxNumberFormat="#######"
+              class="form-control"
+              id="logIntervalSec"
+              required
+              [(ngModel)]="cardSettingInfo.logIntervalSec"
+              name="logIntervalSec"
+              #logIntervalSec="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="cardFuVersionNo">cardFuVersionNo</label>
+          <div class="input-group">
+            <input
+              type="text"
+              ngxNumberFormat="#######"
+              class="form-control"
+              id="cardFuVersionNo"
+              required
+              [(ngModel)]="cardSettingInfo.cardFuVersionNo"
+              name="cardFuVersionNo"
+              #cardFuVersionNo="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="safetyTimeoutValves">safetyTimeoutValves</label>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="safetyTimeoutValves"
+              required
+              [(ngModel)]="cardSettingInfo.safetyTimeoutValves"
+              name="safetyTimeoutValves"
+              #safetyTimeoutValves="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h4>Card Settings</h4>
+    </div>
+    <div
+      class="row"
+      *ngIf="cardSettingInfo.cardType == 2 || cardSettingInfo.cardType == 5"
+    >
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="reserved">reserved</label>
+          <div class="input-group">
+            <input
+              type="text"
+              ngxNumberFormat="#######"
+              class="form-control"
+              id="reserved"
+              required
+              [(ngModel)]="cardSettingInfo.reserved"
+              name="reserved"
+              #reserved="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="cardSettingInfo.cardType == 3">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="fnominalOperatioCurrent">fnominalOperatioCurrent</label>
+          <div class="input-group">
+            <input
+              type="text"
+              ngxNumberFormat="#######"
+              class="form-control"
+              id="fnominalOperatioCurrent"
+              required
+              [(ngModel)]="cardSettingInfo.fnominalOperatioCurrent"
+              name="fnominalOperatioCurrent"
+              #fnominalOperatioCurrent="ngModel"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="cardSettingInfo.cardType == 4">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="pulseDurationMs">pulseDurationMs</label>
+            <div class="input-group">
+              <input
+                type="text"
+                ngxNumberFormat="#######"
+                class="form-control"
+                id="pulseDurationMs"
+                required
+                [(ngModel)]="cardSettingInfo.pulseDurationMs"
+                name="pulseDurationMs"
+                #pulseDurationMs="ngModel"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="pulseVoltage">pulseVoltage</label>
+            <div class="input-group">
+              <input
+                type="text"
+                ngxNumberFormat="#######"
+                class="form-control"
+                id="pulseVoltage"
+                required
+                [(ngModel)]="cardSettingInfo.pulseVoltage"
+                name="pulseVoltage"
+                #pulseVoltage="ngModel"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="typeSeleniodLatch">typeSeleniodLatch</label>
+            <div class="input-group">
+              <input
+                type="text"
+                ngxNumberFormat="#######"
+                class="form-control"
+                id="typeSeleniodLatch"
+                required
+                [(ngModel)]="cardSettingInfo.typeSeleniodLatch"
+                name="typeSeleniodLatch"
+                #typeSeleniodLatch="ngModel"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="cardSettingInfo.cardType == 6">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="smts1address">smts1address</label>
+            <div class="input-group">
+              <input
+                type="text"
+                ngxNumberFormat="#######"
+                class="form-control"
+                id="smts1address"
+                required
+                [(ngModel)]="cardSettingInfo.smts1address"
+                name="smts1address"
+                #smts1address="ngModel"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="smts1level">smts1level</label>
+            <div class="input-group">
+              <input
+                type="text"
+                ngxNumberFormat="#######"
+                class="form-control"
+                id="smts1level"
+                required
+                [(ngModel)]="cardSettingInfo.smts1level"
+                name="smts1level"
+                #smts1level="ngModel"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="smts2address">smts2address</label>
+            <div class="input-group">
+              <input
+                type="text"
+                ngxNumberFormat="#######"
+                class="form-control"
+                id="smts2address"
+                required
+                [(ngModel)]="cardSettingInfo.smts2address"
+                name="smts2address"
+                #smts2address="ngModel"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="smts2level">smts2level</label>
+            <div class="input-group">
+              <input
+                type="text"
+                ngxNumberFormat="#######"
+                class="form-control"
+                id="smts2level"
+                required
+                [(ngModel)]="cardSettingInfo.smts2level"
+                name="smts2level"
+                #smts2level="ngModel"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="modal-footer justify-content-center" text-center>
+    <button type="button" class="btn btn-primary" (click)="addCardToList()">
+      Add Card
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="modal.close('Close click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>

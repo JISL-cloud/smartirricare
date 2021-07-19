@@ -19,6 +19,9 @@ export class ProjectComponent implements OnInit {
   availableNetworks: NetworkDDL[] = [];
   nodeInfo: NodeModel = new NodeModel();
   nodeLst: NodeModel[] = [];
+  gatewayNodeLst: NodeModel[] = [];
+  producyTypeLstMain: ProductTypes[] = [];
+
   producyTypeLst: ProductTypes[] = [];
   selectedNetwork: string = "0";
 
@@ -87,6 +90,7 @@ export class ProjectComponent implements OnInit {
     this.projectService.getProductTypes().subscribe(
       (response: ProductTypes[]) => {
         this.producyTypeLst = response;
+        this.producyTypeLstMain = response;
       },
       customError => {
         this.toastr.error(
@@ -101,9 +105,14 @@ export class ProjectComponent implements OnInit {
   public getNodeLst(networkId: number) {
     this.projectService.getNodeList(networkId).subscribe(
       (response: NodeModel[]) => {
-        this.nodeLst = response;
+        this.nodeLst = response.filter(x => x.networkNo != 0);
         this.nodeLst.forEach(element => {
-            element.productName = this.producyTypeLst.filter(x=>x.id == element.productTypeId)[0].type;
+          element.productName = this.producyTypeLst.filter(x => x.id == element.productTypeId)[0].type;
+        });
+
+        this.gatewayNodeLst= response.filter(x => x.networkNo == 0);
+        this.gatewayNodeLst.forEach(element => {
+          element.productName = this.producyTypeLst.filter(x => x.id == element.productTypeId)[0].type;
         });
       },
       customError => {
@@ -120,7 +129,7 @@ export class ProjectComponent implements OnInit {
 
   }
 
-  calculateRtuId(){
+  calculateRtuId() {
     let shift = this.nodeInfo.networkNo << 10
     let rtuid = +this.nodeInfo.nodeNo + shift;
     this.nodeInfo.rtuId = rtuid;
@@ -144,16 +153,31 @@ export class ProjectComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-  AddNode(content: any, id: number) {
-    if (this.selectedNetwork == null || this.selectedNetwork == "0") {
-      this.toastr.error("Select Netwrok");
-      return;
+  AddNode(content: any, id: number,type:string) {
+    if(type=== "Node")
+    {
+      if (this.selectedNetwork == null || this.selectedNetwork == "0") {
+        this.toastr.error("Select Netwrok");
+        return;
+      }
+      this.producyTypeLst = this.producyTypeLstMain.filter(x=>x.productNo == 1 ||x.productNo == 2);
+    }  
+    else
+    {
+      this.producyTypeLst = this.producyTypeLstMain.filter(x=>x.productNo == 4 || x.productNo == 3);
     }
     if (id == 0) {
       this.isEditNode = false;
       this.nodeInfo = new NodeModel();
-      this.nodeInfo.networkId = +this.selectedNetwork;
-      this.nodeInfo.networkNo = this.networkLst.filter(x => x.networkId == +this.selectedNetwork)[0].networkNo;
+      if (type=== "Node") {
+        this.nodeInfo.networkId = +this.selectedNetwork;
+        this.nodeInfo.networkNo = this.networkLst.filter(x => x.networkId == +this.selectedNetwork)[0].networkNo;
+      }
+      else
+      {
+        this.nodeInfo.networkId = 0;
+        this.nodeInfo.networkNo = 0;
+      }
     }
     else {
       this.isEditNode = true;
@@ -207,7 +231,12 @@ export class ProjectComponent implements OnInit {
 
   }
 
+  setAddon() {
+    if (this.nodeInfo.productTypeId === 1 || this.nodeInfo.productTypeId === 2) {
+      this.nodeInfo.isAddonCard = false;
+    }
 
+  }
   openDeleteModalps(template: TemplateRef<any>, id: number) {
     this.nodeId = id;
     this.modalService.open(template, { size: 'lg' });

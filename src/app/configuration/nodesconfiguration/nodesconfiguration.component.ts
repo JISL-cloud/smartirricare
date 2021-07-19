@@ -16,7 +16,7 @@ export class NodesconfigurationComponent implements OnInit {
   nodeInfo: NodeModel = new NodeModel();
   nodeLst: NodeModel[] = [];
   producyTypeLst: ProductTypes[] = [];
-  nonRechableNodeInfo:NonRechableNode= new NonRechableNode();
+
   rechableNodeInfo:RechableNode= new RechableNode();
   gatewayNodeInfo:GatewayNode=new GatewayNode();
   constructor(private projectService: ProjectService, public toastr: ToastrService, private modalService: NgbModal, public router: Router, private route: ActivatedRoute,) { }
@@ -46,7 +46,7 @@ export class NodesconfigurationComponent implements OnInit {
     this.projectService.getNodeById(nodeID).subscribe(
       (response: NodeModel) => {
         this.nodeInfo = response;
-        this.nodeInfo.productName = this.producyTypeLst.filter(x => x.id == this.nodeInfo.productTypeId)[0].type;
+        this.nodeInfo.productName = this.producyTypeLst.filter(x => x.productNo == this.nodeInfo.productTypeId)[0].type;
       },
       customError => {
         this.toastr.error(

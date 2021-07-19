@@ -48,6 +48,7 @@ export class NodeModel {
     public description: string = "";
     public productTypeId: number = 0
     public productName:string=""
+    public isAddonCard:boolean = false
 
 }
 
