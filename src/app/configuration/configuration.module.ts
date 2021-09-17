@@ -9,6 +9,10 @@ import { NodesconfigurationComponent } from './nodesconfiguration/nodesconfigura
 import { NonrechablenodeComponent } from './nodesconfiguration/nonrechablenode/nonrechablenode.component';
 import { RechablenodeComponent } from './nodesconfiguration/rechablenode/rechablenode.component';
 import { GatewaynodeComponent } from './nodesconfiguration/gatewaynode/gatewaynode.component';
+import { NodeupdatedataComponent } from './nodesconfiguration/nodeupdatedata/nodeupdatedata.component';
+import { NodesettingComponent } from './nodesconfiguration/nodesetting/nodesetting.component';
+import { NodelivedataComponent } from './nodesconfiguration/nodelivedata/nodelivedata.component';
+import { UploadconfigurationComponent } from './uploadconfiguration/uploadconfiguration.component';
 
 
 const routes: Routes = [
@@ -51,6 +55,18 @@ const routes: Routes = [
           ]
         },
       },
+      {
+        path: 'upload',
+        component: UploadconfigurationComponent,
+        data: {
+          title: 'Upload Configuration',
+          urls: [
+            { title: 'Upload Configuration', url: '/upload' },
+            { title: 'ngComponent' },
+            { title: 'Upload Configuration' }
+          ]
+        },
+      },
     ]
   }
 ];
@@ -61,7 +77,11 @@ const routes: Routes = [
     NodesconfigurationComponent,
     NonrechablenodeComponent,
     RechablenodeComponent,
-    GatewaynodeComponent
+    GatewaynodeComponent,
+    NodeupdatedataComponent,
+    NodesettingComponent,
+    NodelivedataComponent,
+    UploadconfigurationComponent
   ],
   imports: [
     CommonModule,

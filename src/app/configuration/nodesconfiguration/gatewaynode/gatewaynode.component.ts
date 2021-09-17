@@ -92,6 +92,12 @@ export class GatewaynodeComponent implements OnInit {
   }
   add() {
     //Add
+    if(this.cardSettingLst.length ==0)
+    {
+      this.toastr.warning("User has opted for Addon card, but no addon card is added");
+      return;
+    }
+
     this.confService.addGatewayNode(this.gatewayNodeInfo).subscribe(
       (response: any) => {
         this.toastr.success('Product added successfully.');

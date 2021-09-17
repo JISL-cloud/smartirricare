@@ -49,15 +49,34 @@
 
                 <!-- GatewayNode -->
 
-                <ng-container *ngIf="nodeInfo.productTypeId === 3 || nodeInfo.productTypeId === 4 ">
+                <ng-container
+                  *ngIf="
+                    nodeInfo.productTypeId === 3 || nodeInfo.productTypeId === 4
+                  "
+                >
                   <h3>Gateway Node</h3>
-                 <app-gatewaynode   [nodeId]="nodeId"
-                 [nodeInfo]="nodeInfo">           </app-gatewaynode>
+                  <app-gatewaynode [nodeId]="nodeId" [nodeInfo]="nodeInfo">
+                  </app-gatewaynode>
                 </ng-container>
               </ng-template>
             </ngb-tab>
-            <ngb-tab title="Valve Configuration">
-              <ng-template ngbTabContent> </ng-template>
+            <ngb-tab title="Node Update Data">
+              <ng-template ngbTabContent>
+                <app-nodeupdatedata [nodeId]="nodeId" [nodeInfo]="nodeInfo"></app-nodeupdatedata> </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Node Setting">
+              <ng-template ngbTabContent>
+                <app-nodesetting [nodeId]="nodeId" [nodeInfo]="nodeInfo">
+                </app-nodesetting>
+              </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Node Live Data">
+              <ng-template ngbTabContent>
+                <app-nodelivedata
+                  [nodeId]="nodeId"
+                  [nodeInfo]="nodeInfo"
+                ></app-nodelivedata>
+              </ng-template>
             </ngb-tab>
             <ngb-tab title="Sensor Configuration">
               <ng-template ngbTabContent> </ng-template>

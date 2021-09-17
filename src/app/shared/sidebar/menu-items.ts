@@ -49,6 +49,15 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [],
   },
+  {
+    path: "/configuration/upload",
+    title: "Upload Configuration",
+    icon: "mdi mdi-message-bulleted",
+    class: "",
+    extralink: false,
+    submenu: [],
+  },
+  
   // {
   //   path: "/configuration/project",
   //   title: "Project",

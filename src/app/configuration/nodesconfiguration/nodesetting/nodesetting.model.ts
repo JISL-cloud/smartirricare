@@ -1,0 +1,35 @@
+export class NodeSetting {
+        id: number = 0;
+        thresholdOcsc: number = 0;
+        minConnInterval: number = 0;
+        maxConnInterval: number = 0;
+        minAdvInterval: number = 0;
+        maxAdvInterval: number = 0;
+        mtusize: number = 0;
+        handshkInterval: number = 0;
+        pulseDelay: number = 0;
+        operAttempt: number = 0;
+        attemptForWaterFlow: number = 0;
+        longSleepHndshkInterval: number = 0;
+        bttxpower: number = 0;
+        fixLoraSf: number = 0;
+        fixLoraPower: number = 0;
+        fixLoraFrequency: number = 0;
+        fixLoraCr: number = 0;
+        preferredGw1id: number = 0;
+        preferredGw2id: number = 0;
+        preferredGw3id: number = 0;
+        preferredGw4id: number = 0;
+        awfDetectEndis: number = 0;
+        fixLoraSetting: number = 0;
+        autoSendStatus: number = 0;
+        powerLoopLatchEnable: number = 0;
+        schtransferedEnable: number = 0;
+        maxLoraCommAtt: number = 0;
+        sensorAlarmEndis: number = 0;
+        loraRxWindowMasking: number = 0;
+        dummyByte3Lsb: number = 0;
+        dummyByte3Msb: number = 0;
+        safetyTimeOut: number = 0;
+        nodeId: number = 0;
+    }

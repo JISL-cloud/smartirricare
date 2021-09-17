@@ -1,0 +1,565 @@
+<div class="mt-3">
+  <div class="row">
+    <div class="col-md-6">
+      <label>us_SYS_VER_Number</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="sysVerNo"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.sysVerNo"
+          name="sysVerNo"
+          #sysVerNo="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>ul_Base_Time</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="baseTime"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.baseTime"
+          name="baseTime"
+          #baseTime="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>ul_Downlink_Freq;</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="downLinkFreq"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.downLinkFreq"
+          name="downLinkFreq"
+          #downLinkFreq="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_Outdated_HS_Count</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="oudatedHsCount"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.oudatedHsCount"
+          name="oudatedHsCount"
+          #oudatedHsCount="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_DownLink_SF</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="downlinkSf"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.downlinkSf"
+          name="downlinkSf"
+          #downlinkSf="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_DownLink_CR</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="downLinkCr"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.downLinkCr"
+          name="downLinkCr"
+          #downLinkCr="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_DownLink_PW</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="downLinkPw"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.downLinkPw"
+          name="downLinkPw"
+          #downLinkPw="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_DownLink_Sync</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="downLinkSync"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.downLinkSync"
+          name="downLinkSync"
+          #downLinkSync="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_DownLink_Preamble</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="downLinkPreamble"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.downLinkPreamble"
+          name="downLinkPreamble"
+          #downLinkPreamble="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_Window</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="window"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.window"
+          name="window"
+          #window="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_Join_Status</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="joinStatus"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.joinStatus"
+          name="joinStatus"
+          #joinStatus="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_Temp_Reading</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="tempReading"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.tempReading"
+          name="tempReading"
+          #tempReading="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_Battery_Volt_Reading</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="batteryVoltReading"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.batteryVoltReading"
+          name="batteryVoltReading"
+          #batteryVoltReading="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uca_Last_Sch</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="lastSch"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.lastSch"
+          name="lastSch"
+          #lastSch="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>b4_Blank_Schedule_Rows</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="blankScheduleRow"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.blankScheduleRow"
+          name="blankScheduleRow"
+          #blankScheduleRow="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>b4_MO_Update_Rx_No</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="moUpdateRxNo"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.moUpdateRxNo"
+          name="moUpdateRxNo"
+          #moUpdateRxNo="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_Valve_status</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="valveStatus"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.valveStatus"
+          name="valveStatus"
+          #valveStatus="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_DI_status</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="distatus"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.distatus"
+          name="distatus"
+          #distatus="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_Total_MO</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="totalMo"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.totalMo"
+          name="totalMo"
+          #totalMo="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>b4_MO_Update_Tx_No</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="moupdateTxNo"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.moupdateTxNo"
+          name="moupdateTxNo"
+          #moupdateTxNo="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <label>us_Node_ID</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="usNodeId"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.usNodeId"
+          name="usNodeId"
+          #usNodeId="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>ui_Last_comm_Time_SOY</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="lastCommonTime"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.lastCommonTime"
+          name="lastCommonTime"
+          #lastCommonTime="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_Rx_Frame_Type</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="rxFrameType"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.rxFrameType"
+          name="rxFrameType"
+          #rxFrameType="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>s_NG_Current_RSSI</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="ngcurrentRssi"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.ngcurrentRssi"
+          name="ngcurrentRssi"
+          #ngcurrentRssi="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>c_NG_Current_SNR</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="ngcurrentSnr"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.ngcurrentSnr"
+          name="ngcurrentSnr"
+          #ngcurrentSnr="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_NG_Current_SF</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="ngcurrentSf"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.ngcurrentSf"
+          name="ngcurrentSf"
+          #ngcurrentSf="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_NG_Freq</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="ngfreq"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.ngfreq"
+          name="ngfreq"
+          #ngfreq="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_NG_Current_CR</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="ngcurrentCr"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.ngcurrentCr"
+          name="ngcurrentCr"
+          #ngcurrentCr="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_GW_ID_6b</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="gwid6b"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.gwid6b"
+          name="gwid6b"
+          #gwid6b="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_Attempt_3b</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="attempt3b"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.attempt3b"
+          name="attempt3b"
+          #attempt3b="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_Power_2b</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="power2b"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.power2b"
+          name="power2b"
+          #power2b="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_SF_GW_2b</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="sfgw2b"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.sfgw2b"
+          name="sfgw2b"
+          #sfgw2b="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_GN_SNR_Previous_3b</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="gnSnrPrev3b"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.gnSnrPrev3b"
+          name="gnSnrPrev3b"
+          #gnSnrPrev3b="ngModel"
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>uc_GN_Rssi_Previous_3b</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="gnRssiPrev3b"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.gnRssiPrev3b"
+          name="gnRssiPrev3b"
+          #gnRssiPrev3b="ngModel"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>uc_Product_Type_4b</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="productType4b"
+          ngxNumberFormat="#######"
+          required
+          [(ngModel)]="modelInfo.productType4b"
+          name="productType4b"
+          #productType4b="ngModel"
+        />
+      </div>
+    </div>
+   
+  </div>
+</div>
