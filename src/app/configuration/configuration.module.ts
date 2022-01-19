@@ -13,6 +13,8 @@ import { NodeupdatedataComponent } from './nodesconfiguration/nodeupdatedata/nod
 import { NodesettingComponent } from './nodesconfiguration/nodesetting/nodesetting.component';
 import { NodelivedataComponent } from './nodesconfiguration/nodelivedata/nodelivedata.component';
 import { UploadconfigurationComponent } from './uploadconfiguration/uploadconfiguration.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 const routes: Routes = [
@@ -81,14 +83,16 @@ const routes: Routes = [
     NodeupdatedataComponent,
     NodesettingComponent,
     NodelivedataComponent,
-    UploadconfigurationComponent
+    UploadconfigurationComponent,
   ],
   imports: [
     CommonModule,
     NgSelectModule,
     NgbModule,
     FormsModule,
+    FontAwesomeModule,
     ReactiveFormsModule,
+    NgxFileDropModule,
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule],

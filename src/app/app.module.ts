@@ -39,6 +39,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { BingApiLoaderService } from './dashboard/bing-api-loader.service';
+import { SiteConditionsService } from './dashboard/site-conditions.service';
+import { WINDOW_PROVIDERS } from './dashboard/window.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -62,7 +65,7 @@ const initializerConfigFn = (appConfig: AppConfigService) => {
     SidebarComponent,
     BreadcrumbComponent,
     OnlydecimalDirective,
-    ConfigurationComponent
+    ConfigurationComponent,
   ],
   imports: [
     CommonModule,
@@ -82,7 +85,8 @@ const initializerConfigFn = (appConfig: AppConfigService) => {
     }),
     RouterModule.forRoot(Approutes, { useHash: false, relativeLinkResolution: 'legacy' })
   ],
-  providers: [AuthService, ToastService,
+  providers: [AuthService, ToastService, SiteConditionsService, WINDOW_PROVIDERS, BingApiLoaderService,
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SpinnerHttpInterceptor,

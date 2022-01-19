@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4>Sequence</h4>
+        <div class="row table-responsive mt-3">
+          <table class="table table-bordered mt-2">
+            <thead>
+              <tr>
+                <th>Seq Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Seq Start Time</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pos of this.seqLst">
+                <td (click)="editSequence(pos.SeqId, pos.SeqName)" class="handCursor">
+                  {{ pos.SeqName }}
+                </td>
+                <td (click)="editSequence(pos.SeqId,pos.SeqName)" class="handCursor">
+                  {{ pos.SeqStartDate }}
+                </td>
+                <td (click)="editSequence(pos.SeqId,pos.SeqName)" class="handCursor">
+                  {{ pos.SeqEndDate }}
+                </td>
+                <td (click)="editSequence(pos.SeqId,pos.SeqName)" class="handCursor">
+                  {{ pos.SeqMasterStartTime }}
+                </td>
+                <!-- max No Of Node PerNetwork -->
+                <td>
+                  <button
+                    type="button"
+                    id="addcable"
+                    class="btn btn-info btn-sm"
+                    (click)="editSequence(pos.SeqId,pos.SeqName)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    id="clone"
+                    class="btn btn-danger btn-sm ml-3"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

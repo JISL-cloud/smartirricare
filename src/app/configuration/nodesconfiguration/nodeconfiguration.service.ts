@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { BaseService } from 'src/app/authentication/base.service';
 import { AppConfigService } from 'src/app/_services/appconfigservice ';
-import { CardType, GatewayNode, NonRechableNode, RechableNode } from './nodeconfiguration.model';
+import { Attachment, UploadModel } from '../uploadconfiguration/upload.model';
+import { CardType, GatewayNode, NonRechableNode, ProjectConfiguration, RechableNode } from './nodeconfiguration.model';
 import { NodeLiveData } from './nodelivedata/nodelivedata.model';
 import { NodeSetting } from './nodesetting/nodesetting.model';
 import { NodeUpdateData } from './nodeupdatedata/nodeupdatedata.model';
@@ -17,7 +18,7 @@ export class NodeconfigurationService extends BaseService {
     super();
     this.jApi = this.appURL.getServerUrl();
   }
-  
+
   //Node Update Data
   getNodeUpdateByNodeId(nodeId: number) {
     return this.http.get<NodeUpdateData>(this.jApi + 'Product/GetNonRechableNodeByNodeId?id=' + nodeId).pipe(catchError(this.handleError));
@@ -101,5 +102,35 @@ export class NodeconfigurationService extends BaseService {
 
   getCardType() {
     return this.http.get<CardType[]>(this.jApi + 'Product/GetCardType').pipe(catchError(this.handleError));
+  }
+
+  //Add Request Quote
+  uploadConf(model: UploadModel) {
+    const formData = new FormData();
+    if (model.attachmentViewModels != null) {
+      model.attachmentViewModels.forEach(item => {
+        if (item.file && item.file !== null) {
+          formData.append(item.fileName, item.file as File);
+        }
+      });
+    }
+    return this.http.post(this.jApi + 'UploadConfiguration', formData).pipe(catchError(this.handleError));
+  }
+
+  getProjectInfo(){
+    return this.http.get<ProjectConfiguration>(this.jApi + 'UploadConfiguration/project').pipe(catchError(this.handleError));
+  }
+
+
+  uploadConfSeq(model: UploadModel) {
+    const formData = new FormData();
+    if (model.attachmentViewModels != null) {
+      model.attachmentViewModels.forEach(item => {
+        if (item.file && item.file !== null) {
+          formData.append(item.fileName, item.file as File);
+        }
+      });
+    }
+    return this.http.post(this.jApi + 'UploadConfiguration/Sequence', formData).pipe(catchError(this.handleError));
   }
 }

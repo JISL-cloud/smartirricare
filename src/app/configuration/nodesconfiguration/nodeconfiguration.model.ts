@@ -116,6 +116,26 @@ export class CardType {
     description: string = "";
 }
 
+export class ProjectConfiguration {
+    id: number = 0;
+    maxNodeSerialNo: number = 0;
+    maxNodeId: number = 0;
+    maxGwValves: number = 0;
+    maxGwSensors: number = 0;
+    maxNodeValves: number = 0;
+    maxNodeSensors: number = 0;
+    maxMobileNoSize: number = 0;
+    maxSequences: number = 0;
+    maxElementsInSequences: number = 0;
+    maxFilters: number = 0;
+    maxPumps: number = 0;
+    maxFert: number = 0;
+    maxRtuscheduleTransferDis: number = 0;
+    maxSchOperatedGw: number = 0;
+    maxGwinProject: number = 0;
+    maxNodePerGw: number = 0;
+    maxNodeInProject: number = 0;
+}
 
 export class CardSetting {
     id: number = 0;
@@ -144,3 +164,5 @@ export class CardSetting {
     nodeId: number = 0;
     cardTypeName:string = ""
 }
+
+

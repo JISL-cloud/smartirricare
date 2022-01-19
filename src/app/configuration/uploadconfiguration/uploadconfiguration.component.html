@@ -3,6 +3,11 @@
     <div class="card">
       <div class="card-body">
         <div class="row">
+          <div class="col-md-3"><b>Max Gateway in Project : {{projectLst.maxGwinProject}}</b> </div>
+          <div class="col-md-3"><b>Max Node in Project : {{projectLst.maxNodeInProject}}</b></div>
+          <div class="col-md-3"><b>Max node per Gateway : {{projectLst.maxNodePerGw}}</b></div>
+        </div>
+        <div class="row">
           <!--#region : attachments-->
           <div class="center table-responsive">
             <h5>Attachments:</h5>
@@ -160,7 +165,7 @@
           <span>{{ this.fileAttachmentModel.file.name }} </span>
           <button
             type="button"
-            (click)="showAttachedFileRemoveConfirmation(i, templatefromfooter)"
+            (click)="onAttachedFileRemoveConfirm(i)"
             class="btn btn-sm btn-danger"
           >
             <fa-icon class="ml-auto" [icon]="['fas', 'times']"></fa-icon>
@@ -169,7 +174,7 @@
       </div>
     </td>
     <td>
-      <button
+      <button [disabled]="this.fileAttachmentModel.file == null"
         type="button"
         class="btn btn-sm btn-primary"
         (click)="validateAndAddAttachmentRecord()"
@@ -180,6 +185,7 @@
   </tr>
 </ng-template>
 <!--endregion-->
+
 
 <!--#region : modal popups-->
 <ng-template #templatelist>

@@ -143,3 +143,10 @@ export class GatewaynodeComponent implements OnInit {
     }
   }
 }
+
+
+
+
+
+
+        

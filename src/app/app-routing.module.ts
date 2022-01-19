@@ -23,6 +23,11 @@ export const Approutes: Routes = [
         canActivate: [CommonAuthGuard],
       },
       {
+        path: 'sequence',
+        loadChildren: () => import('./sequence/sequence.module').then(m => m.SequenceModule),
+        canActivate: [CommonAuthGuard],
+      },
+      {
         path: 'component',
         loadChildren: () => import('./component/component.module').then(m => m.ComponentsModule)
       }

@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4>Sequence Details</h4>
+        <div class="row">
+          <button class="btn btn-primary" (click)="goToList()">< Back</button>
+        </div>
+        <div class="row table-responsive mt-3">
+          <h4>{{ seqName }}</h4>
+          <table class="table table-bordered mt-2">
+            <thead>
+              <tr>
+                <th>Seq No</th>
+                <th>Valve</th>
+                <th>Valve Start Time</th>
+                <th>Valve Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pos of this.seqValve">
+                <td class="handCursor">
+                  {{ pos.SeqNo }}
+                </td>
+                <td class="handCursor">
+                  {{ pos.Valve }}
+                </td>
+                <td class="handCursor">
+                  {{ pos.ValveStartTime }}
+                </td>
+                <td class="handCursor">
+                  {{ pos.ValveStartDuration }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

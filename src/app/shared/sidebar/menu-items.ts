@@ -57,6 +57,14 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [],
   },
+  {
+    path: "/sequence/list",
+    title: "Sequence",
+    icon: "mdi mdi-message-bulleted",
+    class: "",
+    extralink: false,
+    submenu: [],
+  },
   
   // {
   //   path: "/configuration/project",

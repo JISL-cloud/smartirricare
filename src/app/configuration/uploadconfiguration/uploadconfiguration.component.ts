@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxFileDropEntry, FileSystemFileEntry } from 'ngx-file-drop';
 import { ToastrService } from 'ngx-toastr';
+import { ProjectConfiguration } from '../nodesconfiguration/nodeconfiguration.model';
+import { NodeconfigurationService } from '../nodesconfiguration/nodeconfiguration.service';
 import { allowedFileExtensions, Attachment, UploadModel } from './upload.model';
 
 @Component({
@@ -18,7 +20,7 @@ export class UploadconfigurationComponent implements OnInit {
   vendorAttachments: Attachment[] = [];
   // model to hold new attachment in the table footer.
   fileAttachmentModel = new Attachment();
-
+  projectLst:ProjectConfiguration = new ProjectConfiguration();
   // stores attachment record ids of the existing files that are selected for deletion
   deletedAttachmentRecordIds: number[] = [];
   // stores existing attachment record that is being deleted. (this can be a new or existing attachment record)
@@ -28,12 +30,57 @@ export class UploadconfigurationComponent implements OnInit {
   //Closed Result
   closeResult: string = ""
 
-  constructor(private modalService: NgbModal, public router: Router, public toastr: ToastrService,) { }
+  constructor(private confService: NodeconfigurationService, private modalService: NgbModal, public router: Router, public toastr: ToastrService,) { }
 
   ngOnInit(): void {
+    this.getProject();
   }
 
+  getProject() {
+    this.confService.getProjectInfo().subscribe(
+      (response: ProjectConfiguration) => {
+        this.projectLst = response;
+      },
+      customError => {
+        this.toastr.error(
+          `Error happened while fetching Project list. <br />
+                  ${customError.message}`,
+          'Error'
+        );
+      }
+    );
+  }
+  uploadConfiguration() {
+    if (this.attachmentInfo.attachmentViewModels.length == 0) {
+      this.toastr.warning("Select Project configuration file.");
+      return;
+    }
 
+    this.confService.uploadConf(this.attachmentInfo).subscribe(
+      (response: any) => {
+        if (response.errors && response.errors.length > 0) {
+          let msg = 'Project Configuration uploaded successfully. <br />';
+          for (const error of response.errors) {
+            msg += error + '<br />';
+          }
+          this.toastr.warning(msg);
+        } else {
+          this.toastr.success('Project Configuration uploaded successfully.');
+          this.attachmentInfo.attachmentViewModels = [];
+          this.fileAttachmentModel = new Attachment();
+        }
+      },
+      customError => {
+        this.toastr.error(
+          `Error happened while Importing. <br />
+          ${customError.message}`,
+          'Error'
+        );
+        this.attachmentInfo.attachmentViewModels = [];
+        this.fileAttachmentModel = new Attachment();
+      }
+    );
+  }
   // Dropped files
   public droppedFiles(files: NgxFileDropEntry[], index: number | null = null) {
     if (files.length > 0) {
@@ -109,11 +156,13 @@ export class UploadconfigurationComponent implements OnInit {
     this.attachmentInfo.attachmentViewModels.push(copyFileAttachment);
     // reset
     this.fileAttachmentModel = new Attachment();
+    //Upload file
+    this.uploadConfiguration();
     return true;
-
   }
+
   // show attachment record delete confirmation modal (delete file from table list)
-  showAttachmentRecordDeleteConfirmation(irAttachment: Attachment, content:any) {
+  showAttachmentRecordDeleteConfirmation(irAttachment: Attachment, content: any) {
     this.attachmentRecordBeingDeleted = irAttachment;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -148,10 +197,10 @@ export class UploadconfigurationComponent implements OnInit {
     });
   }
   // Remove confirmation modal (gets called on confirmation of deleting file from footer or table list)
-  onAttachedFileRemoveConfirm() {
-    if (this.indexOfAttachedFileBeingRemoved !== null) {
+  onAttachedFileRemoveConfirm(indexOfAttachedFileBeingRemoved: number) {
+    if (indexOfAttachedFileBeingRemoved !== null) {
       const attachmentRecord = this.attachmentInfo.attachmentViewModels[
-        this.indexOfAttachedFileBeingRemoved
+        indexOfAttachedFileBeingRemoved
       ];
       if (attachmentRecord) {
         attachmentRecord.file = null;
@@ -175,4 +224,8 @@ export class UploadconfigurationComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
+  
 }
+
+        

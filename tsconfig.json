@@ -8,8 +8,12 @@
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true,
     "target": "es5",
     "strict": true,
+    "types": [
+      "bingmaps"
+           ],
     "typeRoots": [
       "node_modules/@types"
     ],
