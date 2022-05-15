@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DataloggerComponent } from './datalogger/datalogger.component';
 import { CommonAuthGuard } from './guards/commonauth.guard';
 import { BlankComponent } from './layouts/blank/blank.component';
 
 import { FullComponent } from './layouts/full/full.component';
+import { UsersComponent } from './users/users.component';
 
 export const Approutes: Routes = [
   {
@@ -25,6 +27,21 @@ export const Approutes: Routes = [
       {
         path: 'sequence',
         loadChildren: () => import('./sequence/sequence.module').then(m => m.SequenceModule),
+        canActivate: [CommonAuthGuard],
+      },
+      {
+        path: 'events',
+        loadChildren: () => import('./events/events.module').then(m => m.EventsModule),
+        canActivate: [CommonAuthGuard],
+      },
+      {
+        path: 'datalogger',
+        component: DataloggerComponent,
+        canActivate: [CommonAuthGuard],
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
         canActivate: [CommonAuthGuard],
       },
       {

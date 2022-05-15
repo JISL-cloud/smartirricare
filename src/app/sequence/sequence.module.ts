@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddeditsequenceComponent } from './addeditsequence/addeditsequence.component';
+import { DataTablesModule } from 'angular-datatables';
 
 const routes: Routes = [
   {
@@ -46,6 +47,7 @@ const routes: Routes = [
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTablesModule,
     RouterModule.forChild(routes)
   ]
 })

@@ -10,6 +10,7 @@
     "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es5",
+    "downlevelIteration": true,
     "strict": true,
     "types": [
       "bingmaps"

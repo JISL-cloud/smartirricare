@@ -10,5 +10,6 @@ export class Attachment {
 
 export const allowedFileExtensions = [
     '.xls',
-    '.xlsx'
+    '.xlsx',
+    '.csv'
    ];

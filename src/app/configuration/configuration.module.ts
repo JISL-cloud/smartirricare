@@ -15,6 +15,11 @@ import { NodelivedataComponent } from './nodesconfiguration/nodelivedata/nodeliv
 import { UploadconfigurationComponent } from './uploadconfiguration/uploadconfiguration.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ConfigurationlistComponent } from './configurationlist/configurationlist.component';
+import { DataTablesModule } from 'angular-datatables';
+import { SensorsComponent } from './sensors/sensors.component';
+import { UploadconfigurationsequencComponent } from './uploadconfigurationsequenc/uploadconfigurationsequenc.component';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
 
 
 const routes: Routes = [
@@ -46,6 +51,18 @@ const routes: Routes = [
         },
       },
       {
+        path: 'productdetails',
+        component: ProductdetailsComponent,
+        data: {
+          title: 'Product Configuration',
+          urls: [
+            { title: 'Project Configuration', url: '/productdetails' },
+            { title: 'ngComponent' },
+            { title: 'Project Configuration' }
+          ]
+        },
+      },
+      {
         path: 'node',
         component: NodesconfigurationComponent,
         data: {
@@ -69,6 +86,42 @@ const routes: Routes = [
           ]
         },
       },
+      {
+        path: 'uploadseq',
+        component: UploadconfigurationsequencComponent,
+        data: {
+          title: 'Upload Sequence',
+          urls: [
+            { title: 'Upload Sequence', url: '/uploadseq' },
+            { title: 'ngComponent' },
+            { title: 'Upload Sequence' }
+          ]
+        },
+      },
+      {
+        path: 'configurationlist',
+        component: ConfigurationlistComponent,
+        data: {
+          title: 'Configuration',
+          urls: [
+            { title: 'Configuration', url: '/configurationlist' },
+            { title: 'ngComponent' },
+            { title: 'Configuration' }
+          ]
+        },
+      },
+      {
+        path: 'sensors',
+        component: SensorsComponent,
+        data: {
+          title: 'Sensors',
+          urls: [
+            { title: 'Sensors', url: '/sensors' },
+            { title: 'ngComponent' },
+            { title: 'Sensors' }
+          ]
+        },
+      },
     ]
   }
 ];
@@ -84,6 +137,10 @@ const routes: Routes = [
     NodesettingComponent,
     NodelivedataComponent,
     UploadconfigurationComponent,
+    ConfigurationlistComponent,
+    SensorsComponent,
+    UploadconfigurationsequencComponent,
+    ProductdetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -93,6 +150,7 @@ const routes: Routes = [
     FontAwesomeModule,
     ReactiveFormsModule,
     NgxFileDropModule,
+    DataTablesModule,
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule],

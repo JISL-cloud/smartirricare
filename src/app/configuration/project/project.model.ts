@@ -17,6 +17,47 @@ export class Project {
     public offset: string = "";
 }
 
+export class MultiNetworkRtu {
+    Id: number =0;
+    NetworkNo: number= 0;
+    RtuId: number= 0;
+    NodeNo: number= 0;
+    IsActive: boolean =false;
+}
+
+export class UpdateIdsRequired {
+    Id: number =0;
+    NetworkNo: number= 0;
+    NodeId: number= 0;
+    ConfigUid: number= 0;
+    VrtUid: number= 0;
+    SensorUid: number= 0;
+    ScheduleNodeUid: number= 0;
+    ScheduleSequenceUid: number= 0;
+    MainSchUid: number= 0;
+    FilterUid: number= 0;
+}
+export class ProjectConfiguration {
+    Id: number =0;
+    MaxNodeSerialNo: number =0;
+    MaxNodeId: number =0;
+    MaxGwValves: number =0;
+    MaxGwSensors: number =0;
+    MaxNodeValves: number =0;
+    MaxNodeSensors: number =0;
+    MaxMobileNoSize: number =0;
+    MaxSequences: number =0;
+    MaxElementsInSequences: number =0;
+    MaxFilters: number =0;
+    MaxPumps: number =0;
+    MaxFert: number =0;
+    MaxRtuscheduleTransferDis: number =0;
+    MaxSchOperatedGw: number =0;
+    MaxGwinProject: number =0;
+    MaxNodePerGw: number =0;
+    MaxNodeInProject: number =0;
+    MaxNetworkInProject: number =0;
+}
 export class Network {
     public networkId: number = 0;
     public prjId: number = 0;
@@ -33,6 +74,13 @@ export class Network {
 
 }
 
+export class NetwokNodeConf{
+    public networkId: number = 0;
+    public networkTagName: string = "";
+    public nodeId: number = 0;
+    public nodeTagName: string = "";
+
+}
 export class NetworkDDL {
     public displayText: string = "";
     public value: number = 0;

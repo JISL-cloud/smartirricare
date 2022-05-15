@@ -20,7 +20,7 @@ export class SiteConditionsService {
     // ).subscribe(initialCenter => {
     //   this._center.next(initialCenter);
     // });
-    const center = [41.49871231510167, -72.95581850473526];
+    const center = [21.0077, 75.5626];
     this._center.next(center);
     // this.getInitialCenter(0).subscribe(initialCenter => {
     //   this._center.next(initialCenter);

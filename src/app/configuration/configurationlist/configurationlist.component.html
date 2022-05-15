@@ -1,0 +1,811 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <button class="btn btn-primary" (click)="deleteConf()">Delete All Configuration</button>
+        <div class="">
+          <div class="mt-2">
+            <ngb-tabset class="tabset1" [destroyOnHide]="false">
+              <ngb-tab title="NonRechargable">
+                <ng-template ngbTabContent>
+                  <!-- <div>
+                      <button
+                        class="btn btn-primary float-right mt-2"
+                        (click)="AddNetwork(content, 0)"
+                      >
+                        Add Network
+                      </button>
+                    </div> -->
+
+                  <div class="table-responsive mt-3">
+                    <table
+                      class="table-responsive table table-bordered mt-2"
+                      datatable
+                      [dtTrigger]="dtTrigger2"
+                      [dtOptions]="dtOptions2"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Network No</th>
+                          <th>Network TagName</th>
+                          <th>Node Id</th>
+                          <th>Node TagName</th>
+                          <th>Product Id</th>
+                          <th>thresholdforOcsc</th>
+                          <th>minConnInterval</th>
+                          <th>MaxConnInterval</th>
+                          <th>minAdvInterval</th>
+                          <th>maxAdvInterval</th>
+                          <th>mtusizeValue</th>
+                          <th>handshkInterval</th>
+                          <th>pulsedelayvalue</th>
+                          <th>operAttempt</th>
+                          <th>attemptForWaterFlow</th>
+                          <th>longSleepHndshkIntervalMf</th>
+                          <th>bttxpower</th>
+                          <th>fixLoraSf</th>
+                          <th>fixLoraPower</th>
+                          <th>fixLoraFreq</th>
+                          <th>fixLoraCr</th>
+                          <th>preferredGw1id</th>
+                          <th>preferredGw2id</th>
+                          <th>preferredGw3id</th>
+                          <th>preferredGw4id</th>
+                          <th>awfdetectEndis</th>
+                          <th>fixLoraSetting</th>
+                          <th>autoSendStatusEnableBit</th>
+                          <th>powerLoopLatchEnable</th>
+                          <th>globalAlarmEnDs</th>
+                          <th>maxLoRaCommAtt</th>
+                          <th>sensorAlarmEndis</th>
+                          <th>loRaRxWindowMasking</th>
+                          <th>dummyByte3Lsb</th>
+                          <th>dummyByte3Msb</th>
+                          <th>saftetyTimeoutMin</th>
+                          <th>slowDownCommDurMin</th>
+                          <th>forceDeepSleepDurMin</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.nonRechargableList">
+                          <td>{{ pos.GwSrn }}</td>
+                          <td>{{pos.NetworkTagName}}</td>
+                          <td>{{ pos.NodeId }}</td>
+                          <td>{{pos.NodeTagName}}</td>
+                          <td>{{ pos.ProductId }}</td>
+                          <td>{{ pos.ThresholdforOcsc }}</td>
+                          <td>{{ pos.MinConnInterval }}</td>
+                          <td>{{ pos.MaxConnInterval }}</td>
+                          <td>{{ pos.MinAdvInterval }}</td>
+                          <td>{{ pos.MaxAdvInterval }}</td>
+                          <td>{{ pos.MtusizeValue }}</td>
+                          <td>{{ pos.HandshkInterval }}</td>
+                          <td>{{ pos.Pulsedelayvalue }}</td>
+                          <td>{{ pos.OperAttempt }}</td>
+                          <td>{{ pos.AttemptForWaterFlow }}</td>
+                          <td>{{ pos.LongSleepHndshkIntervalMf }}</td>
+                          <td>{{ pos.Bttxpower }}</td>
+                          <td>{{ pos.FixLoraSf }}</td>
+                          <td>{{ pos.FixLoraPower }}</td>
+                          <td>{{ pos.FixLoraFreq }}</td>
+                          <td>{{ pos.FixLoraCr }}</td>
+                          <td>{{ pos.PreferredGw1id }}</td>
+                          <td>{{ pos.PreferredGw2id }}</td>
+                          <td>{{ pos.PreferredGw3id }}</td>
+                          <td>{{ pos.PreferredGw4id }}</td>
+                          <td>{{ pos.AwfdetectEndis }}</td>
+                          <td>{{ pos.FixLoraSetting }}</td>
+                          <td>{{ pos.AutoSendStatusEnableBit }}</td>
+                          <td>{{ pos.PowerLoopLatchEnable }}</td>
+                          <td>{{ pos.GlobalAlarmEnDs }}</td>
+                          <td>{{ pos.MaxLoRaCommAtt }}</td>
+                          <td>{{ pos.SensorAlarmEndis }}</td>
+                          <td>{{ pos.LoRaRxWindowMasking }}</td>
+                          <td>{{ pos.DummyByte3Lsb }}</td>
+                          <td>{{ pos.DummyByte3Msb }}</td>
+                          <td>{{ pos.SaftetyTimeoutMin }}</td>
+                          <td>{{ pos.SlowDownCommDurMin }}</td>
+                          <td>{{ pos.ForceDeepSleepDurMin }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+
+              <ngb-tab title="Rechrgable">
+                <ng-template ngbTabContent>
+                  <div class="table-responsive mt-3">
+                    <table
+                      class="table table-bordered mt-2"
+                      datatable
+                      [dtTrigger]="dtTrigger1"
+                      [dtOptions]="dtOptions1"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Network No</th>
+                          <th>Network TagName</th>
+                          <th>Node Id</th>
+                          <th>Node TagName</th>
+                          <th>Product Id</th>
+                          <th>thresholdforOcsc</th>
+                          <th>minConnInterval</th>
+                          <th>Max Conn Interval</th>
+                          <th>minAdvInterval</th>
+                          <th>maxAdvInterval</th>
+                          <th>mtusizeValue</th>
+                          <th>handshkInterval</th>
+                          <th>pulsedelayvalue</th>
+                          <th>operAttempt</th>
+                          <th>attemptForWaterFlow</th>
+                          <th>longSleepHndshkIntervalMf</th>
+                          <th>bttxpower</th>
+                          <th>fixLoraSf</th>
+                          <th>fixLoraPower</th>
+                          <th>fixLoraFreq</th>
+                          <th>fixLoraCr</th>
+                          <th>preferredGw1id</th>
+                          <th>preferredGw2id</th>
+                          <th>preferredGw3id</th>
+                          <th>preferredGw4id</th>
+                          <th>awfdetectEndis</th>
+                          <th>fixLoraSetting</th>
+                          <th>autoSendStatusEnableBit</th>
+                          <th>powerLoopLatchEnable</th>
+                          <th>globalAlarmEnDs</th>
+                          <th>maxLoRaCommAtt</th>
+                          <th>sensorAlarmEndis</th>
+                          <th>loRaRxWindowMasking</th>
+                          <th>dummyByte3Lsb</th>
+                          <th>dummyByte3Msb</th>
+                          <th>saftetyTimeoutMin</th>
+                          <th>slowDownCommDurMin</th>
+                          <th>forceDeepSleepDurMin</th>
+                          <th>AutoSensorStatusSendInterval</th>
+                          <th>SamplingTimeInterval</th>
+                          <th>ApplicationEnbits</th>
+                          <th>TimeForNocommWithGw</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.rechargableList">
+                          <td>{{ pos.GwSrn }}</td>
+                          <td>{{pos.NetworkTagName}}</td>
+                          <td>{{ pos.NodeId }}</td>
+                          <td>{{pos.NodeTagName}}</td>
+                          <td>{{ pos.ProductId }}</td>
+                          <td>{{ pos.ThresholdforOcsc }}</td>
+                          <td>{{ pos.MinConnInterval }}</td>
+                          <td>{{ pos.MaxConnInterval }}</td>
+                          <td>{{ pos.MinAdvInterval }}</td>
+                          <td>{{ pos.MaxAdvInterval }}</td>
+                          <td>{{ pos.MtusizeValue }}</td>
+                          <td>{{ pos.HandshkInterval }}</td>
+                          <td>{{ pos.Pulsedelayvalue }}</td>
+                          <td>{{ pos.OperAttempt }}</td>
+                          <td>{{ pos.AttemptForWaterFlow }}</td>
+                          <td>{{ pos.LongSleepHndshkIntervalMf }}</td>
+                          <td>{{ pos.Bttxpower }}</td>
+                          <td>{{ pos.FixLoraSf }}</td>
+                          <td>{{ pos.FixLoraPower }}</td>
+                          <td>{{ pos.FixLoraFreq }}</td>
+                          <td>{{ pos.FixLoraCr }}</td>
+                          <td>{{ pos.PreferredGw1id }}</td>
+                          <td>{{ pos.PreferredGw2id }}</td>
+                          <td>{{ pos.PreferredGw3id }}</td>
+                          <td>{{ pos.PreferredGw4id }}</td>
+                          <td>{{ pos.AwfdetectEndis }}</td>
+                          <td>{{ pos.FixLoraSetting }}</td>
+                          <td>{{ pos.AutoSendStatusEnableBit }}</td>
+                          <td>{{ pos.PowerLoopLatchEnable }}</td>
+                          <td>{{ pos.GlobalAlarmEnDs }}</td>
+                          <td>{{ pos.MaxLoRaCommAtt }}</td>
+                          <td>{{ pos.SensorAlarmEndis }}</td>
+                          <td>{{ pos.LoRaRxWindowMasking }}</td>
+                          <td>{{ pos.DummyByte3Lsb }}</td>
+                          <td>{{ pos.DummyByte3Msb }}</td>
+                          <td>{{ pos.SaftetyTimeoutMin }}</td>
+                          <td>{{ pos.SlowDownCommDurMin }}</td>
+                          <td>{{ pos.ForceDeepSleepDurMin }}</td>
+                          <td>{{ pos.AutoSensorStatusSendInterval }}</td>
+                          <td>{{ pos.SamplingTimeInterval }}</td>
+                          <td>{{ pos.ApplicationEnbits }}</td>
+                          <td>{{ pos.TimeForNocommWithGw }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+
+              <ngb-tab title="GatewayNode">
+                <ng-template ngbTabContent>
+                  <div class="row table-responsive mt-3">
+                    <table
+                      class="table-responsive table table-bordered mt-2"
+                      datatable
+                      [dtTrigger]="dtTrigger3"
+                      [dtOptions]="dtOptions3"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Network No</th>
+                          <th>Network TagName</th>
+                          <th>Node Id</th>
+                          <th>Node TagName</th>
+                          <th>Product Id</th>
+                          <th>Operator1MobNo</th>
+                          <th>Operator2MobNo</th>
+                          <th>Operator3MobNo</th>
+                          <th>Operator4MobNo</th>
+                          <th>Operator5MobNo</th>
+                          <th>TempSensorHighTh</th>
+                          <th>TempSensorLowTh</th>
+                          <th>VbatlowThvoltage</th>
+                          <th>AlarmInterval</th>
+                          <th>FuaskInterval</th>
+                          <th>Maxiocurrent</th>
+                          <th>LogAutoTxEndis</th>
+                          <th>Debug</th>
+                          <th>Warning</th>
+                          <th>Error</th>
+                          <th>Info</th>
+                          <th>Direction</th>
+                          <th>StatusStoreDuration</th>
+                          <th>GsmportEn</th>
+                          <th>SchtransferedEnableDis</th>
+                          <th>ForceAlarmDisable</th>
+                          <th>Comdelay</th>
+                          <th>LoRaConcentratorEn</th>
+                          <th>SettingRfport</th>
+                          <th>CardNo1</th>
+                          <th>C1Type</th>
+                          <th>C1Debug</th>
+                          <th>C1Warning</th>
+                          <th>C1Error</th>
+                          <th>C1Info</th>
+                          <th>C1SleepEn</th>
+                          <th>C1AuoStatusEn</th>
+                          <th>C1AutoStatusInt</th>
+                          <th>C1LogIntSec</th>
+                          <th>C1FirmareVer</th>
+                          <th>C1SafteyTimeoutMin</th>
+                          <th>C1Settings</th>
+                          <th>CardNo2</th>
+                          <th>C2Type</th>
+                          <th>C2Debug</th>
+                          <th>C2Warning</th>
+                          <th>C2Error</th>
+                          <th>C2Info</th>
+                          <th>C2SleepEn</th>
+                          <th>C2AuoStatusEn</th>
+                          <th>C2AutoStatusInt</th>
+                          <th>C2LogIntSec</th>
+                          <th>C2FirmareVer</th>
+                          <th>C2SafteyTimeoutMin</th>
+                          <th>C2Settings</th>
+                          <th>CardNo3</th>
+                          <th>C3Type</th>
+                          <th>C3Debug</th>
+                          <th>C3Warning</th>
+                          <th>C3Error</th>
+                          <th>C3Info</th>
+                          <th>C3SleepEn</th>
+                          <th>C3AuoStatusEn</th>
+                          <th>C3AutoStatusInt</th>
+                          <th>C3LogIntSec</th>
+                          <th>C3FirmareVer</th>
+                          <th>C3SafteyTimeoutMin</th>
+                          <th>C3Settings</th>
+                          <th>ProgramEndDayMode</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.gatewayNodeList">
+                          <td>{{ pos.GwSrn }}</td>
+                          <td>{{pos.NetworkTagName}}</td>
+                          <td>{{ pos.NodeId }}</td>
+                          <td>{{pos.NodeTagName}}</td>
+                          <td>{{ pos.ProductId }}</td>
+                          <td>{{ pos.Operator1MobNo }}</td>
+                          <td>{{ pos.Operator2MobNo }}</td>
+                          <td>{{ pos.Operator3MobNo }}</td>
+                          <td>{{ pos.Operator4MobNo }}</td>
+                          <td>{{ pos.Operator5MobNo }}</td>
+                          <td>{{ pos.TempSensorHighTh }}</td>
+                          <td>{{ pos.TempSensorLowTh }}</td>
+                          <td>{{ pos.VbatlowThvoltage }}</td>
+                          <td>{{ pos.AlarmInterval }}</td>
+                          <td>{{ pos.FuaskInterval }}</td>
+                          <td>{{ pos.Maxiocurrent }}</td>
+                          <td>{{ pos.LogAutoTxEndis == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Debug == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Warning == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Error == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Info == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Direction }}</td>
+                          <td>{{ pos.StatusStoreDuration }}</td>
+                          <td>{{ pos.GsmportEn == true ? 1 : 0 }}</td>
+                          <td>
+                            {{ pos.SchtransferedEnableDis == true ? 1 : 0 }}
+                          </td>
+                          <td>{{ pos.ForceAlarmDisable == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Comdelay }}</td>
+                          <td>{{ pos.LoRaConcentratorEn == true ? 1 : 0 }}</td>
+                          <td>{{ pos.SettingRfport == true ? 1 : 0 }}</td>
+                          <td>{{ pos.CardNo1 }}</td>
+                          <td>{{ getCardType(pos.C1Type) }}</td>
+                          <td>{{ pos.C1Debug }}</td>
+                          <td>{{ pos.C1Warning }}</td>
+                          <td>{{ pos.C1Error }}</td>
+                          <td>{{ pos.C1Info }}</td>
+                          <td>{{ pos.C1SleepEn }}</td>
+                          <td>{{ pos.C1AuoStatusEn }}</td>
+                          <td>{{ pos.C1AutoStatusInt }}</td>
+                          <td>{{ pos.C1LogIntSec }}</td>
+                          <td>{{ pos.C1FirmareVer }}</td>
+                          <td>{{ pos.C1SafteyTimeoutMin }}</td>
+                          <td>
+                            <ng-container
+                              *ngIf="
+                                pos.C1Type == 2 ||
+                                pos.C1Type == 3 ||
+                                pos.C1Type == 5
+                              "
+                              >{{ pos.C1Settings }}</ng-container
+                            >
+                            <ng-container *ngIf="pos.C1Type == 4"
+                              >
+                              <table>
+                                <tr>
+                                  <th>Pulse duration ms</th>
+                                  <th>Pulse_Voltage</th>
+                                  <th>Type (Solenoid or Latch)</th>
+                                </tr>
+                                <tr>
+                                  <td *ngFor="
+                                  let pos of getSettings(pos.C1Settings)
+                                ">{{ pos }}</td>
+                              
+                                </tr>
+                              </table>
+                            </ng-container>
+                            <ng-container *ngIf="pos.C1Type == 6"
+                              >
+                              <table>
+                               <tr>
+                                <th>SMTS1_Address</th>
+                                <th>SMTS_1_11</th>
+                                <th>SMTS_2_Address</th>
+                                <th>SMTS_2_Level</th>
+                              </tr>
+                              <tr
+                                
+                              >
+                                <td *ngFor="let pos of getSettings(pos.C1Settings)">{{ pos }}</td>
+                               
+                              </tr>
+                            </table>
+                            </ng-container>
+                          </td>
+                          <td>{{ pos.CardNo2 }}</td>
+                          <td>{{ getCardType(pos.C2Type) }}</td>
+                          <td>{{ pos.C2Debug }}</td>
+                          <td>{{ pos.C2Warning }}</td>
+                          <td>{{ pos.C2Error }}</td>
+                          <td>{{ pos.C2Info }}</td>
+                          <td>{{ pos.C2SleepEn }}</td>
+                          <td>{{ pos.C2AuoStatusEn }}</td>
+                          <td>{{ pos.C2AutoStatusInt }}</td>
+                          <td>{{ pos.C2LogIntSec }}</td>
+                          <td>{{ pos.C2FirmareVer }}</td>
+                          <td>{{ pos.C2SafteyTimeoutMin }}</td>
+                          <td>
+                            <ng-container
+                              *ngIf="
+                                pos.C2Type == 2 ||
+                                pos.C2Type == 3 ||
+                                pos.C2Type == 5
+                              "
+                              >{{ pos.C2Settings }}</ng-container
+                            >
+                            <ng-container *ngIf="pos.C2Type == 4"
+                              >
+                              <table>
+                                <tr>
+                                  <th>Pulse duration ms</th>
+                                  <th>Pulse_Voltage</th>
+                                  <th>Type (Solenoid or Latch)</th>
+                                </tr>
+                                <tr>
+                                  <td
+                                    *ngFor="
+                                      let pos of getSettings(pos.C2Settings)
+                                    "
+                                  >
+                                    {{ pos }}
+                                  </td>
+                                </tr>
+                              </table>
+                            </ng-container>
+                            <ng-container *ngIf="pos.C2Type == 6">
+                              <table>
+                                <tr>
+                                  <th>SMTS1_Address</th>
+                                  <th>SMTS_1_11</th>
+                                  <th>SMTS_2_Address</th>
+                                  <th>SMTS_2_Level</th>
+                                </tr>
+                                <tr>
+                                  <td
+                                    *ngFor="let pos of getSettings(pos.C2Settings)"
+                                  >
+                                    {{ pos }}
+                                  </td>
+                                </tr>
+                              </table>
+                            </ng-container>
+                          </td>
+                          <td>{{ pos.CardNo3 }}</td>
+                          <td>{{ getCardType(pos.C3Type) }}</td>
+                          <td>{{ pos.C3Debug }}</td>
+                          <td>{{ pos.C3Warning }}</td>
+                          <td>{{ pos.C3Error }}</td>
+                          <td>{{ pos.C3Info }}</td>
+                          <td>{{ pos.C3SleepEn }}</td>
+                          <td>{{ pos.C3AuoStatusEn }}</td>
+                          <td>{{ pos.C3AutoStatusInt }}</td>
+                          <td>{{ pos.C3LogIntSec }}</td>
+                          <td>{{ pos.C3FirmareVer }}</td>
+                          <td>{{ pos.C3SafteyTimeoutMin }}</td>
+                          <td>
+                            <ng-container
+                              *ngIf="
+                                pos.C3Type == 2 ||
+                                pos.C3Type == 3 ||
+                                pos.C3Type == 5
+                              "
+                              >{{ pos.C3Settings }}</ng-container
+                            >
+                            <ng-container *ngIf="pos.C3Type == 4">
+                              <table>
+                                <tr>
+                                  <th>Pulse duration ms</th>
+                                  <th>Pulse_Voltage</th>
+                                  <th>Type (Solenoid or Latch)</th>
+                                </tr>
+                                <tr>
+                                  <td
+                                    *ngFor="let pos of getSettings(pos.C3Settings)"
+                                  >
+                                    {{ pos }}
+                                  </td>
+                                </tr>
+                              </table>
+                            </ng-container>
+                            <ng-container *ngIf="pos.C3Type == 6">
+                              <tr>
+                                <th>SMTS1_Address</th>
+                                <th>SMTS_1_11</th>
+                                <th>SMTS_2_Address</th>
+                                <th>SMTS_2_Level</th>
+                              </tr>
+                              <tr>
+                                <td
+                                  *ngFor="
+                                    let column of getSettings(pos.C3Settings)
+                                  "
+                                >
+                                  {{ column }}
+                                </td>
+                              </tr>
+                            </ng-container>
+                          </td>
+                          <td>{{ pos.ProgramEndDayMode }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+
+              <ngb-tab title="Gateway">
+                <ng-template ngbTabContent>
+                  <div class="row table-responsive mt-3">
+                    <table
+                      class="table-responsive table table-bordered mt-2"
+                      datatable
+                      [dtTrigger]="dtTrigger4"
+                      [dtOptions]="dtOptions4"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Network No</th>
+                          <th>Network TagName</th>
+                          <th>Node Id</th>
+                          <th>Node TagName</th>
+                          <th>Product Id</th>
+                          <th>Operator1MobNo</th>
+                          <th>Operator2MobNo</th>
+                          <th>Operator3MobNo</th>
+                          <th>Operator4MobNo</th>
+                          <th>Operator5MobNo</th>
+                          <th>TempSensorHighTh</th>
+                          <th>TempSensorLowTh</th>
+                          <th>VbatlowThvoltage</th>
+                          <th>AlarmInterval</th>
+                          <th>FuaskInterval</th>
+                          <th>Maxiocurrent</th>
+                          <th>LogAutoTxEndis</th>
+                          <th>Debug</th>
+                          <th>Warning</th>
+                          <th>Error</th>
+                          <th>Info</th>
+                          <th>Direction</th>
+                          <th>StatusStoreDuration</th>
+                          <th>GsmportEn</th>
+                          <th>SchtransferedEnableDis</th>
+                          <th>ForceAlarmDisable</th>
+                          <th>Comdelay</th>
+                          <th>LoRaConcentratorEn</th>
+                          <th>SettingRfport</th>
+                          <th>CardNo1</th>
+                          <th>C1Type</th>
+                          <th>C1Debug</th>
+                          <th>C1Warning</th>
+                          <th>C1Error</th>
+                          <th>C1Info</th>
+                          <th>C1SleepEn</th>
+                          <th>C1AuoStatusEn</th>
+                          <th>C1AutoStatusInt</th>
+                          <th>C1LogIntSec</th>
+                          <th>C1FirmareVer</th>
+                          <th>C1SafteyTimeoutMin</th>
+                          <th>C1Settings</th>
+                          <th>CardNo2</th>
+                          <th>C2Type</th>
+                          <th>C2Debug</th>
+                          <th>C2Warning</th>
+                          <th>C2Error</th>
+                          <th>C2Info</th>
+                          <th>C2SleepEn</th>
+                          <th>C2AuoStatusEn</th>
+                          <th>C2AutoStatusInt</th>
+                          <th>C2LogIntSec</th>
+                          <th>C2FirmareVer</th>
+                          <th>C2SafteyTimeoutMin</th>
+                          <th>C2Settings</th>
+                          <th>CardNo3</th>
+                          <th>C3Type</th>
+                          <th>C3Debug</th>
+                          <th>C3Warning</th>
+                          <th>C3Error</th>
+                          <th>C3Info</th>
+                          <th>C3SleepEn</th>
+                          <th>C3AuoStatusEn</th>
+                          <th>C3AutoStatusInt</th>
+                          <th>C3LogIntSec</th>
+                          <th>C3FirmareVer</th>
+                          <th>C3SafteyTimeoutMin</th>
+                          <th>C3Settings</th>
+                          <th>ProgramEndDayMode</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.gatewayList">
+                          <td>{{ pos.GwSrn }}</td>
+                          <td>{{pos.NetworkTagName}}</td>
+                          <td>{{ pos.NodeId }}</td>
+                          <td>{{pos.NodeTagName}}</td>
+                          <td>{{ pos.ProductId }}</td>
+                          <td>{{ pos.Operator1MobNo }}</td>
+                          <td>{{ pos.Operator2MobNo }}</td>
+                          <td>{{ pos.Operator3MobNo }}</td>
+                          <td>{{ pos.Operator4MobNo }}</td>
+                          <td>{{ pos.Operator5MobNo }}</td>
+                          <td>{{ pos.TempSensorHighTh }}</td>
+                          <td>{{ pos.TempSensorLowTh }}</td>
+                          <td>{{ pos.VbatlowThvoltage }}</td>
+                          <td>{{ pos.AlarmInterval }}</td>
+                          <td>{{ pos.FuaskInterval }}</td>
+                          <td>{{ pos.Maxiocurrent }}</td>
+                          <td>{{ pos.LogAutoTxEndis == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Debug == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Warning == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Error == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Info == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Direction }}</td>
+                          <td>{{ pos.StatusStoreDuration }}</td>
+                          <td>{{ pos.GsmportEn == true ? 1 : 0 }}</td>
+                          <td>
+                            {{ pos.SchtransferedEnableDis == true ? 1 : 0 }}
+                          </td>
+                          <td>{{ pos.ForceAlarmDisable == true ? 1 : 0 }}</td>
+                          <td>{{ pos.Comdelay }}</td>
+                          <td>{{ pos.LoRaConcentratorEn == true ? 1 : 0 }}</td>
+                          <td>{{ pos.SettingRfport == true ? 1 : 0 }}</td>
+                          <td>{{ pos.CardNo1 }}</td>
+                          <td>{{ getCardType(pos.C1Type) }}</td>
+                          <td>{{ pos.C1Debug }}</td>
+                          <td>{{ pos.C1Warning }}</td>
+                          <td>{{ pos.C1Error }}</td>
+                          <td>{{ pos.C1Info }}</td>
+                          <td>{{ pos.C1SleepEn }}</td>
+                          <td>{{ pos.C1AuoStatusEn }}</td>
+                          <td>{{ pos.C1AutoStatusInt }}</td>
+                          <td>{{ pos.C1LogIntSec }}</td>
+                          <td>{{ pos.C1FirmareVer }}</td>
+                          <td>{{ pos.C1SafteyTimeoutMin }}</td>
+                          <td>
+                            <ng-container
+                              *ngIf="
+                                pos.C1Type == 2 ||
+                                pos.C1Type == 3 ||
+                                pos.C1Type == 5
+                              "
+                              >{{ pos.C1Settings }}</ng-container
+                            >
+                            <ng-container *ngIf="pos.C1Type == 4"
+                              >
+                              <table>
+                                <tr>
+                                  <th>Pulse duration ms</th>
+                                  <th>Pulse_Voltage</th>
+                                  <th>Type (Solenoid or Latch)</th>
+                                </tr>
+                                <tr
+                                  
+                                >
+                                  <td *ngFor="
+                                  let pos of getSettings(pos.C1Settings)
+                                ">{{ pos }}</td>
+                              
+                                </tr>
+                              </table>
+                            </ng-container>
+                            <ng-container *ngIf="pos.C1Type == 6"
+                              >
+                              <table>
+                               <tr>
+                                <th>SMTS1_Address</th>
+                                <th>SMTS_1_11</th>
+                                <th>SMTS_2_Address</th>
+                                <th>SMTS_2_Level</th>
+                              </tr>
+                              <tr
+                                
+                              >
+                                <td *ngFor="let pos of getSettings(pos.C1Settings)">{{ pos }}</td>
+                               
+                              </tr>
+                            </table>
+                            </ng-container>
+                          </td>
+                          <td>{{ pos.CardNo2 }}</td>
+                          <td>{{ getCardType(pos.C2Type) }}</td>
+                          <td>{{ pos.C2Debug }}</td>
+                          <td>{{ pos.C2Warning }}</td>
+                          <td>{{ pos.C2Error }}</td>
+                          <td>{{ pos.C2Info }}</td>
+                          <td>{{ pos.C2SleepEn }}</td>
+                          <td>{{ pos.C2AuoStatusEn }}</td>
+                          <td>{{ pos.C2AutoStatusInt }}</td>
+                          <td>{{ pos.C2LogIntSec }}</td>
+                          <td>{{ pos.C2FirmareVer }}</td>
+                          <td>{{ pos.C2SafteyTimeoutMin }}</td>
+                          <td>
+                            <ng-container
+                              *ngIf="
+                                pos.C2Type == 2 ||
+                                pos.C2Type == 3 ||
+                                pos.C2Type == 5
+                              "
+                              >{{ pos.C2Settings }}</ng-container
+                            >
+                            <ng-container *ngIf="pos.C2Type == 4"
+                              >
+                              <table>
+                                <tr>
+                                  <th>Pulse duration ms</th>
+                                  <th>Pulse_Voltage</th>
+                                  <th>Type (Solenoid or Latch)</th>
+                                </tr>
+                                <tr>
+                                  <td
+                                    *ngFor="
+                                      let pos of getSettings(pos.C2Settings)
+                                    "
+                                  >
+                                    {{ pos }}
+                                  </td>
+                                </tr>
+                              </table>
+                            </ng-container>
+                            <ng-container *ngIf="pos.C2Type == 6">
+                              <table>
+                                <tr>
+                                  <th>SMTS1_Address</th>
+                                  <th>SMTS_1_11</th>
+                                  <th>SMTS_2_Address</th>
+                                  <th>SMTS_2_Level</th>
+                                </tr>
+                                <tr>
+                                  <td
+                                    *ngFor="let pos of getSettings(pos.C2Settings)"
+                                  >
+                                    {{ pos }}
+                                  </td>
+                                </tr>
+                              </table>
+                            </ng-container>
+                          </td>
+                          <td>{{ pos.CardNo3 }}</td>
+                          <td>{{ getCardType(pos.C3Type) }}</td>
+                          <td>{{ pos.C3Debug }}</td>
+                          <td>{{ pos.C3Warning }}</td>
+                          <td>{{ pos.C3Error }}</td>
+                          <td>{{ pos.C3Info }}</td>
+                          <td>{{ pos.C3SleepEn }}</td>
+                          <td>{{ pos.C3AuoStatusEn }}</td>
+                          <td>{{ pos.C3AutoStatusInt }}</td>
+                          <td>{{ pos.C3LogIntSec }}</td>
+                          <td>{{ pos.C3FirmareVer }}</td>
+                          <td>{{ pos.C3SafteyTimeoutMin }}</td>
+                          <td>
+                            <ng-container
+                              *ngIf="
+                                pos.C3Type == 2 ||
+                                pos.C3Type == 3 ||
+                                pos.C3Type == 5
+                              "
+                              >{{ pos.C3Settings }}</ng-container
+                            >
+                            <ng-container *ngIf="pos.C3Type == 4">
+                              <table>
+                                <tr>
+                                  <th>Pulse duration ms</th>
+                                  <th>Pulse_Voltage</th>
+                                  <th>Type (Solenoid or Latch)</th>
+                                </tr>
+                                <tr>
+                                  <td
+                                    *ngFor="let pos of getSettings(pos.C3Settings)"
+                                  >
+                                    {{ pos }}
+                                  </td>
+                                </tr>
+                              </table>
+                            </ng-container>
+                            <ng-container *ngIf="pos.C3Type == 6">
+                              <tr>
+                                <th>SMTS1_Address</th>
+                                <th>SMTS_1_11</th>
+                                <th>SMTS_2_Address</th>
+                                <th>SMTS_2_Level</th>
+                              </tr>
+                              <tr>
+                                <td
+                                  *ngFor="
+                                    let column of getSettings(pos.C3Settings)
+                                  "
+                                >
+                                  {{ column }}
+                                </td>
+                              </tr>
+                            </ng-container>
+                          </td>
+                          <td>{{ pos.ProgramEndDayMode }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

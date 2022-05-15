@@ -8,7 +8,7 @@ export class SequenceShortViewModel {
     seqEndDate!: Date;
     basisOfOp: string = "";
     seqType: string = "";
-    seqTagName: string = "";
+    SeqTagName: string = "";
     networkName: string = "";
     zoneName: string = "";
     seqName: string = "";

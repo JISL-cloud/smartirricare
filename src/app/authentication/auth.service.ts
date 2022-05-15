@@ -12,11 +12,15 @@ import { AppConfigService } from '../_services/appconfigservice ';
 @Injectable()
 export class AuthService extends BaseService {
     private currentUserSubject: BehaviorSubject<CurrentUser>;
+    private currentTImeSubject: BehaviorSubject<string>;
     gnBaseURL: any;
 
     constructor(private http: HttpClient, private appURL: AppConfigService) {
         super();
         this.currentUserSubject = new BehaviorSubject<CurrentUser>(
+            JSON.parse(sessionStorage.getItem('currentUser') || '{}')
+        );       
+        this.currentTImeSubject = new BehaviorSubject<string>(
             JSON.parse(sessionStorage.getItem('currentUser') || '{}')
         );       
     }

@@ -23,7 +23,7 @@ export class GatewaynodeComponent implements OnInit {
   constructor(private modalService: NgbModal, private confService: NodeconfigurationService, public toastr: ToastrService,) { }
 
   ngOnInit(): void {
-    this.gatewayNodeInfo.nodeId = this.nodeId;
+    this.gatewayNodeInfo.NodeId = this.nodeId;
     this.getProduct(this.nodeId);
     this.getCardType();
     console.log(this.nodeInfo);

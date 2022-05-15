@@ -42,6 +42,10 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { BingApiLoaderService } from './dashboard/bing-api-loader.service';
 import { SiteConditionsService } from './dashboard/site-conditions.service';
 import { WINDOW_PROVIDERS } from './dashboard/window.service';
+import { EventsComponent } from './events/events.component';
+import { DataTablesModule } from 'angular-datatables';
+import { DataloggerComponent } from './datalogger/datalogger.component';
+import { UsersComponent } from './users/users.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -66,6 +70,9 @@ const initializerConfigFn = (appConfig: AppConfigService) => {
     BreadcrumbComponent,
     OnlydecimalDirective,
     ConfigurationComponent,
+    EventsComponent,
+    DataloggerComponent,
+    UsersComponent,
   ],
   imports: [
     CommonModule,
@@ -76,6 +83,7 @@ const initializerConfigFn = (appConfig: AppConfigService) => {
 	  PerfectScrollbarModule,
     NgbModule,
     NgxSpinnerModule,
+    DataTablesModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-full-width',

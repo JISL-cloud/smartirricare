@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4>Users</h4>
+        <div class="row table-responsive mt-3">
+          <table
+            class="table table-bordered mt-2"
+            id="dt1"
+            datatable
+            [dtTrigger]="dtTrigger"
+            [dtOptions]="dtOptions"
+          >
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>User Name</th>
+                <th>Mobile No</th>
+                <th>Role</th>
+                <th>IsRestrictedUser</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pos of this.userList">
+                <td class="handCursor">
+                  {{ pos.FirstName }}
+                </td>
+                <td class="handCursor">
+                  {{ pos.LastName }}
+                </td>
+                <td>{{ pos.UserName }}</td>
+                <td>{{ pos.MobileNo }}</td>
+                <td>{{ getRole(pos.RoleId) }}</td>
+                <td>
+                  <!-- Rounded switch -->
+                  <label class="switch">
+                    <input
+                      class="form-control"
+                      type="checkbox"
+                      [(ngModel)]="pos.IsRestrictedUser"
+                      name="active"
+                      tabIndex="3"
+                      (change)="updateUserRestriction(pos.UserId, pos.IsRestrictedUser)"
+                    />
+                    <span class="slider"></span>
+                  </label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

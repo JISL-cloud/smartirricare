@@ -2,6 +2,8 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
+        <button class="btn btn-primary float-right" (click)="deleteConf()">Delete All Configuration</button>
+
         <div class="">
           <div class="mt-2">
             <ngb-tabset class="tabset1">
@@ -15,393 +17,95 @@
                       Add Project
                     </button> -->
                   </div>
-
-                  <div class="table-responsive mt-3">
-                    <table class="table table-bordered mt-2">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Description</th>
-                          <th>Address</th>
-                          <th>Total OP Subscribed</th>
-                          <th>Max Permissible Total FlowRate</th>
-                          <th>TotalNetwork</th>
-                          <th>Max No Of Node Per Network</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let pos of this.projectLst">
-                          <td>{{ pos.name }}</td>
-                          <td>{{ pos.description }}</td>
-                          <td>{{ pos.address }}</td>
-                          <td>{{ pos.noOfTotalOpsubscribed }}</td>
-                          <td>{{ pos.maxPermissibleTotalFlowRate }}</td>
-                          <td>{{ pos.noOfTotalNetwork }}</td>
-                          <td>{{ pos.maxNoOfRtuperNetwork }}</td>
-
-                          <!-- max No Of Node PerNetwork -->
-                          <td>
-                            <button
-                              type="button"
-                              id="addcable"
-                              class="btn btn-info btn-sm"
-                              (click)="AddProject(contentLC, pos.id)"
-                            >
-                              Edit
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div class="p-3 border">
+                    <p>
+                      <b>MaxNodeSerialNo</b> - {{ projectInfo.MaxNodeSerialNo }}
+                    </p>
+                    <p><b>MaxNodeId</b> - {{ projectInfo.MaxNodeId }}</p>
+                    <p><b>MaxGwValves</b> - {{ projectInfo.MaxGwValves }}</p>
+                    <p><b>MaxGwSensors</b> - {{ projectInfo.MaxGwSensors }}</p>
+                    <p>
+                      <b>MaxNodeValves</b> - {{ projectInfo.MaxNodeValves }}
+                    </p>
+                    <p>
+                      <b>MaxNodeSensors</b> - {{ projectInfo.MaxNodeSensors }}
+                    </p>
+                    <p>
+                      <b>MaxMobileNoSize</b> - {{ projectInfo.MaxMobileNoSize }}
+                    </p>
+                    <p><b>MaxSequences</b> - {{ projectInfo.MaxSequences }}</p>
+                    <p>
+                      <b>MaxElementsInSequences</b> -
+                      {{ projectInfo.MaxElementsInSequences }}
+                    </p>
+                    <p><b>MaxFilters</b> - {{ projectInfo.MaxFilters }}</p>
+                    <p><b>MaxPumps</b> - {{ projectInfo.MaxPumps }}</p>
+                    <p><b>MaxFert</b> - {{ projectInfo.MaxFert }}</p>
+                    <p>
+                      <b>MaxRtuscheduleTransferDis</b> -
+                      {{ projectInfo.MaxRtuscheduleTransferDis }}
+                    </p>
+                    <p>
+                      <b>MaxSchOperatedGw</b> -
+                      {{ projectInfo.MaxSchOperatedGw }}
+                    </p>
+                    <p>
+                      <b>MaxGwinProject</b> - {{ projectInfo.MaxGwinProject }}
+                    </p>
+                    <p><b>MaxNodePerGw</b> - {{ projectInfo.MaxNodePerGw }}</p>
+                    <p>
+                      <b>MaxNodeInProject</b> -
+                      {{ projectInfo.MaxNodeInProject }}
+                    </p>
+                    <p>
+                      <b>MaxNetworkInProject</b> -
+                      {{ projectInfo.MaxNetworkInProject }}
+                    </p>
                   </div>
                 </ng-template>
               </ngb-tab>
-              <ngb-tab title="Network">
+              <ngb-tab title="Netwrok-RTU">
                 <ng-template ngbTabContent>
-                  <!-- <div>
-                    <button
-                      class="btn btn-primary float-right mt-2"
-                      (click)="AddNetwork(content, 0)"
-                    >
-                      Add Network
-                    </button>
-                  </div> -->
-
-                  <div class="table-responsive mt-3">
-                    <table class="table-responsive table table-bordered mt-2">
-                      <thead>
-                        <tr>
-                          <th>Network No</th>
-                          <th>Name</th>
-                          <th>Description</th>
-                          <th>Tag Name</th>
-                          <th>No of Nodes</th>
-                          <th>Use Template for Node</th>
-                          <th>Network Lock</th>
-                          <th>Nodes</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let pos of this.networkLst">
-                          <td>{{ pos.networkNo }}</td>
-                          <td>{{ pos.name }}</td>
-                          <td>{{ pos.description }}</td>
-                          <td>{{ pos.tagName }}</td>
-                          <td>{{ pos.noOfRtu }}</td>
-                          <td>
-                            <label>{{
-                              pos.useTemplateForRTU ? "Yes" : "No"
-                            }}</label>
-                          </td>
-                          <td>
-                            <label>{{
-                              pos.networkLock ? "Locked" : "Unlocked"
-                            }}</label>
-                          </td>
-                          <td>
-                            <button
-                              type="button"
-                              id="addcable"
-                              class="btn btn-warning btn-sm"
-                              (click)="AddProject(content, pos.id)"
-                            >
-                              Nodes
-                            </button>
-                          </td>
-                          <td>
-                            <button
-                              type="button"
-                              id="addcable"
-                              class="btn btn-primary btn-sm"
-                              (click)="AddProject(content, pos.id)"
-                            >
-                              Edit
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr style="background-color: aliceblue">
-                          <td>{{ networkInfo.networkNo }}</td>
-                          <td>
-                            <div class="form-group">
-                              <select 
-                                class="form-control"
-                                id="networkNo"
-                                required
-                                [(ngModel)]="networkInfo.networkNo"
-                                name="networkNo"
-                                #position="ngModel"
-                              >
-                                <!-- <option value="">Select Network</option> -->
-                                <option
-                                  [value]="li.value"
-                                  [innerHtml]="li.displayText"
-                                  *ngFor="let li of availableNetworks"
-                                ></option>
-                              </select>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <div class="input-group">
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="laborc"
-                                  required
-                                  [(ngModel)]="networkInfo.description"
-                                  name="laborc"
-                                  #laborc="ngModel"
-                                />
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <div class="input-group">
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="laborc"
-                                  required
-                                  [(ngModel)]="networkInfo.tagName"
-                                  name="laborc"
-                                  #laborc="ngModel"
-                                />
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div class="form-group">
-                              <div class="input-group">
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="laborc"
-                                  required
-                                  [(ngModel)]="networkInfo.noOfRTU"
-                                  name="laborc"
-                                  #laborc="ngModel"
-                                />
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <!-- <label>{{
-                              networkInfo.useTemplateForRTU ? "Yes" : "No"
-                            }}</label>
-                            <br /> -->
-                            <!-- Rounded switch -->
-                            <label class="switch">
-                              <input
-                                type="checkbox"
-                                [(ngModel)]="networkInfo.useTemplateForRTU"
-                                name="useTemplateForRTU"
-                              />
-                              <span class="slider"></span>
-                            </label>
-                          </td>
-                          <td>
-                            <!-- <label>{{
-                              networkInfo.networkLock ? "Locked" : "Unlocked"
-                            }}</label> -->
-
-                            <!-- Rounded switch -->
-                            <label class="switch">
-                              <input
-                                type="checkbox"
-                                [(ngModel)]="networkInfo.networkLock"
-                                name="networkLock"
-                              />
-                              <span class="slider"></span>
-                            </label>
-                          </td>
-                          <td></td>
-                          <td>
-                            <button
-                              type="button"
-                              id="addcable"
-                              class="btn btn-info btn-sm"
-                              (click)="AddProject(content, pos.id)"
-                            >
-                              Add
-                            </button>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </ng-template>
-              </ngb-tab>
-              <ngb-tab title="Node">
-                <ng-template ngbTabContent>
-                  <div class="row mt-3">
+                  <div class="row">
                     <div class="col-md-4">
-                      <div class="form-group">
-                        <ng-select
-                          id="selectedNetwork"
-                          #select
-                          [items]="networkLst"
-                          bindLabel="name"
-                          placeholder="Select Network"
-                          bindValue="networkId"
-                          [(ngModel)]="selectedNetwork"
-                          (change)="GetList(selectedNetwork)"
-                          appearance="outline"
-                        >
-                        </ng-select>
-                      </div>
-                    </div>
-                    <div class="col-md-8">
-                      <button
-                      class="btn btn-primary float-right mt-2"
-                      (click)="AddNode(content, 0,'Node')"
+                      <label>Network</label>
+                      <ng-select
+                      appendTo="body"
+                      id="selectedFilter"
+                      #select
+                      [items]="nwLst"
+                      bindLabel="networkNo"
+                      placeholder="Show All"
+                      bindValue="networkNo"
+                      [(ngModel)]="selectedFilter"
+                      (change)="GetList(selectedFilter)"
+                      appearance="outline"
                     >
-                      Add Node
-                    </button>
+                    </ng-select>
                     </div>
                   </div>
- 
-                  <div class="row table-responsive mt-3">
-                    <table class="table table-bordered mt-2">
-                      <thead>
-                        <tr>
-                          <th>Node Name</th>
-                          <th>Network No</th>
-                          <th>Node No</th>
-                          <th>RTU Id</th>
-                          <th>Description</th>
-                          <th>Product Type</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let pos of this.nodeLst">
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.nodeName }}</td>
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.networkNo }}</td>
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.nodeNo }}</td>
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.rtuId }}</td>
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.description }}</td>
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.productName }}</td>
-                          <!-- max No Of Node PerNetwork -->
-                          <td>
-                            <button
-                              type="button"
-                              id="addcable"
-                              class="btn btn-info btn-sm"
-                              (click)="AddNode(content, pos.id,'Node')"
-                            >
-                              Edit
-                            </button>
-
-                            <button
-                            type="button"
-                            id="clone"
-                            class="btn btn-warning btn-sm ml-3"
-                            (click)="CloneNode(content, pos.id)"
-                          >
-                            Clone
-                          </button>
-
-                          <button
-                          type="button"
-                          id="clone"
-                          class="btn btn-danger btn-sm ml-3"
-                          (click)="deleteNode(contentLC, pos.id)"
-                        >
-                          Delete
-                        </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </ng-template>
-              </ngb-tab>
-              <ngb-tab title="Gateway">
-                <ng-template ngbTabContent>
-                  <div class="row mt-3">
-                    <div class="col-md-4">              
-                    </div>
-                    <div class="col-md-8">
-                      <button
-                      class="btn btn-primary float-right mt-2"
-                      (click)="AddNode(content, 0,'Gateway')"
-                    >
-                      Add Gateway
-                    </button>
-                    </div>
-                  </div>
- 
-                  <div class="row table-responsive mt-3">
-                    <table class="table table-bordered mt-2">
-                      <thead>
-                        <tr>
-                          <th>Node Name</th>
-                          <th>Network No</th>
-                          <th>Node No</th>
-                          <th>RTU Id</th>
-                          <th>Description</th>
-                          <th>Product Type</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let pos of this.gatewayNodeLst">
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.nodeName }}</td>
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.networkNo }}</td>
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.nodeNo }}</td>
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.rtuId }}</td>
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.description }}</td>
-                          <td  routerLink="/configuration/node"
-                          [queryParams]="{ nodeId: pos.id}" class="handCursor">{{ pos.productName }}</td>
-                          <!-- max No Of Node PerNetwork -->
-                          <td>
-                            <button
-                              type="button"
-                              id="addcable"
-                              class="btn btn-info btn-sm"
-                              (click)="AddNode(content, pos.id,'Gateway')"
-                            >
-                              Edit
-                            </button>
-
-                            <button
-                            type="button"
-                            id="clone"
-                            class="btn btn-warning btn-sm ml-3"
-                            (click)="CloneNode(content, pos.id)"
-                          >
-                            Clone
-                          </button>
-
-                          <button
-                          type="button"
-                          id="clone"
-                          class="btn btn-danger btn-sm ml-3"
-                          (click)="deleteNode(contentLC, pos.id)"
-                        >
-                          Delete
-                        </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                  <table class="table table-bordered mt-2">
+                    <thead>
+                      <tr>
+                        <th>Network No</th>
+                        <th>Network Tagname</th>
+                        <th>Rtu Id</th>
+                        <th>Node No</th>
+                        <th>Node Tagname</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pos of this.nwnodeLst">
+                        <td>{{ pos.networkId }}</td>
+                        <td>{{ pos.networkTagName }}</td>
+                        <td>{{ pos.nodeId }}</td>
+                        <td>{{ GetNodeNo(pos.networkId, pos.nodeId ) }}</td>
+                        <td>{{ pos.nodeTagName }}</td>
+                        <td><button type="button" class="btn btn-sm btn-primary" (click)="openProduct(pos.nodeId, pos.networkId)">Product </button></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </ng-template>
               </ngb-tab>
             </ngb-tabset>
@@ -499,26 +203,29 @@
       <div class="col-md-4">
         <div class="form-group">
           <label for="difficult">Product</label>
-            <select
-              class="form-control"
-              id="productTypeId"
-              required
-              (change)="setAddon()"
-              [(ngModel)]="nodeInfo.productTypeId"
-              name="productTypeId"
-              #productTypeId="ngModel"
-            >
-              <!-- <option value="">Select Network</option> -->
-              <option
-                [value]="li.productNo"
-                [innerHtml]="li.type"
-                *ngFor="let li of producyTypeLst"
-              ></option>
-            </select>
+          <select
+            class="form-control"
+            id="productTypeId"
+            required
+            (change)="setAddon()"
+            [(ngModel)]="nodeInfo.productTypeId"
+            name="productTypeId"
+            #productTypeId="ngModel"
+          >
+            <!-- <option value="">Select Network</option> -->
+            <option
+              [value]="li.productNo"
+              [innerHtml]="li.type"
+              *ngFor="let li of producyTypeLst"
+            ></option>
+          </select>
         </div>
       </div>
     </div>
-    <div class="row" *ngIf="nodeInfo.productTypeId == 3 || nodeInfo.productTypeId == 4">
+    <div
+      class="row"
+      *ngIf="nodeInfo.productTypeId == 3 || nodeInfo.productTypeId == 4"
+    >
       <div class="col-md-6">
         <div class="form-group">
           <label for="difficult">Addon Card</label>

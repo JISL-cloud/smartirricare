@@ -72,7 +72,7 @@ export class DashboardComponent implements AfterViewInit {
     this.streetsideMap = new Microsoft.Maps.Map(
       this.streetsideMapViewChild.nativeElement,
       {
-        // mapTypeId: Microsoft.Maps.MapTypeId.streetside,
+        mapTypeId: Microsoft.Maps.MapTypeId.aerial,
         // streetsideOptions: {
         //   overviewMapMode: Microsoft.Maps.OverviewMapMode.hidden,
         //   showExitButton: false
@@ -81,6 +81,13 @@ export class DashboardComponent implements AfterViewInit {
       }
     );
   }
+  // getPushPIn(){
+  //   var pushpin = new Microsoft.Maps.Pushpin(this.streetsideMap.getCenter(), null);
+  //   this.streetsideMap.entities.push(pushpin);
+  //   // Binding the events
+  //   Microsoft.Maps.Events.addHandler(pushpin, 'click', () => { highlight('pushpinClick'); });
+  // }
+
 
   hasLogEntries() {
     return this.log.length > 0;

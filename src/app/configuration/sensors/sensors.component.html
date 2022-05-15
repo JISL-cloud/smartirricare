@@ -1,0 +1,319 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="">
+          <div class="mt-2">
+            <ngb-tabset class="tabset1" [destroyOnHide]="false">
+              <ngb-tab title="Valve">
+                <ng-template ngbTabContent>
+                  <div class="row table-responsive mt-3">
+                    <table
+                      class="table-responsive table table-bordered mt-2"
+                      datatable
+                      [dtTrigger]="dtTrigger1"
+                      [dtOptions]="dtOptions1"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Network No</th>
+                          <th>NodeId</th>
+                          <th>ValveNo</th>
+                          <th>TagNameValve</th>
+                          <th>ValveType</th>
+                          <th>MasterNodeId</th>
+                          <th>TagNameMasterNode</th>
+                          <th>MasterValveNo</th>
+                          <th>TagNameMasterValve</th>
+                          <th>BlockNo</th>
+                          <th>TagNameBlock</th>
+                          <th>FertGrpNo</th>
+                          <th>TagNameFertGroup</th>
+                          <th>FilterGrpNo</th>
+                          <th>TagNameFilterGroup</th>
+                          <th>LinkedSensor1NodeId</th>
+                          <th>LinkedSensor1SensorNo</th>
+                          <th>LinkedSensor2NodeId</th>
+                          <th>LinkedSensor2SensorNo</th>
+                          <th>ValveGrpNo1</th>
+                          <th>ValveGrpNo2</th>
+                          <th>TagNameValveGroup</th>
+                          <th>HeadPumpGrNo</th>
+                          <th>TagNamePumpGroup</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.lstVrt">
+                          <td>{{ pos.GwSrn }}</td>
+                          <td>{{ pos.NodeId }}</td>
+                          <td>{{ pos.ValveNo }}</td>
+                          <td>{{ pos.TagNameValve }}</td>
+                          <td>{{ GetType(pos.ValveType) }}</td>
+                          <td>{{ pos.MasterNodeId }}</td>
+                          <td>{{ pos.TagNameMasterNode }}</td>
+                          <td>{{ pos.MasterValveNo }}</td>
+                          <td>{{ pos.TagNameMasterValve }}</td>
+                          <td>{{ pos.BlockNo }}</td>
+                          <td>{{ pos.TagNameBlock }}</td>
+                          <td>{{ pos.FertGrpNo }}</td>
+                          <td>{{ pos.TagNameFertGroup }}</td>
+                          <td>{{ pos.FilterGrpNo }}</td>
+                          <td>{{ pos.TagNameFilterGroup }}</td>
+                          <td>{{ pos.LinkedSensor1NodeId }}</td>
+                          <td>{{ pos.LinkedSensor1SensorNo }}</td>
+                          <td>{{ pos.LinkedSensor2NodeId }}</td>
+                          <td>{{ pos.LinkedSensor2SensorNo }}</td>
+                          <td>{{ pos.ValveGrpNo1 }}</td>
+                          <td>{{ pos.ValveGrpNo2 }}</td>
+                          <td>{{ pos.TagNameValveGroup }}</td>
+                          <td>{{ pos.HeadPumpGrNo }}</td>
+                          <td>{{ pos.TagNamePumpGroup }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Analog 0 to 5 V">
+                <ng-template ngbTabContent>
+                  <div class="table-responsive mt-3">
+                    <table
+                      class="table table-bordered mt-2"
+                      datatable
+                      [dtTrigger]="dtTrigger2"
+                      [dtOptions]="dtOptions2"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Network No</th>
+                          <th>TagName</th>
+                          <th>Node Id</th>
+                          <th>Ss No</th>
+                          <th>Priority</th>
+                          <th>Sampling Rate</th>
+                          <th>CtrHghThrs</th>
+                          <th>HghThrs</th>
+                          <th>LwTthrs</th>
+                          <th>CrtLwrThrs</th>
+                          <th>DlyCfmThrs</th>
+                          <th>Rsved</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.lstAnalog05v">
+                          <td>{{ pos.GwSrn }}</td>
+                          <td>{{ pos.TagName }}</td>
+                          <td>{{ pos.NodeId }}</td>
+                          <td>{{ pos.SsNo }}</td>
+                          <td>{{ pos.Sspriority }}</td>
+                          <td>{{ pos.SamplingRate }}</td>
+                          <td>{{ pos.CtrHghThrs }}</td>
+                          <td>{{ pos.HghThrs }}</td>
+                          <td>{{ pos.LwTthrs }}</td>
+                          <td>{{ pos.CrtLwrThrs }}</td>
+                          <td>{{ pos.DlyCfmThrs }}</td>
+                          <td>{{ pos.Rsved }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Analog 4 to 20 mA">
+                <ng-template ngbTabContent>
+                  <!-- <div>
+                        <button
+                          class="btn btn-primary float-right mt-2"
+                          (click)="AddNetwork(content, 0)"
+                        >
+                          Add Network
+                        </button>
+                      </div> -->
+
+                  <div class="table-responsive mt-3">
+                    <table
+                      class="table table-bordered mt-2"
+                      datatable
+                      [dtTrigger]="dtTrigger3"
+                      [dtOptions]="dtOptions3"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Network No</th>
+                          <th>TagName</th>
+
+                          <th>Node Id</th>
+                          <th>Ss No</th>
+                          <th>Priority</th>
+                          <th>Sampling Rate</th>
+                          <th>CtrHghThrs</th>
+                          <th>HghThrs</th>
+                          <th>LwTthrs</th>
+                          <th>CrtLwrThrs</th>
+                          <th>DlyCfmThrs</th>
+                          <th>Rsved</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.lstAnalog420mA">
+                          <td>{{ pos.GwSrn }}</td>
+                          <td>{{ pos.TagName }}</td>
+                          <td>{{ pos.NodeId }}</td>
+                          <td>{{ pos.SsNo }}</td>
+                          <td>{{ pos.Sspriority }}</td>
+                          <td>{{ pos.SamplingRate }}</td>
+                          <td>{{ pos.CtrHghThrs }}</td>
+                          <td>{{ pos.HghThrs }}</td>
+                          <td>{{ pos.LwTthrs }}</td>
+                          <td>{{ pos.CrtLwrThrs }}</td>
+                          <td>{{ pos.DlyCfmThrs }}</td>
+                          <td>{{ pos.Rsved }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Digital NO_NC">
+                <ng-template ngbTabContent>
+                  <div class="row table-responsive mt-3">
+                    <table
+                      class="table table-bordered mt-2"
+                      datatable
+                      [dtTrigger]="dtTrigger4"
+                      [dtOptions]="dtOptions4"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Network No</th>
+                          <th>TagName</th>
+
+                          <th>NodeId</th>
+                          <th>SsNo</th>
+                          <th>Priority</th>
+                          <th>Sampling Rate</th>
+                          <th>DfltStat</th>
+                          <th>StatRevDly</th>
+                          <th>AlrmLvl</th>
+                          <th>DlyTmeIfRevr</th>
+                          <th>DlyCfmThrs</th>
+                          <th>Rsved</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.lstDigitalNoNc">
+                          <td>{{ pos.GwSrn }}</td>
+                          <td>{{ pos.TagName }}</td>
+                          <td>{{ pos.NodeId }}</td>
+                          <td>{{ pos.SsNo }}</td>
+                          <td>{{ pos.Sspriority }}</td>
+                          <td>{{ pos.SamplingRate }}</td>
+                          <td>{{ pos.DfltStat }}</td>
+                          <td>{{ pos.StatRevDly }}</td>
+                          <td>{{ pos.AlrmLvl }}</td>
+                          <td>{{ pos.DlyTmeIfRevr }}</td>
+                          <td>{{ pos.DlyCfmThrs }}</td>
+                          <td>{{ pos.Rsved }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Digital Counter">
+                <ng-template ngbTabContent>
+                  <div class="row table-responsive mt-3">
+                    <table
+                      class="table table-bordered mt-2"
+                      datatable
+                      [dtTrigger]="dtTrigger5"
+                      [dtOptions]="dtOptions5"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Network No</th>
+                          <th>TagName</th>
+
+                          <th>NodeId</th>
+                          <th>SsNo</th>
+                          <th>Priority</th>
+                          <th>Sampling Rate</th>
+                          <th>HghFlwRtFrq</th>
+                          <th>LowFlwRtFrq</th>
+                          <th>FilTmIniWtTm</th>
+                          <th>PlsDivFct</th>
+                          <th>DlyCfmThrs</th>
+                          <th>Rsved</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.lstDigitalCounter">
+                          <td>{{ pos.GwSrn }}</td>
+                          <td>{{ pos.TagName }}</td>
+                          <td>{{ pos.NodeId }}</td>
+                          <td>{{ pos.SsNo }}</td>
+                          <td>{{ pos.Sspriority }}</td>
+                          <td>{{ pos.SamplingRate }}</td>
+                          <td>{{ pos.HghFlwRtFrq }}</td>
+                          <td>{{ pos.LowFlwRtFrq }}</td>
+                          <td>{{ pos.FilTmIniWtTm }}</td>
+                          <td>{{ pos.PlsDivFct }}</td>
+                          <td>{{ pos.DlyCfmThrs }}</td>
+                          <td>{{ pos.Rsved }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Water Meter">
+                <ng-template ngbTabContent>
+                  <div class="row table-responsive mt-3">
+                    <table
+                      class="table table-bordered mt-2"
+                      datatable
+                      [dtTrigger]="dtTrigger3"
+                      [dtOptions]="dtOptions3"
+                    >
+                      <thead>
+                        <tr>
+                          <th>GwSrn</th>
+                          <th>TagName</th>
+
+                          <th>NodeId</th>
+                          <th>SsNo</th>
+                          <th>Priority</th>
+                          <th>Sampling Rate</th>
+                          <th>HghFlwRtFrq</th>
+                          <th>LowFlwRtFrq</th>
+                          <th>TmeCfrmNoFlwSec</th>
+                          <th>DlyCfmThrs</th>
+                          <th>Rsved</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pos of this.lstWaterMeter">
+                          <td>{{ pos.GwSrn }}</td>
+                          <td>{{ pos.TagName }}</td>
+                          <td>{{ pos.NodeId }}</td>
+                          <td>{{ pos.SsNo }}</td>
+                          <td>{{ pos.Sspriority }}</td>
+                          <td>{{ pos.SamplingRate }}</td>
+                          <td>{{ pos.HghFlwRtFrq }}</td>
+                          <td>{{ pos.LowFlwRtFrq }}</td>
+                          <td>{{ pos.TmeCfrmNoFlwSec }}</td>
+                          <td>{{ pos.DlyCfmThrs }}</td>
+                          <td>{{ pos.Rsved }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

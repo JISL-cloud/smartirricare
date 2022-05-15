@@ -1,0 +1,147 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4>Data Logger</h4>
+        <div class="row">
+          <div class="col-md-3">
+            <label>Gatewy</label>
+            <!-- <ng-select
+            appendTo="body"
+            id="gwidNo"
+            #gwidNo
+            [items]="gwlist"
+            bindLabel="name"
+            placeholder="Show All"
+            bindValue="name"
+            [(ngModel)]="postEvents.gwidNo"          
+            appearance="outline"
+          >
+          </ng-select> -->
+            <select
+              class="form-control"
+              #gwidNo
+              id="gwidNo"
+              name="gwidNo"
+              [(ngModel)]="postEvents.gwidNo"
+            >
+              <option [ngValue]="null" disabled>Select Gateway</option>
+              <option *ngFor="let country of gwlist" [ngValue]="country.name">
+                {{ country.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-9">
+            <label>Search</label>
+            <input type="text" id="search"  [(ngModel)]="searchString"
+            name="search"
+            #search="ngModel" class="form-control" (keyup)="Searchtext()"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <label>From Date</label>
+            <input
+              type="date"
+              id="fromDate"
+              class="form-control"
+              [(ngModel)]="postEvents.startdate"
+              name="fromDate"
+              #fromDate="ngModel"
+            />
+          </div>
+          <div class="col-md-3">
+            <label>From Time</label>
+            <input
+              type="time"
+              id="fromTime"
+              class="form-control"
+              [(ngModel)]="postEvents.fromTime"
+              name="fromTime"
+              #fromTime="ngModel"
+            />
+          </div>
+          <div class="col-md-3">
+            <label>To Date</label>
+            <input
+              type="date"
+              id="endDate"
+              class="form-control"
+              [(ngModel)]="postEvents.endDate"
+              name="endDate"
+              #endDate="ngModel"
+            />
+          </div>
+          <div class="col-md-3">
+            <label>To Time</label>
+            <input
+              type="time"
+              id="toTime"
+              class="form-control"
+              [(ngModel)]="postEvents.toTime"
+              name="toTime"
+              #toTime="ngModel"
+            />
+          </div>
+        </div>
+        <div class="row text-center mt-2">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" (click)="SearchRec()">
+              Search
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary ml-3"
+              (click)="clear()"
+            >
+              Clear
+            </button>
+            <button  class="btn btn-primary ml-3" (click)="downloadTxt()">Download </button>
+          </div>
+        </div>
+        <div class="row table-responsive mt-3">
+          <div class="col-md-12 mt-3" *ngFor="let pos of this.dataLst">
+            <p>
+              <b>Date :</b> {{ pos.AddedDateTime | date: "dd/MM/yyyy HH:mm" }}  <b class="ml-4">GW No :</b>{{ pos.GwId }}  <b class="ml-4">Project Id : </b>{{ pos.ProjectId }}
+            </p>
+            <div style="white-space: pre-line;" [innerHtml]="getMessage(pos.Message)"></div>
+            <hr/>
+          </div>
+
+          <!-- <table
+            class="table table-bordered mt-2"
+            id="dt1"
+            datatable
+            [dtTrigger]="dtTrigger"
+            [dtOptions]="dtOptions"
+          >
+            <thead>
+              <tr>
+                <th>Gw Id</th>
+                <th>ProjectId</th>
+                <th>Dbid</th>
+                <th>Cmdno</th>
+                <th>NwUpid</th>
+                <th>MaxLengthKb</th>
+                <th>Message</th>
+                <th>AddedDateTime</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pos of this.dataLst">
+                <td>{{ pos.GwId }}</td>
+                <td>{{ pos.ProjectId }}</td>
+                <td>{{ pos.Dbid }}</td>
+                <td>{{ pos.Cmdno }}</td>
+                <td>{{ pos.NwUpid }}</td>
+                <td>{{ pos.MaxLengthKb }}</td>
+                <td>{{ pos.Message }}</td>
+                <td>{{ pos.AddedDateTime }}</td>
+              </tr>
+            </tbody>
+          </table> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

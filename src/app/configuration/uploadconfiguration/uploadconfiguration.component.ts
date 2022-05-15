@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxFileDropEntry, FileSystemFileEntry } from 'ngx-file-drop';
 import { ToastrService } from 'ngx-toastr';
-import { ProjectConfiguration } from '../nodesconfiguration/nodeconfiguration.model';
 import { NodeconfigurationService } from '../nodesconfiguration/nodeconfiguration.service';
+import { ProjectConfiguration } from '../project/project.model';
 import { allowedFileExtensions, Attachment, UploadModel } from './upload.model';
 
 @Component({
@@ -33,7 +33,7 @@ export class UploadconfigurationComponent implements OnInit {
   constructor(private confService: NodeconfigurationService, private modalService: NgbModal, public router: Router, public toastr: ToastrService,) { }
 
   ngOnInit(): void {
-    this.getProject();
+  //  this.getProject();
   }
 
   getProject() {
@@ -85,6 +85,10 @@ export class UploadconfigurationComponent implements OnInit {
   public droppedFiles(files: NgxFileDropEntry[], index: number | null = null) {
     if (files.length > 0) {
       const droppedFile = files[0];
+      if(!droppedFile.fileEntry.name.toUpperCase().includes("CONFIGURATION")){
+        this.toastr.error("File Name should contain CONFIGURATION text");
+        return;
+      }
       // Is it a file?
       if (droppedFile.fileEntry.isFile && this.isFileAllowed(droppedFile.fileEntry.name)) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;

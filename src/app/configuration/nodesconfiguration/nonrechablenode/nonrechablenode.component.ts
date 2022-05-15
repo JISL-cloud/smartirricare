@@ -18,7 +18,7 @@ export class NonrechablenodeComponent implements OnInit {
   constructor(private confService: NodeconfigurationService, public toastr: ToastrService,) { }
 
   ngOnInit(): void {
-    this.nonRechableNodeInfo.nodeId = this.nodeId;
+    this.nonRechableNodeInfo.NodeId = this.nodeId;
     this.getProduct(this.nodeId)
 
   }

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { BaseService } from 'src/app/authentication/base.service';
 import { AppConfigService } from 'src/app/_services/appconfigservice ';
-import { Network, NetworkDDL, NodeModel, ProductTypes, Project } from './project.model';
+import { MultiNetworkRtu, Network, NetworkDDL, NodeModel, ProductTypes, Project, ProjectConfiguration, UpdateIdsRequired } from './project.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,13 @@ export class ProjectService extends BaseService{
   }
 
   getProjectList(){
-    return this.http.get<Project[]>(this.jApi + 'Project').pipe(catchError(this.handleError));
+    return this.http.get<ProjectConfiguration[]>(this.jApi + 'Project').pipe(catchError(this.handleError));
   }
+
+  GetMultiNetworkRtu(){
+    return this.http.get<UpdateIdsRequired[]>(this.jApi + 'Project/GetUpdateIdRequired').pipe(catchError(this.handleError));
+  }
+
 
   getProductTypes(){
     return this.http.get<ProductTypes[]>(this.jApi + 'Product').pipe(catchError(this.handleError));

@@ -30,4 +30,10 @@ export class SequenceService extends BaseService {
     return this.http.get<SequenceValveDataViewModel[]>(this.jApi + 'Sequence/GetSequenceById/'+ id).pipe(catchError(this.handleError));
   }
 
+  deleteSequenceById(id:number) {
+    return this.http.get<any>(this.jApi + 'Sequence/DeleteSequenceBySeqIdNew/'+ id).pipe(catchError(this.handleError));
+  }
+  deleteAllSequence() {
+    return this.http.get<any>(this.jApi + 'Sequence/DeleteAllSequence').pipe(catchError(this.handleError));
+  }
 }

@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4>Gateway Status Data</h4>
+        <div class="row">
+          <div class="col-md-3">
+            <label>From Date</label>
+
+            <input type="date" id="fromDate" class="form-control"  [(ngModel)]="postEvents.startdate"
+            name="fromDate"
+            #fromDate="ngModel" />
+          </div>
+          <div class="col-md-3">
+            <label>From Time</label>
+
+            <input type="time" id="fromTime" class="form-control"  [(ngModel)]="postEvents.fromTime"
+            name="fromTime"
+            #fromTime="ngModel" />
+          </div>
+          <div class="col-md-3">
+            <label>To  Date</label>
+            <input type="date" id="endDate" class="form-control"  [(ngModel)]="postEvents.endDate"
+            name="endDate"
+            #endDate="ngModel" />
+          </div>
+          <div class="col-md-3">
+            <label>To Time</label>
+            <input type="time" id="toTime" class="form-control"  [(ngModel)]="postEvents.toTime"
+            name="toTime"
+            #toTime="ngModel" />
+          </div>  
+        </div>
+        <div class="row text-center mt-2">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-primary" (click)="SearchRec()">Search</button>
+            <button type="button" class="btn btn-primary ml-3" (click)="clear()">Clear</button>
+          </div>
+        </div>
+        <div class="row table-responsive mt-3">
+          <table
+            class="table table-bordered mt-2"
+            id="dt1"
+            datatable
+            [dtTrigger]="dtTrigger"
+            [dtOptions]="dtOptions"
+          >
+            <thead>
+              <tr>           
+                <td>FrameType</td>
+                <th>Network No</th>
+                <th>Node No</th>
+                <td>NodeId (Testing)</td>
+                <td>CtimeSoy</td>
+                <td>ActiveSec</td>
+                <td>Gwvbat</td>
+                <td>Gwtemp</td>
+                <td>Spvvolt</td>
+                <td>GwchargeS</td>
+                <td>GsmSig</td>
+                <td>ConnectedCards</td>
+                <td>Rfsig</td>
+                <td>Rfnwledstate</td>
+                <td>C1actmin</td>
+                <td>C2actmin</td>
+                <td>C3actmin</td>
+                <td>Server Received DateTime</td>
+              </tr> 
+            </thead>
+            <tbody>
+              <tr *ngFor="let pos of this.modelLst">
+             
+                <td>{{ pos.FrameType }}</td>
+                <td>{{getNetworkFronNode(pos.NodeId)}}</td>
+                <td>{{getRtuIdFronNode(pos.NodeId)}}</td>
+                <td>{{ pos.NodeId }}</td>
+                <td>{{ pos.CtimeSoy | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td>{{ pos.ActiveSec }}</td>
+                <td>{{ pos.Gwvbat }}</td>
+                <td>{{ pos.Gwtemp }}</td>
+                <td>{{ pos.Spvvolt }}</td>
+                <td>{{ pos.GwchargeS }}</td>
+                <td>{{ pos.GsmSig }}</td>
+                <td>{{ pos.ConnectedCards }}</td>
+                <td>{{ pos.Rfsig }}</td>
+                <td>{{ pos.Rfnwledstate }}</td>
+                <td>{{ pos.C1actmin }}</td>
+                <td>{{ pos.C2actmin }}</td>
+                <td>{{ pos.C3actmin }}</td>
+                <td>{{ pos.AddedDateTime | date: "dd/MM/yyyy HH:mm" }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,15 +2,20 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <h4>Sequence</h4>
+       
+        <div> <h4>Sequence</h4><button class="btn btn-danger float-right" (click)="deleteAllSeq()">Delete All</button></div>
         <div class="row table-responsive mt-3">
-          <table class="table table-bordered mt-2">
+          <table class="table table-bordered mt-2"  datatable
+          [dtTrigger]="dtTrigger"
+          [dtOptions]="dtOptions">
             <thead>
               <tr>
                 <th>Seq Name</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Seq Start Time</th>
+                <th>Interval /Weekly</th>
+                <th>TagName</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -20,13 +25,20 @@
                   {{ pos.SeqName }}
                 </td>
                 <td (click)="editSequence(pos.SeqId,pos.SeqName)" class="handCursor">
-                  {{ pos.SeqStartDate }}
+                  {{ pos.SeqStartDate | date:'dd/MM/yyyy'}}
                 </td>
                 <td (click)="editSequence(pos.SeqId,pos.SeqName)" class="handCursor">
-                  {{ pos.SeqEndDate }}
+                  {{ pos.SeqEndDate | date:'dd/MM/yyyy'}}
                 </td>
                 <td (click)="editSequence(pos.SeqId,pos.SeqName)" class="handCursor">
                   {{ pos.SeqMasterStartTime }}
+                </td>
+                <td>
+                  <span *ngIf="pos.WeekDays.length==0"> {{pos.IntervalDays}}</span>
+                  <span *ngIf="pos.WeekDays.length!=0"> {{getdays(pos.WeekDays)}}</span>
+                </td>
+                <td (click)="editSequence(pos.SeqId,pos.SeqName)" class="handCursor">
+                  {{ pos.SeqTagName}}
                 </td>
                 <!-- max No Of Node PerNetwork -->
                 <td>
@@ -42,6 +54,7 @@
                     type="button"
                     id="clone"
                     class="btn btn-danger btn-sm ml-3"
+                    (click)="deleteSeq(pos.SeqId)"
                   >
                     Delete
                   </button>
