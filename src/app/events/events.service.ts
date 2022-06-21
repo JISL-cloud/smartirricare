@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { AddEditUserViewModel } from '../authentication/auth.model';
 import { BaseService } from '../authentication/base.service';
+import { Gateway } from '../configuration/nodesconfiguration/nodeconfiguration.model';
 import { MultiDataLogger } from '../datalogger/datalogger.model';
 import { AppConfigService } from '../_services/appconfigservice ';
-import { PostEvents, PostEventsDatalogger } from './events.model';
+import { MultiNodeAlarm, PostEvents, PostEventsDatalogger } from './events.model';
 import { GwstatusData } from './gwsttusdata/gwstatusdata.model';
 import { MultiNodeJoinDataFrame } from './nodejoindataframe/nodejoindataframe.model';
 import { MultiNodeNwDataFrame } from './nodenetworkdataframe/nodenetworkdataframe.model';
@@ -51,6 +52,17 @@ export class EventsService extends BaseService {
       .pipe(catchError(this.handleError));
   }
 
+
+  getNodeAlarmDataList() {
+    return this.http.get<MultiNodeAlarm[]>(this.jApi + 'Valve/getNodeAlarmData').pipe(catchError(this.handleError));
+  }
+
+  getNodeAlarmDataByDate(model: PostEvents) {
+    return this.http
+      .post<MultiNodeAlarm[]>(this.jApi + "Valve/getNodeAlarmDataByDate", model)
+      .pipe(catchError(this.handleError));
+  }
+
   getValveAlarmDataList() {
     return this.http.get<MultiValveAlarmData[]>(this.jApi + 'Valve/getValveAlarmData').pipe(catchError(this.handleError));
   }
@@ -67,7 +79,17 @@ export class EventsService extends BaseService {
   updateUserMobileAccess(id: string, flag: boolean) {
     return this.http.get<any>(this.jApi + 'Users/updateuseracess/' + id + "/" + flag).pipe(catchError(this.handleError));
   }
-
+  addUsers(model: AddEditUserViewModel) {
+    return this.http
+      .post<AddEditUserViewModel>(this.jApi + "Users", model)
+      .pipe(catchError(this.handleError));
+  }
+  updateUserTechId(id: string, techid: number) {
+    return this.http.get<any>(this.jApi + 'Users/updatetechnician/' + id + "/" + techid).pipe(catchError(this.handleError));
+  }
+  updateGatewaySerialNo(id: number, model: Gateway) {
+    return this.http.put<any>(this.jApi + 'Project/UpdateGateway/' + id , model).pipe(catchError(this.handleError));
+  }
   getUserList() {
     return this.http.get<any>(this.jApi + 'Users').pipe(catchError(this.handleError));
   }

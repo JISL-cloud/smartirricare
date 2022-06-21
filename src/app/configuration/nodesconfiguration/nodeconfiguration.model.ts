@@ -94,7 +94,14 @@ export class RechableNode {
     NodeTagName: string="";
 }
 
-
+export class Gateway {
+    Id: number=0;
+    GatewayNo: number=0;
+    SerialNo: number=0;
+    Latitude: number=0;
+    Longitude: number=0;
+    isEdit:boolean = false;
+}
 
 export class GatewayNode {
     id: number = 0;

@@ -69,7 +69,7 @@
             <tbody>
               <tr *ngFor="let pos of this.sensorLst">
                 <td>
-                  {{getEpocTime(pos.StoreSoy) | date: "dd/MM/yyyy HH:mm" }}
+                  {{pos.StoreSoy | date: "dd/MM/yyyy HH:mm" }}
                 </td>
                 <td>{{ getNetworkFronNode(pos.NodeId) }}</td>
                 <td>{{ getRtuIdFronNode(pos.NodeId) }}</td>
@@ -86,8 +86,8 @@
                   {{ pos.Sspriority }}
                 </td>
                 <td>{{ pos.Samprate }}</td>
-                <td>{{ getEpocTime(pos.LastAtmSoy) | date: "dd/MM/yyyy HH:mm"}}</td>
-                <td>{{ getEpocTime(pos.Utsoy) | date: "dd/MM/yyyy HH:mm"}}</td>
+                <td>{{ pos.LastAtmSoy | date: "dd/MM/yyyy HH:mm"}}</td>
+                <td>{{ pos.Utsoy | date: "dd/MM/yyyy HH:mm"}}</td>
                 <td>{{ GetReason(pos.AlarmReason) }}</td>
                 <td>{{ pos.SensorValue }}</td>
                 <td>{{ getDefaultState(pos.Cstate) }}</td>

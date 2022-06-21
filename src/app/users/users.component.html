@@ -3,6 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h4>Users</h4>
+        <button class="btn btn-sm btn-primary" [routerLink]="['/addusers']">Add User</button>
         <div class="row table-responsive mt-3">
           <table
             class="table table-bordered mt-2"
@@ -19,6 +20,7 @@
                 <th>Mobile No</th>
                 <th>Role</th>
                 <th>IsRestrictedUser</th>
+                <th>Technician Id</th>
               </tr>
             </thead>
             <tbody>
@@ -41,10 +43,40 @@
                       [(ngModel)]="pos.IsRestrictedUser"
                       name="active"
                       tabIndex="3"
-                      (change)="updateUserRestriction(pos.UserId, pos.IsRestrictedUser)"
+                      (change)="
+                        updateUserRestriction(pos.UserId, pos.IsRestrictedUser)
+                      "
                     />
                     <span class="slider"></span>
                   </label>
+                </td>
+                <td>
+                  <input
+                    *ngIf="pos.isUserNoEdit"
+                    class="form-control"
+                    type="number"
+                    [(ngModel)]="pos.UserNo"
+                    name="userNo"
+                    #name="ngModel"                   
+                  />
+                  <button
+                    *ngIf="pos.isUserNoEdit"
+                    type="button"
+                    class="btn btn-sm btn-warning"
+                    (click)="UpdateTechId(pos);"
+                  >
+                    Update
+                  </button>
+                  <label *ngIf="!pos.isUserNoEdit"
+                    >{{pos.UserNo}}
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-primary ml-4"
+                      (click)="pos.isUserNoEdit = !pos.isUserNoEdit"
+                    >
+                      Edit Tech Id
+                    </button></label
+                  >
                 </td>
               </tr>
             </tbody>

@@ -2,7 +2,9 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <button class="btn btn-primary float-right" (click)="deleteConf()">Delete All Configuration</button>
+        <button class="btn btn-primary float-right" (click)="deleteConf()">
+          Delete All Configuration
+        </button>
 
         <div class="">
           <div class="mt-2">
@@ -64,24 +66,98 @@
                   </div>
                 </ng-template>
               </ngb-tab>
+              <ngb-tab title="Gateway">
+                <ng-template ngbTabContent>
+                  <table class="table table-bordered mt-2">
+                    <thead>
+                      <tr>
+                        <th>Gateway No</th>
+                        <th>Gateway SR.No</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pos of this.mainGatewaysList">
+                        <td>{{ pos.GatewayNo }}</td>
+                        <td>
+                          <span *ngIf="!pos.isEdit">{{ pos.SerialNo }}</span>
+                          <input
+                            *ngIf="pos.isEdit"
+                            class="form-control"
+                            id="SerialNo"
+                            type="number"
+                            [(ngModel)]="pos.SerialNo"
+                            name="SerialNo"
+                            #name="ngModel"
+                          />
+                        </td>
+                        <td>
+                          <span *ngIf="!pos.isEdit">{{ pos.Latitude }}</span>
+                          <input
+                            *ngIf="pos.isEdit"
+                            class="form-control"
+                            id="Latitude"
+                            type="number"
+                            [(ngModel)]="pos.Latitude"
+                            name="Latitude"
+                            #name="ngModel"
+                          />
+                        </td>
+                        <td>
+                          <span *ngIf="!pos.isEdit">{{ pos.Longitude }}</span>
+                          <input
+                            *ngIf="pos.isEdit"
+                            class="form-control"
+                            id="Longitude"
+                            type="number"
+                            [(ngModel)]="pos.Longitude"
+                            name="Longitude"
+                            #name="ngModel"
+                          />
+                        </td>
+                        <td>
+                          <button
+                            *ngIf="!pos.isEdit"
+                            type="button"
+                            class="btn btn-sm btn-primary"
+                            (click)="editGateway(pos)"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            *ngIf="pos.isEdit"
+                            type="button"
+                            class="btn btn-sm btn-secondary"
+                            (click)="updateGateway(pos)"
+                          >
+                            Update
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </ng-template>
+              </ngb-tab>
               <ngb-tab title="Netwrok-RTU">
                 <ng-template ngbTabContent>
                   <div class="row">
                     <div class="col-md-4">
                       <label>Network</label>
                       <ng-select
-                      appendTo="body"
-                      id="selectedFilter"
-                      #select
-                      [items]="nwLst"
-                      bindLabel="networkNo"
-                      placeholder="Show All"
-                      bindValue="networkNo"
-                      [(ngModel)]="selectedFilter"
-                      (change)="GetList(selectedFilter)"
-                      appearance="outline"
-                    >
-                    </ng-select>
+                        appendTo="body"
+                        id="selectedFilter"
+                        #select
+                        [items]="nwLst"
+                        bindLabel="networkNo"
+                        placeholder="Show All"
+                        bindValue="networkNo"
+                        [(ngModel)]="selectedFilter"
+                        (change)="GetList(selectedFilter)"
+                        appearance="outline"
+                      >
+                      </ng-select>
                     </div>
                   </div>
                   <table class="table table-bordered mt-2">
@@ -100,9 +176,17 @@
                         <td>{{ pos.networkId }}</td>
                         <td>{{ pos.networkTagName }}</td>
                         <td>{{ pos.nodeId }}</td>
-                        <td>{{ GetNodeNo(pos.networkId, pos.nodeId ) }}</td>
+                        <td>{{ GetNodeNo(pos.networkId, pos.nodeId) }}</td>
                         <td>{{ pos.nodeTagName }}</td>
-                        <td><button type="button" class="btn btn-sm btn-primary" (click)="openProduct(pos.nodeId, pos.networkId)">Product </button></td>
+                        <td>
+                          <button
+                            type="button"
+                            class="btn btn-sm btn-primary"
+                            (click)="openProduct(pos.nodeId, pos.networkId)"
+                          >
+                            Product
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>

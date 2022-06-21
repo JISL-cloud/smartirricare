@@ -76,7 +76,8 @@ export class DataloggerComponent implements OnInit {
           $('#dt1').DataTable().destroy();
           this.dataLst = [] = [];
           this.dataLst = response;
-          this.dtTrigger.next();
+          this.mainmessage="";
+
           response.forEach(element => {
             let gwlstP = new GwIdLstMode();
             gwlstP.id = element.GwId
@@ -141,9 +142,9 @@ export class DataloggerComponent implements OnInit {
   getSSEvets() {
     this.valveservice.getDataLoggerList().subscribe(
       (response: MultiDataLogger[]) => {
-        this.dataLst = response;
-        this.dataMasterLst = response
-        this.dtTrigger.next();
+        // this.dataLst = response;
+        // this.dataMasterLst = response
+        // this.mainmessage="";
         response.forEach(element => {
           let gwlstP = new GwIdLstMode();
           gwlstP.id = element.GwId

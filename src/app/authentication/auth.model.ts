@@ -12,13 +12,18 @@ export class CurrentUser {
 }
 
 export class AddEditUserViewModel {
-    userId: string="";
-    userName: string="";
+    UserId: string="";
+    UserName: string="";
     mobileNo: string="";
     firstName: string="";
     lastName: string="";
     roleId: string="";
     isRestrictedUser: boolean = false; 
+    UserNo:number=0;
+    isUserNoEdit:boolean = false;
+    password:string=""
+    confirmPassword:string=""
+
 }
 
 export interface AspNetRoles {

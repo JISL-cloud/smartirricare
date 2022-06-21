@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { ToastService } from 'src/app/component/toast/toast.service';
-import { GatewayNode, NonRechableNode, RechableNode } from '../nodesconfiguration/nodeconfiguration.model';
+import { EventsService } from 'src/app/events/events.service';
+import { Gateway, GatewayNode, NonRechableNode, RechableNode } from '../nodesconfiguration/nodeconfiguration.model';
 import { NodeconfigurationService } from '../nodesconfiguration/nodeconfiguration.service';
 import { MultiNetworkRtu, NetwokNodeConf, Network, NetworkDDL, NodeModel, ProductTypes, Project, ProjectConfiguration, UpdateIdsRequired } from './project.model';
 import { ProjectService } from './project.service';
@@ -17,12 +18,12 @@ import { ProjectService } from './project.service';
 export class ProjectComponent implements OnInit {
   projectInfo: ProjectConfiguration = new ProjectConfiguration();
   multiNetworkRtuLst: UpdateIdsRequired[] = []
- 
+
   nonRechargableList: NonRechableNode[] = []
   rechargableList: RechableNode[] = []
   gatewayNodeList: GatewayNode[] = []
   gatewayList: GatewayNode[] = []
-
+  mainGatewaysList: Gateway[] = []
   projectLst: ProjectConfiguration[] = [];
   closeResult: string = "";
   networkInfo: Network = new Network();
@@ -36,11 +37,11 @@ export class ProjectComponent implements OnInit {
   selectedNetwork: string = "0";
   selectedFilter: string = "";
   nwLst: any;
-  nwnodeLst: NetwokNodeConf[]=[]
+  nwnodeLst: NetwokNodeConf[] = []
   mainMultiNetworkRtuLst: NetwokNodeConf[] = []
   isEditNode: boolean = false;
   nodeId: number = 0;
-  constructor(private router:Router, private nodeService: NodeconfigurationService, private projectService: ProjectService, public toastr: ToastrService, private modalService: NgbModal) { }
+  constructor(private valveservice:EventsService, private router: Router, private nodeService: NodeconfigurationService, private projectService: ProjectService, public toastr: ToastrService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getProject();
@@ -48,19 +49,54 @@ export class ProjectComponent implements OnInit {
     this.getNonRechableNode();
     this.getRechableNode();
     this.getGatewayNode();
+    this.getMainGateways()
     //this.getMultiNetworkRTU()
   }
+  getMainGateways() {
+    this.projectService.getMainGatewayList().subscribe(
+      (response: Gateway[]) => {
+        this.mainGatewaysList = response;
+      },
+      customError => {
+        this.toastr.error(
+          `Error happened while fetching Gateway list. <br />
+                  ${customError.message}`,
+          'Error'
+        );
+      }
+    );
+  }
+  editGateway(pos: Gateway) {
+    pos.isEdit = true
+  }
 
-
+  updateGateway(pos: Gateway) {
+    this.valveservice.updateGatewaySerialNo(pos.Id, pos).subscribe(
+      (response:any) => {
+        this.getMainGateways()
+        pos.isEdit = !pos.isEdit;
+      },
+      customError => {
+        pos.isEdit = !pos.isEdit;
+        this.getMainGateways()
+        this.toastr.error(
+          `Error happened while fetching Gateway serial no. Check if Gateway serail no already assigned <br />
+                  ${customError.message}`,
+          'Error'
+        );
+      }
+    );
+    pos.isEdit = false
+  }
   getNonRechableNode() {
     this.nodeService.getNonRechableNodeList().subscribe(
       (response: NonRechableNode[]) => {
         this.nonRechargableList = response;
-       
+
         response.forEach(element => {
-          let conf= new NetwokNodeConf();
+          let conf = new NetwokNodeConf();
           conf.networkId = element.GwSrn;
-          conf.networkTagName= element.NetworkTagName;
+          conf.networkTagName = element.NetworkTagName;
           conf.nodeTagName = element.NodeTagName
           conf.nodeId = element.NodeId;
 
@@ -85,9 +121,9 @@ export class ProjectComponent implements OnInit {
       (response: RechableNode[]) => {
         this.rechargableList = response;
         response.forEach(element => {
-          let conf= new NetwokNodeConf();
+          let conf = new NetwokNodeConf();
           conf.networkId = element.GwSrn;
-          conf.networkTagName= element.NetworkTagName;
+          conf.networkTagName = element.NetworkTagName;
           conf.nodeId = element.NodeId;
 
           conf.nodeTagName = element.NodeTagName
@@ -115,9 +151,9 @@ export class ProjectComponent implements OnInit {
         this.gatewayList = response.filter(x => x.ProductId == 4);
 
         response.forEach(element => {
-          let conf= new NetwokNodeConf();
+          let conf = new NetwokNodeConf();
           conf.networkId = element.GwSrn;
-          conf.networkTagName= element.NetworkTagName;
+          conf.networkTagName = element.NetworkTagName;
           conf.nodeId = element.NodeId;
           conf.nodeTagName = element.NodeTagName
           this.nwnodeLst.push(conf);
@@ -150,14 +186,14 @@ export class ProjectComponent implements OnInit {
       }
     );
   }
-  GetNodeNo(networkId :number, nodeId :number ){
-    return (networkId <<10) + nodeId ;
+  GetNodeNo(networkId: number, nodeId: number) {
+    return (networkId << 10) + nodeId;
   }
   GetList(selectedNetwork: string) {
     this.selectedNetwork = selectedNetwork;
     if (selectedNetwork === null)
       this.selectedNetwork = "0";
-      this.nwnodeLst = this.mainMultiNetworkRtuLst.filter(x => x.networkId == +this.selectedNetwork);
+    this.nwnodeLst = this.mainMultiNetworkRtuLst.filter(x => x.networkId == +this.selectedNetwork);
   }
 
   getAvailableNetworks() {
@@ -193,8 +229,8 @@ export class ProjectComponent implements OnInit {
   //   this.projectService.GetMultiNetworkRtu().subscribe(
   //     (response: UpdateIdsRequired[]) => {
   //       this.mainMultiNetworkRtuLst = response;
-       
-      
+
+
   //     },
   //     customError => {
   //       this.toastr.error(
@@ -383,30 +419,30 @@ export class ProjectComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-  openProduct(nodeId:number, networkId:string){
+  openProduct(nodeId: number, networkId: string) {
     this.router.navigate(['/configuration/productdetails'], { queryParams: { nodeId: nodeId, networkId: networkId } });
   }
 
-  
-  deleteConf(){
+
+  deleteConf() {
 
     if (confirm("Do you want to confrim deleting Project configurtion") == true) {
       this.nodeService.deleteAllConf().subscribe(
-      (response:any) => {
-       this.toastr.success("Confiuration Deleted successfully")
-      },
-      customError => {
-        this.toastr.error(
-          `Error happened while fetching deleteAllConf list. <br />
+        (response: any) => {
+          this.toastr.success("Confiuration Deleted successfully")
+        },
+        customError => {
+          this.toastr.error(
+            `Error happened while fetching deleteAllConf list. <br />
                   ${customError.message}`,
-          'Error'
-        );
-      }
-    );
+            'Error'
+          );
+        }
+      );
     } else {
       //text = "You canceled!";
     }
 
-   
+
   }
 }

@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   roleList:AspNetRoles[]=[]
   dtOptions: any
   dtTrigger: Subject<any> = new Subject<any>();
+  isUserNoEdit:boolean = false;
   constructor(public valveservice: EventsService, public toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -25,11 +26,37 @@ export class UsersComponent implements OnInit {
     this.valveservice.getUserList().subscribe(
       (response:any) => {
         this.userList = response.data;
+        this.userList = this.userList.filter(x=>x.UserName !='jisl@jains.com')
         this.dtTrigger.next();
       },
       customError => {
         this.toastr.error(
           `Error happened while fetching User list. <br />
+                  ${customError.message}`,
+          'Error'
+        );
+      }
+    );
+  }
+  UpdateTechId(pos:AddEditUserViewModel){
+    if(pos.UserNo == 0){
+      this.toastr.warning("Technician Id should be greator than 0")
+      return;
+    }
+    if(pos.UserNo > 65535){
+      this.toastr.warning("Technician Id should be smaller than 65535")
+      pos.UserNo = 0
+      return;
+    }
+    this.valveservice.updateUserTechId(pos.UserId, pos.UserNo).subscribe(
+      (response:any) => {
+        this.toastr.success("User updated successfully.");
+        pos.isUserNoEdit = !pos.isUserNoEdit
+      },
+      customError => {
+        pos.UserNo = 0
+        this.toastr.error(
+          `Error happened while updating technician Id. Kindly check if technician id is alredy assigned to other user <br />
                   ${customError.message}`,
           'Error'
         );

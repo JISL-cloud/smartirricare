@@ -5,6 +5,7 @@ import { CommonAuthGuard } from './guards/commonauth.guard';
 import { BlankComponent } from './layouts/blank/blank.component';
 
 import { FullComponent } from './layouts/full/full.component';
+import { UseraddeditComponent } from './users/useraddedit/useraddedit.component';
 import { UsersComponent } from './users/users.component';
 
 export const Approutes: Routes = [
@@ -42,6 +43,11 @@ export const Approutes: Routes = [
       {
         path: 'users',
         component: UsersComponent,
+        canActivate: [CommonAuthGuard],
+      },
+      {
+        path: 'addusers',
+        component: UseraddeditComponent,
         canActivate: [CommonAuthGuard],
       },
       {

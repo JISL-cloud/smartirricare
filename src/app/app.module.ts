@@ -46,6 +46,8 @@ import { EventsComponent } from './events/events.component';
 import { DataTablesModule } from 'angular-datatables';
 import { DataloggerComponent } from './datalogger/datalogger.component';
 import { UsersComponent } from './users/users.component';
+import { UseraddeditComponent } from './users/useraddedit/useraddedit.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -73,6 +75,7 @@ const initializerConfigFn = (appConfig: AppConfigService) => {
     EventsComponent,
     DataloggerComponent,
     UsersComponent,
+    UseraddeditComponent,
   ],
   imports: [
     CommonModule,
@@ -83,6 +86,7 @@ const initializerConfigFn = (appConfig: AppConfigService) => {
 	  PerfectScrollbarModule,
     NgbModule,
     NgxSpinnerModule,
+    NgSelectModule,
     DataTablesModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 10000,

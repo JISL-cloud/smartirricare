@@ -55,25 +55,25 @@ export class SequenceComponent implements OnInit {
     let str = ""
     WeekDays.forEach(element => {
       if(element ==1){
-        str = str+", Mon"
+        str = str+" Mon"
       }
       if(element ==2){
-        str = str+", Tue"
+        str = str+" Tue"
       }
       if(element ==3){
-        str = str+", Wed"
+        str = str+" Wed"
       }
       if(element ==4){
-        str = str+", Thurs"
+        str = str+" Thurs"
       }
       if(element ==5){
-        str = str+", Fri"
+        str = str+" Fri"
       }
       if(element ==6){
-        str = str+", Sat"
+        str = str+" Sat"
       }
       if(element ==7){
-        str = str+", Sun"
+        str = str+" Sun"
       }
      
     });

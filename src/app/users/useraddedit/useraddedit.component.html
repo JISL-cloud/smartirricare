@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4>Users</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <label>First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              class="form-control"
+              [(ngModel)]="userInfo.firstName"
+              name="firstName"
+              #firstName="ngModel"
+            />
+          </div>
+          <div class="col-md-6">
+            <label>Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              class="form-control"
+              [(ngModel)]="userInfo.lastName"
+              name="lastName"
+              #lastName="ngModel"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>User Name/Email</label>
+            <input
+              type="text"
+              id="UserName"
+              class="form-control"
+              [(ngModel)]="userInfo.UserName"
+              name="UserName"
+              #UserName="ngModel"
+            />
+          </div>
+          <div class="col-md-6">
+            <label>Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              [(ngModel)]="userInfo.password"
+              name="password"
+              #password="ngModel"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Confirm Password</label>
+            <input
+              type="text"
+              id="confirmPassword"
+              class="form-control"
+              [(ngModel)]="userInfo.confirmPassword"
+              name="confirmPassword"
+              #confirmPassword="ngModel"
+            />
+          </div>
+          <div class="col-md-6">
+            <label>Technician Id</label>
+            <input
+              type="number"
+              id="UserNo"
+              class="form-control"
+              [(ngModel)]="userInfo.UserNo"
+              name="UserNo"
+              #UserNo="ngModel"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Role</label>
+            <ng-select
+            appendTo="body"
+            id="selectedFilter"
+            #select
+            [items]="roleList"
+            bindLabel="Name"
+            placeholder="Show All"
+            bindValue="Id"
+            [(ngModel)]="userInfo.roleId"
+            appearance="outline"
+          >
+          </ng-select>  
+         </div>
+          <div class="col-md-6"></div>
+        </div>
+        <div class="text-center mt-4" style="text-align: center">
+            <button class="btn btn-primary" (click)="addUser()">Add</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

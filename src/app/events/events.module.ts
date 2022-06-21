@@ -14,6 +14,7 @@ import { OperationaleventsComponent } from './operationalevents/operationalevent
 import { NetworkdataanalysisComponent } from './networkdataanalysis/networkdataanalysis.component';
 import { ValvealarmdataComponent } from './valvealarmdata/valvealarmdata.component';
 import { SensoralarmdataComponent } from './sensoralarmdata/sensoralarmdata.component';
+import { NodealarmdataComponent } from './nodealarmdata/nodealarmdata.component';
 const routes: Routes = [
   {
     path: '',
@@ -135,6 +136,18 @@ const routes: Routes = [
       ]
     },
   },
+  {
+    path: 'nodealarmdata',
+    component: NodealarmdataComponent,
+    data: {
+      title: 'Node Alarm data',
+      urls: [
+        { title: 'Node Alarm data', url: '/nodealarmdata' },
+        { title: 'ngComponent' },
+        { title: 'Node Alarm data' }
+      ]
+    },
+  },
   // {
   //   path: 'addedit',
   //   component: AddeditsequenceComponent,
@@ -163,7 +176,8 @@ const routes: Routes = [
     OperationaleventsComponent,
     NetworkdataanalysisComponent,
     ValvealarmdataComponent,
-    SensoralarmdataComponent
+    SensoralarmdataComponent,
+    NodealarmdataComponent
   ],
   imports: [
     CommonModule,

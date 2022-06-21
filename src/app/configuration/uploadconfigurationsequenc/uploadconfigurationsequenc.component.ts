@@ -67,14 +67,17 @@ export class UploadconfigurationsequencComponent implements OnInit {
             }
             this.toastr.warning(msg);
           } else {
-            this.toastr.success('Project Configuration uploaded successfully');
+            this.toastr.success('Sequence uploaded successfully');
+
             this.attachmentInfo.attachmentViewModels = [];
             this.fileAttachmentModel = new Attachment();
+            this.router.navigate(["sequence/list"]);
           }
         }
         this.attachmentInfo.attachmentViewModels = [];
         this.fileAttachmentModel = new Attachment();
-        this.toastr.success('Project Configuration uploaded successfully');
+        this.toastr.success('Sequence Configuration uploaded successfully');
+        this.router.navigate(["sequence/list"]);
       },
       customError => {
         this.toastr.error(
@@ -107,6 +110,8 @@ export class UploadconfigurationsequencComponent implements OnInit {
           a.click();
           URL.revokeObjectURL(a.href);
           a.remove();
+
+
         }
       },
       customError => {
