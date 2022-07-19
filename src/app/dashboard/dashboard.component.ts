@@ -151,6 +151,8 @@ export class DashboardComponent implements AfterViewInit {
       });
     this.streetsideMap.entities.push(this.pins);
 
+    
+
 
     // Microsoft.Maps.Events.addHandler(this.pins[0], 'dragend', (e) => { this.dragEnd(e); });
     // Microsoft.Maps.Events.addHandler(this.pins[1], 'click', () => { this.highlight('pushpinClick'); });
