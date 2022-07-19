@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
-import { MultiNodeAlarm, PostEvents } from '../events.model';
+import { PostEvents } from '../events.model';
 import { EventsService } from '../events.service';
-import { MultiSensorAlarmData, MultiSensorType, MultiSensorAlarmReason, MultiAlarmTypes } from '../valveevents/valve.model';
+import { MultiHandShakeReach } from './handshakereach';
 
 @Component({
-  selector: 'app-nodealarmdata',
-  templateUrl: './nodealarmdata.component.html',
-  styleUrls: ['./nodealarmdata.component.css']
+  selector: 'app-hndshakereach',
+  templateUrl: './hndshakereach.component.html',
+  styleUrls: ['./hndshakereach.component.css']
 })
-export class NodealarmdataComponent implements OnInit {
-
+export class HndshakereachComponent implements OnInit {
   constructor(public valveservice: EventsService, public toastr: ToastrService) { }
-  sensorLst: MultiNodeAlarm[] = [];  
-  multiAlarmTypes: MultiAlarmTypes[]=[]
+  sensorLst: MultiHandShakeReach[] = [];  
   postEvents:PostEvents = new PostEvents()
 
   dtOptions: any
@@ -40,29 +38,10 @@ export class NodealarmdataComponent implements OnInit {
       //processing: true,
 
     };
-    this.getSSEvets();
-    this.getAlarmTypes();  
+    this.getEvents();
   }
   getRtuIdFronNode(nodeid: number) {
     return (nodeid & 1023).toString();
-  }
-  getAlarmTypes() {
-    this.valveservice.getAlarmTypes().subscribe(
-      (response: MultiAlarmTypes[]) => {
-        this.multiAlarmTypes = response;
-      },
-      customError => {
-        this.toastr.error(
-          `Error happened while fetching sensor type list. <br />
-                  ${customError.message}`,
-          'Error'
-        );
-      }
-    );
-  }
-
-  getAlarmType(AlarmType:string){
-    return this.multiAlarmTypes.filter(x=>x.Value == +AlarmType)[0].Description
   }
 
   getNetworkFronNode(nodeid: number) {
@@ -75,15 +54,15 @@ export class NodealarmdataComponent implements OnInit {
   }
  
   clear(){
-    this.getSSEvets();
+    this.getEvents();
 
   }
   async SearchRec(): Promise<any> {
     this.postEvents.startDateTime = this.postEvents.startdate + " " + this.postEvents.fromTime
     this.postEvents.endDateTime = this.postEvents.endDate + " " + this.postEvents.toTime
     return new Promise<void>((resolve, reject) => {
-      this.valveservice.getNodeAlarmDataByDate(this.postEvents).subscribe(
-        (response: MultiNodeAlarm[]) => {
+      this.valveservice.getHandshakeReachDataByDate(this.postEvents).subscribe(
+        (response: MultiHandShakeReach[]) => {
           $('#dt1').DataTable().destroy();
           this.sensorLst = response;
           this.dtTrigger.next();
@@ -91,7 +70,7 @@ export class NodealarmdataComponent implements OnInit {
         },
         customError => {
           this.toastr.error(
-            `Error happened while fetching node alarm list. <br />
+            `Error happened while fetching list. <br />
                     ${customError.message}`,
             'Error'
           );
@@ -100,15 +79,15 @@ export class NodealarmdataComponent implements OnInit {
       );
     });
   }
-  getSSEvets() {
-    this.valveservice.getNodeAlarmDataList().subscribe(
-      (response: MultiNodeAlarm[]) => {
+  getEvents() {
+    this.valveservice.getHandshakeReachList().subscribe(
+      (response: MultiHandShakeReach[]) => {
         this.sensorLst = response;
         this.dtTrigger.next();
       },
       customError => {
         this.toastr.error(
-          `Error happened while fetching nodel alarm list. <br />
+          `Error happened while fetching list. <br />
                   ${customError.message}`,
           'Error'
         );
@@ -133,5 +112,4 @@ export class NodealarmdataComponent implements OnInit {
       return ""
     }
   }
-
 }

@@ -26,3 +26,9 @@ export class MultiNodeAlarm {
     addedDateTime!: Date
     gwsoy: number = 0;
 }
+
+export class MultiUiversion {
+    Id: number = 0;
+    Version: number = 0;
+    ChangedDatetime!: Date;
+}

@@ -100,21 +100,20 @@
           </div>
         </div>
         <div class="row table-responsive mt-3">
-          <div class="col-md-12 mt-3" *ngFor="let pos of this.dataLst">
+          <!-- <div class="col-md-12 mt-3" *ngFor="let pos of this.dataLst">
             <p>
               <b>Date :</b> {{ pos.AddedDateTime | date: "dd/MM/yyyy HH:mm" }}  <b class="ml-4">GW No :</b>{{ pos.GwId }}  <b class="ml-4">Project Id : </b>{{ pos.ProjectId }}
             </p>
             <div style="white-space: pre-line;" [innerHtml]="getMessage(pos.Message)"></div>
             <hr/>
-          </div>
+          </div> -->
 
-          <!-- <table
+          <table
             class="table table-bordered mt-2"
             id="dt1"
             datatable
             [dtTrigger]="dtTrigger"
-            [dtOptions]="dtOptions"
-          >
+            [dtOptions]="dtOptions"          >
             <thead>
               <tr>
                 <th>Gw Id</th>
@@ -123,8 +122,9 @@
                 <th>Cmdno</th>
                 <th>NwUpid</th>
                 <th>MaxLengthKb</th>
-                <th>Message</th>
+                <!-- <th>Message</th> -->
                 <th>AddedDateTime</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -135,11 +135,12 @@
                 <td>{{ pos.Cmdno }}</td>
                 <td>{{ pos.NwUpid }}</td>
                 <td>{{ pos.MaxLengthKb }}</td>
-                <td>{{ pos.Message }}</td>
+                <!-- <td>{{ pos.Message }}</td> -->
                 <td>{{ pos.AddedDateTime }}</td>
+                <td><button class="btn btn-sm btn-primary" (click)="downloadFile(pos.Id)">View</button></td>
               </tr>
             </tbody>
-          </table> -->
+          </table>
         </div>
       </div>
     </div>

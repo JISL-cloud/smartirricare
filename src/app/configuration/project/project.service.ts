@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
 import { BaseService } from 'src/app/authentication/base.service';
+import { MultiNodeDashbordData, MultiNodeLatLong } from 'src/app/dashboard/model';
+import { MultiRtuAnalysis } from 'src/app/events/eventdashboard/model';
 import { AppConfigService } from 'src/app/_services/appconfigservice ';
 import { Gateway } from '../nodesconfiguration/nodeconfiguration.model';
 import { MultiNetworkRtu, Network, NetworkDDL, NodeModel, ProductTypes, Project, ProjectConfiguration, UpdateIdsRequired } from './project.model';
@@ -36,6 +38,15 @@ export class ProjectService extends BaseService{
   getMainGatewayList(){
     return this.http.get<Gateway[]>(this.jApi + 'Project/GetGateways').pipe(catchError(this.handleError));
   }
+
+  getRtuAnalysis(){
+    return this.http.get<MultiRtuAnalysis[]>(this.jApi + 'Node/GetRTUAnalysis').pipe(catchError(this.handleError));
+  }
+
+  getNodeLatLongList(){
+    return this.http.get<MultiNodeDashbordData[]>(this.jApi + 'Project/GetNodeLatLong').pipe(catchError(this.handleError));
+  }
+
   getAvailableNetworkList(){
     return this.http.get<NetworkDDL[]>(this.jApi + 'Network/GetAvailableNetworks').pipe(catchError(this.handleError));
   }

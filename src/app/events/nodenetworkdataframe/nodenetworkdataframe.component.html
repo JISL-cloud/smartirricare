@@ -50,20 +50,20 @@
                 <th>Network No</th>
                 <th>Node No</th>
                 <th>Node Id (Testing)</th>
-                <th>Last Comm Time</th>
-                <th>Rx Frame type</th>
-                <th>Ng current Rssi</th>
-                <th>Ng current Snr</th>
-                <th>Ng current Sf</th>
-                <th>Ng freq</th>
-                <th>Ng current Cr</th>
+                <th>Last Comm Time(SOY)</th>
+                <th>Received Frame Type</th>
+                <th>Current_RSSI</th>
+                <th>Current_SNR</th>
+                <th>Current_SF</th>
+                <th>Freq</th>
+                <th>Current_CR</th>
                 <th>Gw id6b</th>
-                <th>Ng attempt 3b</th>
+                <th>Attempt_3b</th>
                 <th>Power 2b</th>
-                <th>Sf gw 2b</th>
-                <th>Gnsnr Previous 3b</th>
-                <th>GnrssiPrevious3b</th>
-                <th>ProductType4b</th>
+                <th>SF_GW_2b</th>
+                <th>GN_SNR_Previous_3b</th>
+                <th>GN_Rssi_Previous_3b</th>
+                <th>Product_Type_4b</th>
                 <th>Server Received DateTime</th>
               </tr>
             </thead>
@@ -86,7 +86,7 @@
                 <td>{{ pos.GnsnrPrevious3b }}</td>
                 <td>{{ pos.GnrssiPrevious3b }}</td>
                 <td>{{ pos.ProductType4b }}</td>
-                <td>{{ pos.AddedDateTime | date: "dd/MM/yyyy HH:mm" }}</td>
+                <td>{{ pos.AddedDatetime | date: "dd/MM/yyyy HH:mm" }}</td>
               </tr>
             </tbody>
           </table>

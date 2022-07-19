@@ -6,11 +6,13 @@ import { BaseService } from '../authentication/base.service';
 import { Gateway } from '../configuration/nodesconfiguration/nodeconfiguration.model';
 import { MultiDataLogger } from '../datalogger/datalogger.model';
 import { AppConfigService } from '../_services/appconfigservice ';
-import { MultiNodeAlarm, PostEvents, PostEventsDatalogger } from './events.model';
+import { MultiNodeAlarm, MultiUiversion, PostEvents, PostEventsDatalogger } from './events.model';
 import { GwstatusData } from './gwsttusdata/gwstatusdata.model';
+import { MultiHandShakeNonReach } from './hndshakenonreach/handshakenonreach.model';
+import { MultiHandShakeReach } from './hndshakereach/handshakereach';
 import { MultiNodeJoinDataFrame } from './nodejoindataframe/nodejoindataframe.model';
 import { MultiNodeNwDataFrame } from './nodenetworkdataframe/nodenetworkdataframe.model';
-import { MultiFrameTypes, MultiSensorAlarmData, MultiSensorAlarmReason, MultiSensorEvent, MultiSensorType, MultiValveAlarmData, MultiValveAlarmReason, MultiValveEvent, MultiValveReason, MultiValveState, MultiValveType } from './valveevents/valve.model';
+import { MultiAlarmTypes, MultiFrameTypes, MultiSensorAlarmData, MultiSensorAlarmReason, MultiSensorEvent, MultiSensorType, MultiValveAlarmData, MultiValveAlarmReason, MultiValveEvent, MultiValveReason, MultiValveState, MultiValveType } from './valveevents/valve.model';
 
 @Injectable({
   providedIn: 'root'
@@ -56,12 +58,32 @@ export class EventsService extends BaseService {
   getNodeAlarmDataList() {
     return this.http.get<MultiNodeAlarm[]>(this.jApi + 'Valve/getNodeAlarmData').pipe(catchError(this.handleError));
   }
+  getHandshakeReachList() {
+    return this.http.get<MultiHandShakeReach[]>(this.jApi + 'Node/GetMultiHandShakeReach').pipe(catchError(this.handleError));
+  }
+  getHandshakeNonReachList() {
+    return this.http.get<MultiHandShakeNonReach[]>(this.jApi + 'Node/GetMultiHandShakeNonReach').pipe(catchError(this.handleError));
+  }
 
   getNodeAlarmDataByDate(model: PostEvents) {
     return this.http
       .post<MultiNodeAlarm[]>(this.jApi + "Valve/getNodeAlarmDataByDate", model)
       .pipe(catchError(this.handleError));
   }
+
+  getHandshakeReachDataByDate(model: PostEvents) {
+    return this.http
+      .post<MultiHandShakeReach[]>(this.jApi + "Node/GetMultiHandShakeReachByDate", model)
+      .pipe(catchError(this.handleError));
+  }
+
+
+  getHandshakeNonReachDataByDate(model: PostEvents) {
+    return this.http
+      .post<MultiHandShakeNonReach[]>(this.jApi + "Node/GetMultiHandShakeNonReachByDate", model)
+      .pipe(catchError(this.handleError));
+  }
+
 
   getValveAlarmDataList() {
     return this.http.get<MultiValveAlarmData[]>(this.jApi + 'Valve/getValveAlarmData').pipe(catchError(this.handleError));
@@ -72,7 +94,9 @@ export class EventsService extends BaseService {
       .post<MultiValveAlarmData[]>(this.jApi + "Valve/getValveAlarmDataByDate", model)
       .pipe(catchError(this.handleError));
   }
-
+  DeleteUser(id:string) {
+    return this.http.delete<any>(this.jApi + 'Users?userId='+id).pipe(catchError(this.handleError));
+  }
   GetRoles() {
     return this.http.get<any>(this.jApi + 'Users/GetRoles').pipe(catchError(this.handleError));
   }
@@ -102,6 +126,16 @@ export class EventsService extends BaseService {
     return this.http.get<MultiDataLogger[]>(this.jApi + 'Frame/GetDatalogger').pipe(catchError(this.handleError));
   }
 
+  getVesionDetails() {
+    return this.http.get<MultiUiversion>(this.jApi + 'Project/GetVersion').pipe(catchError(this.handleError));
+  }
+
+  getAttachment(id: number) {
+    return this.http
+      .get(this.jApi + 'Frame/filedownload?id=' + id, { responseType: 'blob' })
+      .pipe(catchError(this.handleError));
+  }
+
   getSSByDateList(model: PostEvents) {
 
     return this.http
@@ -117,6 +151,10 @@ export class EventsService extends BaseService {
   }
   getSSTypes() {
     return this.http.get<MultiSensorType[]>(this.jApi + 'Valve/GetMultiSensorTypes').pipe(catchError(this.handleError));
+  }
+
+  getAlarmTypes() {
+    return this.http.get<MultiAlarmTypes[]>(this.jApi + 'Valve/GetMultiAlarmTypes').pipe(catchError(this.handleError));
   }
   getMultiNodeJoinDataFrame() {
     return this.http.get<MultiNodeJoinDataFrame[]>(this.jApi + 'Node/GetMultiNodeJoinDataFrame').pipe(catchError(this.handleError));

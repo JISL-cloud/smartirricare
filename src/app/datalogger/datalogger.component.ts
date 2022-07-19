@@ -13,9 +13,9 @@ import { GwIdLstMode, MultiDataLogger } from './datalogger.model';
 export class DataloggerComponent implements OnInit {
   dataLst: MultiDataLogger[] = [];
   dataMasterLst: MultiDataLogger[] = [];
-  messageList:string[]=[]
+  messageList: string[] = []
   dtOptions: any
-  searchString:string=""
+  searchString: string = ""
   dtTrigger: Subject<any> = new Subject<any>();
   postEvents: PostEventsDatalogger = new PostEventsDatalogger()
   gwlist: GwIdLstMode[] = []
@@ -76,7 +76,7 @@ export class DataloggerComponent implements OnInit {
           $('#dt1').DataTable().destroy();
           this.dataLst = [] = [];
           this.dataLst = response;
-          this.mainmessage="";
+          this.mainmessage = "";
 
           response.forEach(element => {
             let gwlstP = new GwIdLstMode();
@@ -104,7 +104,7 @@ export class DataloggerComponent implements OnInit {
     });
 
   }
-  Searchtext(){
+  Searchtext() {
   }
   getMessage(message: string) {
     let msg = message.split("TO");
@@ -112,7 +112,7 @@ export class DataloggerComponent implements OnInit {
     msg.forEach(element => {
       let msg = element.split('\\n');
       //var filterMsg = msg.filter(x=>x.)
-     
+
       htmlString = htmlString + " " + element + " "
     });
     return htmlString;
@@ -139,10 +139,40 @@ export class DataloggerComponent implements OnInit {
 
   }
 
+  // Download Txt
+  downloadFile(id: number) {
+    let fileName = "Dattalogget_" + id   // + fileName;
+    // const ids = 148
+    this.valveservice.getAttachment(id).subscribe(
+      async data => {
+        const blob = new Blob([data], { type: data.type });
+        if (window.navigator) {
+          // for Non-IE (chrome, firefox etc.)
+          const a = document.createElement('a');
+          document.body.appendChild(a);
+          a.hidden = true;
+          const fileUrl = URL.createObjectURL(blob);
+          a.href = fileUrl;
+          a.download = fileName;
+          a.click();
+          URL.revokeObjectURL(a.href);
+          a.remove();
+        }
+      },
+      customError => {
+        this.toastr.error(
+          `Error happened while fetching TXT. <br />
+      ${customError.message}`,
+          'Error'
+        );
+      }
+    );
+  }
+
   getSSEvets() {
     this.valveservice.getDataLoggerList().subscribe(
       (response: MultiDataLogger[]) => {
-        // this.dataLst = response;
+        this.dataLst = response;
         // this.dataMasterLst = response
         // this.mainmessage="";
         response.forEach(element => {
@@ -152,9 +182,9 @@ export class DataloggerComponent implements OnInit {
           if (this.gwlist.filter(x => x.name == element.GwId).length == 0) {
             this.gwlist.push(gwlstP);
           }
-          this.mainmessage = this.mainmessage + "Date:" + element.AddedDateTime.toString() + " Gateway NO : " + element.GwId + "\n"
-          + element.Message + "\n"
-        });
+        //   this.mainmessage = this.mainmessage + "Date:" + element.AddedDateTime.toString() + " Gateway NO : " + element.GwId + "\n"
+        //     + element.Message + "\n"
+         });
       },
       customError => {
         this.toastr.error(

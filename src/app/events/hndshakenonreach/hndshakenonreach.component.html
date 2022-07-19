@@ -1,8 +1,8 @@
-<div class="row">
+7<div class="row">
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <h4>Node Alarm Data</h4>
+        <!-- <h4>Node Alarm Data</h4> -->
         <div class="row">
           <div class="col-md-3">
             <label>From Date</label>
@@ -76,11 +76,24 @@
             <thead>
               <tr>
                 <th>Network No</th>
-                <th>Node No</th>
-                <th>NodeId (Testing)</th>
-                <th>UT_Soy</th>
-                <th>Alarm Type</th>
-                <th>Server Received DateTime</th>
+                  <th>Node No </th>
+                  <th>NodeId (Testing)</th>
+                  <th>Last Communication</th>
+                  <th>System Version Number</th>
+                  <th>Configuration Setting Number</th>
+                  <th>Schedule Update Nummber</th>
+                  <th>Sensor Update Number</th>
+                  <th>Tempreture Reading</th>
+                  <th>Battery Volt Reading</th>
+                  <th>LVS Start Time</th>
+                  <th>LVS Duration</th>
+                  <th>LVS Opreation</th>
+                  <th>LVS Valve No</th>
+                  <th>LVS ROP</th>
+                  <th>Number of Blank Schedule Rows</th>
+                  <th>Valve Status</th>
+                  <th>Digital Input Status</th>
+                  <th>Server Added DateTime</th>
               </tr>
             </thead>
             <tbody>
@@ -88,9 +101,22 @@
                 <td>{{ getNetworkFronNode(pos.NodeId) }}</td>
                 <td>{{ getRtuIdFronNode(pos.NodeId) }}</td>
                 <td>{{ pos.NodeId }}</td>
-                <td>{{ pos.Soy | date: "dd/MM/yyyy HH:mm" }}</td>
-                <td>{{getAlarmType(pos.AlarmType)}}</td>
-                <td>{{ pos.AddedDateTime | date: "dd/MM/yyyy HH:mm" }}</td>
+                <td>{{ pos.Soy | date: "dd/MM/yyyy HH:mm" }}</td>                
+                <td>{{pos.VerNumber}}</td>
+                <td>{{pos.ConfigVerNumber}}</td>
+                <td>{{pos.ScheduleUpno}}</td>
+                <td>{{pos.SensorUpno}}</td>
+                <td>{{pos.TempReading}}</td>
+                <td>{{pos.BatteryVoltReading}}</td>
+                <td>{{pos.LvsStartTime}}</td>
+                <td>{{pos.LvsDuration}}</td>
+                <td>{{pos.LvsOperation}}</td>
+                <td>{{pos.LvsValveNo}}</td>
+                <td>{{pos.LvsRop}}</td>
+                <td>{{pos.MoUpno}}</td>
+                <td>{{pos.ValveStatus}}</td>
+                <td>{{pos.Distatus}}</td>    
+                <td>{{ pos.AddedDatetime | date: "dd/MM/yyyy HH:mm" }}</td>
               </tr>
             </tbody>
           </table>

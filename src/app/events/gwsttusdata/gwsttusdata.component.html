@@ -47,30 +47,30 @@
           >
             <thead>
               <tr>           
-                <td>FrameType</td>
-                <th>Network No</th>
-                <th>Node No</th>
-                <td>NodeId (Testing)</td>
-                <td>CtimeSoy</td>
-                <td>ActiveSec</td>
-                <td>Gwvbat</td>
-                <td>Gwtemp</td>
-                <td>Spvvolt</td>
-                <td>GwchargeS</td>
-                <td>GsmSig</td>
-                <td>ConnectedCards</td>
-                <td>Rfsig</td>
-                <td>Rfnwledstate</td>
-                <td>C1actmin</td>
-                <td>C2actmin</td>
-                <td>C3actmin</td>
-                <td>Server Received DateTime</td>
+               <!--<th>FrameType</th>-->
+               <th>Network No</th>
+               <th>Node No</th>
+               <th>NodeId (Testing)</th>
+               <th>Current SOY</th>
+               <th>Active seconds</th>
+               <th>Battery voltage</th>
+               <th>Temperature</th>
+               <th>Panel voltage</th>
+               <th>Charging_Status</th>
+               <th>GSM Signal_Strength</th>
+               <th>Active Cards connected to GW</th>
+               <th>RF signal strength</th>
+               <th>RF network led state </th>
+               <th>Card_1 active minutes</th>
+               <th>Card_2 active minutes</th>
+               <th>Card_3 active minutes</th>
+               <th>Server Received DateTime</th>
               </tr> 
             </thead>
             <tbody>
               <tr *ngFor="let pos of this.modelLst">
              
-                <td>{{ pos.FrameType }}</td>
+                <!-- <td>{{ pos.FrameType }}</td> -->
                 <td>{{getNetworkFronNode(pos.NodeId)}}</td>
                 <td>{{getRtuIdFronNode(pos.NodeId)}}</td>
                 <td>{{ pos.NodeId }}</td>

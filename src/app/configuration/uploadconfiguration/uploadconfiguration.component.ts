@@ -59,13 +59,13 @@ export class UploadconfigurationComponent implements OnInit {
     this.confService.uploadConf(this.attachmentInfo).subscribe(
       (response: any) => {
         if (response.errors && response.errors.length > 0) {
-          let msg = 'Project Configuration uploaded successfully. <br />';
+          let msg = 'Project Configuration uploaded successfully. GW and NW Setting will reset . Need to Check all Configured Setting Again <br />';
           for (const error of response.errors) {
             msg += error + '<br />';
           }
           this.toastr.warning(msg);
         } else {
-          this.toastr.success('Project Configuration uploaded successfully.');
+          this.toastr.success('Project Configuration uploaded successfully.GW and NW Setting will reset . Need to Check all Configured Setting Again');
           this.attachmentInfo.attachmentViewModels = [];
           this.fileAttachmentModel = new Attachment();
         }

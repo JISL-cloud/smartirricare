@@ -12,6 +12,8 @@ import { EventsService } from 'src/app/events/events.service';
 export class UseraddeditComponent implements OnInit {
   userInfo:AddEditUserViewModel= new AddEditUserViewModel();
   roleList:AspNetRoles[]=[]
+  passwordShown : boolean = false;
+  passwordType ='password';
   constructor(public valveservice: EventsService, public toastr: ToastrService, private router:Router) { }
 
   ngOnInit(): void {
@@ -32,11 +34,41 @@ export class UseraddeditComponent implements OnInit {
       }
     );
   }
-
+  toggleShow() {
+    this.passwordShown = !this.passwordShown;
+    this.passwordType = this.passwordShown ? 'text' : 'password';
+  }
   addUser(){
+    if(this.userInfo.confirmPassword != this.userInfo.password){
+      this.toastr.warning("Password and confirm password should be same")
+      return;
+    }
+    if(this.userInfo.firstName == ""){
+      this.toastr.warning("Enter First Name")
+      return;
+    }
+    if(this.userInfo.lastName ==""){
+      this.toastr.warning("Enter Last Name")
+      return;
+    }
+    if(this.userInfo.UserName ==""){
+      this.toastr.warning("Enter User Name/Email")
+      return;
+    }
+    if(this.userInfo.roleId =="0"){
+      this.toastr.warning("Select Role")
+      return;
+    }
     this.valveservice.addUsers(this.userInfo).subscribe(
       (response:any) => {
-        this.router.navigate(["/users"])
+        if(response.errorCode != 7){
+          this.toastr.success("User added successfully");
+          this.router.navigate(["/users"])
+        }
+        else{
+          this.toastr.error(response.message);
+          
+        }        
       },
       customError => {
         this.toastr.error(

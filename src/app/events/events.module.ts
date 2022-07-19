@@ -15,6 +15,9 @@ import { NetworkdataanalysisComponent } from './networkdataanalysis/networkdataa
 import { ValvealarmdataComponent } from './valvealarmdata/valvealarmdata.component';
 import { SensoralarmdataComponent } from './sensoralarmdata/sensoralarmdata.component';
 import { NodealarmdataComponent } from './nodealarmdata/nodealarmdata.component';
+import { EventdashboardComponent } from './eventdashboard/eventdashboard.component';
+import { HndshakereachComponent } from './hndshakereach/hndshakereach.component';
+import { HndshakenonreachComponent } from './hndshakenonreach/hndshakenonreach.component';
 const routes: Routes = [
   {
     path: '',
@@ -148,6 +151,44 @@ const routes: Routes = [
       ]
     },
   },
+  {
+    path: 'eventdashboard',
+    component: EventdashboardComponent,
+    data: {
+      title: 'Event Dashboard',
+      urls: [
+        { title: 'Event Dashboard', url: '/eventdashboard' },
+        { title: 'ngComponent' },
+        { title: 'Event Dashboard' }
+      ]
+    },
+  },
+  {
+    path: 'handshakereach',
+    component: HndshakereachComponent,
+    data: {
+      title: 'Hndshake reach',
+      urls: [
+        { title: 'Hndshake reach', url: '/handshakereach' },
+        { title: 'ngComponent' },
+        { title: 'Hndshake reach' }
+      ]
+    },
+  },
+  {
+    path: 'handshakenonreach',
+    component: HndshakenonreachComponent,
+    data: {
+      title: 'Hndshakenonreach',
+      urls: [
+        { title: 'Hndshake non reach', url: '/handshakenonreach' },
+        { title: 'ngComponent' },
+        { title: 'Hndshake non reach' }
+      ]
+    },
+  },
+
+  
   // {
   //   path: 'addedit',
   //   component: AddeditsequenceComponent,
@@ -177,7 +218,10 @@ const routes: Routes = [
     NetworkdataanalysisComponent,
     ValvealarmdataComponent,
     SensoralarmdataComponent,
-    NodealarmdataComponent
+    NodealarmdataComponent,
+    EventdashboardComponent,
+    HndshakereachComponent,
+    HndshakenonreachComponent
   ],
   imports: [
     CommonModule,

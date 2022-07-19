@@ -115,6 +115,12 @@ export interface MultiSensorType {
     Sstype: number | null;
 }
 
+export interface MultiAlarmTypes {
+    int: number;
+    Description: string;
+    Value: number | null;
+}
+
 export interface MultiSensorAlarmReason {
     Id: number;
     Description: string;

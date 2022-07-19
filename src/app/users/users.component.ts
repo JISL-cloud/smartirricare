@@ -77,7 +77,21 @@ export class UsersComponent implements OnInit {
       }
     );
   }
-  
+  deleteUser(id:string){
+    this.valveservice.DeleteUser(id).subscribe(
+      (response:any) => {
+        this.toastr.success("User Deleted Successfully")
+        this.getUserList()
+      },
+      customError => {
+        this.toastr.error(
+          `Error happened while fetching Role list. <br />
+                  ${customError.message}`,
+          'Error'
+        );
+      }
+    );
+  }
   getRole(id:string){
    return  this.roleList.filter(x=>x.Id ==id)[0].Name;
   }
